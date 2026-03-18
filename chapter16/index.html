@@ -6,11 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="프로그래밍 경험이 없는 고등학생을 위한 라즈베리파이 피코 입문서로, 6주간 직접 만들고 확인하며 배우는 실습 중심 교육 자료입니다.">
+        <meta name="description" content="컴퓨터를 몰라도 괜찮아, 2주 뒤엔 내 손으로 게임을 만든다! 프로그래밍 경험이 전혀 없는 고등학생도 혼자서 완주할 수 있는 C언어 입문 자기주도 학습서입니다.">
       
       
-        <meta name="author" content="Created with Data-AI-Book Generator">
+        <meta name="author" content="Created with EduFlow">
       
+      
+        <link rel="canonical" href="https://baesy5.github.io/c_language_01/chapter16/">
       
       
         <link rel="prev" href="../chapter15/">
@@ -23,15 +25,18 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
-        <title>프로젝트 기획 - 아이디어 구체화 - 고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트</title>
+        <title>게임을 설계하자 — 기획부터 함수 구조 짜기 - 처음 만드는 나의 첫 C언어 게임</title>
       
     
     
       <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -45,8 +50,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"JetBrains Mono"}</style>
       
     
     
@@ -61,7 +66,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -70,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#-" class="md-skip">
+        <a href="#_1" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -84,7 +96,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="상단/헤더">
-    <a href=".." title="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" class="md-header__button md-logo" aria-label="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" data-md-component="logo">
+    <a href=".." title="처음 만드는 나의 첫 C언어 게임" class="md-header__button md-logo" aria-label="처음 만드는 나의 첫 C언어 게임" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -98,18 +110,44 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트
+            처음 만드는 나의 첫 C언어 게임
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              프로젝트 기획 - 아이디어 구체화
+              게임을 설계하자 — 기획부터 함수 구조 짜기
             
           </span>
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="다크 모드로 전환"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로 전환" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="라이트 모드로 전환"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로 전환" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -204,7 +242,9 @@
           
   
   
-  Part 1 - 피코와 첫 만남
+    
+  
+  Part 1 - [1권] 프로그래밍 세계에 첫 발 내딛기
 
         </a>
       </li>
@@ -220,11 +260,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../chapter04/" class="md-tabs__link">
+        <a href="../chapter06/" class="md-tabs__link">
           
   
   
-  Part 2 - 빛으로 말하기 - LED 제어
+    
+  
+  Part 2 - [1권] 프로그램에 판단력 불어넣기
 
         </a>
       </li>
@@ -240,31 +282,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../chapter07/" class="md-tabs__link">
+        <a href="../chapter09/" class="md-tabs__link">
           
   
   
-  Part 3 - 입력을 받아라 - 버튼과 상호작용
-
-        </a>
-      </li>
     
   
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../chapter10/" class="md-tabs__link">
-          
-  
-  
-  Part 4 - 소리로 표현하기 - 부저 활용
+  Part 3 - [1권] 코드를 깔끔하게 정리하는 힘 — 함수
 
         </a>
       </li>
@@ -284,7 +308,9 @@
           
   
   
-  Part 5 - 세상을 감지하라 - 센서 활용
+    
+  
+  Part 4 - [2권] 게임을 더 풍성하게 — 배열과 실전 도구
 
         </a>
       </li>
@@ -306,7 +332,9 @@
           
   
   
-  Part 6 - 나만의 스마트 기기 - 통합 프로젝트
+    
+  
+  Part 5 - [2권] 최종 프로젝트 — 내 손으로 게임 완성하기
 
         </a>
       </li>
@@ -336,13 +364,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" class="md-nav__button md-logo" aria-label="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" data-md-component="logo">
+    <a href=".." title="처음 만드는 나의 첫 C언어 게임" class="md-nav__button md-logo" aria-label="처음 만드는 나의 첫 C언어 게임" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트
+    처음 만드는 나의 첫 C언어 게임
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -382,6 +410,18 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -404,7 +444,7 @@
   <span class="md-ellipsis">
     
   
-    Part 1 - 피코와 첫 만남
+    Part 1 - [1권] 프로그래밍 세계에 첫 발 내딛기
   
 
     
@@ -420,7 +460,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 1 - 피코와 첫 만남
+    Part 1 - [1권] 프로그래밍 세계에 첫 발 내딛기
   
 
           </label>
@@ -440,7 +480,7 @@
   <span class="md-ellipsis">
     
   
-    피코야, 반가워! - 하드웨어 살펴보기
+    왜 C언어를 배워야 할까? — 이 책의 사용법
   
 
     
@@ -468,7 +508,7 @@
   <span class="md-ellipsis">
     
   
-    개발 환경 설정 - Thonny 설치하기
+    내 컴퓨터에 작업실 꾸미기 — 개발 환경 설치
   
 
     
@@ -496,7 +536,7 @@
   <span class="md-ellipsis">
     
   
-    Hello, Pico! - 첫 번째 프로그램 실행
+    처음 만나는 C언어 — Hello, World!
   
 
     
@@ -509,65 +549,6 @@
   
 
               
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Part 2 - 빛으로 말하기 - LED 제어
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Part 2 - 빛으로 말하기 - LED 제어
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -583,7 +564,7 @@
   <span class="md-ellipsis">
     
   
-    브레드보드와 친해지기 - LED 회로 구성
+    데이터를 담는 상자 — 변수와 자료형
   
 
     
@@ -611,35 +592,7 @@
   <span class="md-ellipsis">
     
   
-    깜빡깜빡 - LED 점멸 프로그램
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../chapter06/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    무지개 신호등 - 다중 LED 패턴
+    컴퓨터에게 계산 시키기 — 연산자 활용
   
 
     
@@ -668,6 +621,14 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -680,17 +641,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 3 - 입력을 받아라 - 버튼과 상호작용
+    Part 2 - [1권] 프로그램에 판단력 불어넣기
   
 
     
@@ -701,16 +662,44 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 3 - 입력을 받아라 - 버튼과 상호작용
+    Part 2 - [1권] 프로그램에 판단력 불어넣기
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    갈림길에서 선택하기 — if 조건문
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -726,7 +715,7 @@
   <span class="md-ellipsis">
     
   
-    버튼 연결하기 - 디지털 입력의 시작
+    같은 일을 반복하기 — for와 while 반복문
   
 
     
@@ -754,35 +743,7 @@
   <span class="md-ellipsis">
     
   
-    누르면 반응해! - 조건문 활용
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../chapter09/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    반응속도 게임 만들기
+    여기까지 잘 왔어! — 중간 점검 미니 게임 만들기
   
 
     
@@ -811,6 +772,16 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -823,17 +794,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 4 - 소리로 표현하기 - 부저 활용
+    Part 3 - [1권] 코드를 깔끔하게 정리하는 힘 — 함수
   
 
     
@@ -844,16 +815,44 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 4 - 소리로 표현하기 - 부저 활용
+    Part 3 - [1권] 코드를 깔끔하게 정리하는 힘 — 함수
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    왜 코드를 나눠야 할까? — 함수가 필요한 이유
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -869,7 +868,7 @@
   <span class="md-ellipsis">
     
   
-    삐- 소리의 원리 - 부저 연결과 PWM
+    나만의 함수 만들기 — 함수 정의와 호출
   
 
     
@@ -897,7 +896,7 @@
   <span class="md-ellipsis">
     
   
-    나만의 멜로디 - 학교종 연주하기
+    함수에 값을 주고받기 — 매개변수와 반환값 깊이 이해하기
   
 
     
@@ -925,7 +924,7 @@
   <span class="md-ellipsis">
     
   
-    피아노 만들기 - 버튼으로 연주
+    함수로 코드를 리모델링하자 — 업다운 게임 리팩토링
   
 
     
@@ -954,6 +953,14 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -966,17 +973,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 5 - 세상을 감지하라 - 센서 활용
+    Part 4 - [2권] 게임을 더 풍성하게 — 배열과 실전 도구
   
 
     
@@ -987,12 +994,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 5 - 세상을 감지하라 - 센서 활용
+    Part 4 - [2권] 게임을 더 풍성하게 — 배열과 실전 도구
   
 
           </label>
@@ -1012,7 +1019,7 @@
   <span class="md-ellipsis">
     
   
-    밝기 감지 - 조도 센서
+    데이터를 줄 세우기 — 배열 기초
   
 
     
@@ -1040,7 +1047,7 @@
   <span class="md-ellipsis">
     
   
-    자동 조명 만들기
+    여러 선택지 깔끔하게 처리하기 — switch문과 게임 메뉴
   
 
     
@@ -1068,7 +1075,7 @@
   <span class="md-ellipsis">
     
   
-    온도계 만들기 - 온도 센서 활용
+    게임에 우연을 더하자 — 난수와 유용한 함수들
   
 
     
@@ -1099,6 +1106,18 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -1114,17 +1133,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 6 - 나만의 스마트 기기 - 통합 프로젝트
+    Part 5 - [2권] 최종 프로젝트 — 내 손으로 게임 완성하기
   
 
     
@@ -1135,12 +1154,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 6 - 나만의 스마트 기기 - 통합 프로젝트
+    Part 5 - [2권] 최종 프로젝트 — 내 손으로 게임 완성하기
   
 
           </label>
@@ -1169,7 +1188,7 @@
   <span class="md-ellipsis">
     
   
-    프로젝트 기획 - 아이디어 구체화
+    게임을 설계하자 — 기획부터 함수 구조 짜기
   
 
     
@@ -1187,7 +1206,7 @@
   <span class="md-ellipsis">
     
   
-    프로젝트 기획 - 아이디어 구체화
+    게임을 설계하자 — 기획부터 함수 구조 짜기
   
 
     
@@ -1213,10 +1232,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 이 장에서 배우는 것
+        🎯 이 장의 학습 목표
       
     </span>
   </a>
@@ -1224,7 +1243,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 미리 알아야 할 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         💡 왜 이걸 배우나요?
@@ -1235,7 +1265,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         📚 핵심 개념
@@ -1250,7 +1280,7 @@
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 1: 프로젝트 기획이란?
+        개념 1: 게임 기획서 — 무엇을 만들지 글로 적기 📝
       
     </span>
   </a>
@@ -1258,38 +1288,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#2-flowchart" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 2: 좋은 프로젝트의 조건
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔨 따라하기
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🔨 따라하기">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: 아이디어 브레인스토밍
+        개념 2: 순서도(Flowchart) — 흐름을 그림으로 보기 🗺️
       
     </span>
   </a>
@@ -1297,71 +1299,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2" class="md-nav__link">
+  <a href="#3-decomposition" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: 아이디어 평가하기
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: 기획서 작성하기
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📄 프로젝트 기획서 템플릿
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📄 프로젝트 기획서 템플릿">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1️⃣ 기본 정보
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2️⃣ 프로젝트 소개
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3️⃣ 핵심 기능 (3개 이내)
+        개념 3: 분할 사고(Decomposition) — 큰 문제를 작게 나누기 🧩
       
     </span>
   </a>
@@ -1372,29 +1313,7 @@
   <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4️⃣ 필요한 부품
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5️⃣ 개발 단계 (2시간 기준)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6️⃣ 예상 결과물
+        개념 4: 함수 설계서 — 각 함수의 역할 미리 정하기 📋
       
     </span>
   </a>
@@ -1410,19 +1329,19 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📝 기획서 예시: 스마트 알람시계
+        🔨 따라하기
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📝 기획서 예시: 스마트 알람시계">
+    <nav class="md-nav" aria-label="🔨 따라하기">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_2" class="md-nav__link">
+  <a href="#step-1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1️⃣ 기본 정보
+        Step 1: 기획서 작성하기 ✍️
       
     </span>
   </a>
@@ -1430,10 +1349,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_2" class="md-nav__link">
+  <a href="#step-2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2️⃣ 프로젝트 소개
+        Step 2: 순서도 그리기 🗺️
       
     </span>
   </a>
@@ -1441,10 +1360,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#step-3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3️⃣ 핵심 기능
+        Step 3: 분할 사고로 함수 목록 만들기 🧩
       
     </span>
   </a>
@@ -1452,10 +1371,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4_1" class="md-nav__link">
+  <a href="#step-4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4️⃣ 필요한 부품
+        Step 4: 함수 설계서 완성하기 📋
       
     </span>
   </a>
@@ -1463,21 +1382,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
+  <a href="#step-5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5️⃣ 개발 단계
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6️⃣ 예상 결과물
+        Step 5: 함수 뼈대(스켈레톤) 코드 작성하기 🦴
       
     </span>
   </a>
@@ -1486,139 +1394,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⚠️ 자주 하는 실수
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="⚠️ 자주 하는 실수">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 1: 너무 큰 목표 설정
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 2: 기획 없이 바로 코딩 시작
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 3: 없는 부품으로 기획
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ✅ 스스로 점검하기
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🚀 더 해보기
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🚀 더 해보기">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 1: 기획서 완성하기 (필수!)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 2: 동료 피드백 받기
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 3: 스케치 그리기 ⭐
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📋 오늘의 체크리스트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔗 다음 장으로
-      
-    </span>
-  </a>
   
 </li>
       
@@ -1645,7 +1420,7 @@
   <span class="md-ellipsis">
     
   
-    만들기 - 회로 구성과 코딩
+    직접 만드는 가위바위보 게임 — 코딩 실전
   
 
     
@@ -1673,7 +1448,63 @@
   <span class="md-ellipsis">
     
   
-    발표와 공유 - 프로젝트 시연
+    보너스 도전! OX 퀴즈 게임 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    내 코드 다듬기 — 자주 틀리는 오류 모음과 디버깅 팁
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    축하해, 게임 개발자! — 다음 단계로 나아가기
   
 
     
@@ -1721,10 +1552,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 이 장에서 배우는 것
+        🎯 이 장의 학습 목표
       
     </span>
   </a>
@@ -1732,7 +1563,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 미리 알아야 할 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         💡 왜 이걸 배우나요?
@@ -1743,7 +1585,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         📚 핵심 개념
@@ -1758,7 +1600,7 @@
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 1: 프로젝트 기획이란?
+        개념 1: 게임 기획서 — 무엇을 만들지 글로 적기 📝
       
     </span>
   </a>
@@ -1766,38 +1608,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#2-flowchart" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 2: 좋은 프로젝트의 조건
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔨 따라하기
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🔨 따라하기">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: 아이디어 브레인스토밍
+        개념 2: 순서도(Flowchart) — 흐름을 그림으로 보기 🗺️
       
     </span>
   </a>
@@ -1805,71 +1619,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2" class="md-nav__link">
+  <a href="#3-decomposition" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: 아이디어 평가하기
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: 기획서 작성하기
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📄 프로젝트 기획서 템플릿
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📄 프로젝트 기획서 템플릿">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1️⃣ 기본 정보
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2️⃣ 프로젝트 소개
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3️⃣ 핵심 기능 (3개 이내)
+        개념 3: 분할 사고(Decomposition) — 큰 문제를 작게 나누기 🧩
       
     </span>
   </a>
@@ -1880,29 +1633,7 @@
   <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4️⃣ 필요한 부품
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5️⃣ 개발 단계 (2시간 기준)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6️⃣ 예상 결과물
+        개념 4: 함수 설계서 — 각 함수의 역할 미리 정하기 📋
       
     </span>
   </a>
@@ -1918,19 +1649,19 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📝 기획서 예시: 스마트 알람시계
+        🔨 따라하기
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📝 기획서 예시: 스마트 알람시계">
+    <nav class="md-nav" aria-label="🔨 따라하기">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_2" class="md-nav__link">
+  <a href="#step-1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1️⃣ 기본 정보
+        Step 1: 기획서 작성하기 ✍️
       
     </span>
   </a>
@@ -1938,10 +1669,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_2" class="md-nav__link">
+  <a href="#step-2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2️⃣ 프로젝트 소개
+        Step 2: 순서도 그리기 🗺️
       
     </span>
   </a>
@@ -1949,10 +1680,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#step-3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3️⃣ 핵심 기능
+        Step 3: 분할 사고로 함수 목록 만들기 🧩
       
     </span>
   </a>
@@ -1960,10 +1691,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4_1" class="md-nav__link">
+  <a href="#step-4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4️⃣ 필요한 부품
+        Step 4: 함수 설계서 완성하기 📋
       
     </span>
   </a>
@@ -1971,21 +1702,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
+  <a href="#step-5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5️⃣ 개발 단계
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6️⃣ 예상 결과물
+        Step 5: 함수 뼈대(스켈레톤) 코드 작성하기 🦴
       
     </span>
   </a>
@@ -1994,139 +1714,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⚠️ 자주 하는 실수
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="⚠️ 자주 하는 실수">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 1: 너무 큰 목표 설정
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 2: 기획 없이 바로 코딩 시작
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 3: 없는 부품으로 기획
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ✅ 스스로 점검하기
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🚀 더 해보기
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🚀 더 해보기">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 1: 기획서 완성하기 (필수!)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 2: 동료 피드백 받기
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 3: 스케치 그리기 ⭐
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📋 오늘의 체크리스트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔗 다음 장으로
-      
-    </span>
-  </a>
   
 </li>
       
@@ -2147,464 +1734,336 @@
 
 
 
-<h1 id="-">프로젝트 기획 - 아이디어 구체화<a class="headerlink" href="#-" title="Permanent link">&para;</a></h1>
-<p><strong>Part 6</strong>: 나만의 스마트 기기 - 통합 프로젝트</p>
+<h1 id="_1">📐 게임을 설계하자 — 기획부터 함수 구조 짜기<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p><strong>Part 5 | [2권] 최종 프로젝트 — 내 손으로 게임 완성하기</strong></p>
 <hr />
-<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ul>
-<li>[ ] 나만의 프로젝트 아이디어를 선정하고 정리할 수 있다</li>
-<li>[ ] 필요한 부품과 기능을 정리한 기획서를 작성할 수 있다</li>
-<li>[ ] 단계별 개발 계획을 수립할 수 있다</li>
+<h2 id="_2">🎯 이 장의 학습 목표<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>이 장을 마치면 다음을 할 수 있습니다:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 게임의 전체 흐름을 글과 순서도(Flowchart)로 미리 설계할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 필요한 함수 목록을 정리하고 각 함수의 역할·입력·출력을 계획할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 큰 문제를 작은 단위로 나누는 <strong>분할 사고(Decomposition)</strong>를 실천할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 설계 문서를 바탕으로 함수 뼈대(스켈레톤) 코드를 작성할 수 있다</li>
 </ul>
+<p><strong>예상 학습 시간: 약 1시간 30분</strong> ⏱️</p>
 <hr />
-<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>지금까지 우리는 LED, 버튼, 센서, OLED, WiFi까지 정말 많은 것을 배웠어요. 하지만 이 모든 것은 <strong>누군가 정해준 예제</strong>를 따라한 것이었죠.</p>
-<p>이제는 다릅니다! 🚀</p>
-<p><strong>"내가 원하는 것을 만든다"</strong> - 이것이 진짜 메이커의 시작이에요.</p>
-<p>세상의 모든 멋진 제품들은 누군가의 <strong>"이런 거 있으면 좋겠다"</strong>라는 생각에서 시작했어요. 여러분도 지금부터 그 첫 걸음을 떼는 거예요!</p>
-<p>좋은 기획 없이 바로 코딩을 시작하면? 중간에 방향을 잃고 헤매게 됩니다. 오늘 배우는 기획 방법은 앞으로 어떤 프로젝트를 하든 도움이 될 거예요.</p>
-<hr />
-<h2 id="_3">📚 핵심 개념<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<h3 id="1">개념 1: 프로젝트 기획이란?<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p><strong>비유로 시작</strong>: "프로젝트 기획은 마치 여행 계획과 같아요. 어디로(목표), 무엇을 타고(도구), 어떤 경로로(단계) 갈지 미리 정하는 거죠."</p>
-</li>
-<li>
-<p><strong>정확한 정의</strong>: "정확히 말하면, 만들고 싶은 것을 구체적으로 정의하고, 필요한 것들을 정리하고, 실행 순서를 계획하는 과정입니다."</p>
-</li>
-<li>
-<p><strong>예시로 확인</strong>: "예를 들어, '스마트 알람시계'를 만든다면 → 어떤 센서가 필요한지, 어떤 기능이 핵심인지, 며칠에 걸쳐 무엇을 만들지 정리하는 거예요."</p>
-</li>
-</ol>
-<p><strong>쉽게 말하면</strong>: 기획 = 무엇을 + 왜 + 어떻게 만들지 정리하는 것</p>
-<hr />
-<h3 id="2">개념 2: 좋은 프로젝트의 조건<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
-<div class="mermaid">flowchart TB
-    A[🎯 좋은 프로젝트] --&gt; B[💡 실용적]
-    A --&gt; C[⚡ 실현 가능]
-    A --&gt; D[🌟 재미있음]
-
-    B --&gt; B1["실제로 쓸 수 있나?"]
-    C --&gt; C1["내 실력으로 만들 수 있나?"]
-    D --&gt; D1["만드는 과정이 즐거운가?"]
-
-    style A fill:#fff9c4,stroke:#f9a825
-    style B fill:#e3f2fd,stroke:#1976d2
-    style C fill:#e8f5e9,stroke:#388e3c
-    style D fill:#fce4ec,stroke:#c2185b</div>
-<p>세 가지 조건을 모두 만족하면 최고의 프로젝트가 됩니다!</p>
-<p><strong>쉽게 말하면</strong>: 쓸모있고 + 만들 수 있고 + 재미있어야 좋은 프로젝트!</p>
-<hr />
-<h2 id="_4">🔨 따라하기<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<h3 id="step-1">Step 1: 아이디어 브레인스토밍<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
-<p><strong>목표</strong>: 다양한 아이디어를 자유롭게 떠올리기</p>
-<p><strong>아이디어 예시 모음</strong> 📋</p>
-<table>
-<thead>
-<tr>
-<th>아이디어</th>
-<th>핵심 기능</th>
-<th>필요 부품</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>스마트 알람시계</td>
-<td>시간 표시 + 알람 + 날씨</td>
-<td>OLED, 부저, WiFi</td>
-</tr>
-<tr>
-<td>식물 물주기 알림기</td>
-<td>토양 습도 측정 + 알림</td>
-<td>토양센서, LED, 부저</td>
-</tr>
-<tr>
-<td>공부 집중 타이머</td>
-<td>뽀모도로 타이머 + 휴식 알림</td>
-<td>OLED, 버튼, 부저</td>
-</tr>
-<tr>
-<td>방문자 알림기</td>
-<td>움직임 감지 + 알림</td>
-<td>초음파센서, LED, 부저</td>
-</tr>
-<tr>
-<td>스마트 무드등</td>
-<td>밝기 자동 조절 + 색상 변경</td>
-<td>조도센서, RGB LED</td>
-</tr>
-<tr>
-<td>온습도 모니터</td>
-<td>환경 측정 + 경고</td>
-<td>DHT11, OLED, LED</td>
-</tr>
-</tbody>
-</table>
-<p><strong>여기서 잠깐! 🤔</strong></p>
-<p>아이디어가 떠오르지 않나요? 이 질문들에 답해보세요:
-- "아침에 일어날 때 불편한 점은?"
-- "공부할 때 있으면 좋겠는 것은?"
-- "우리 집에서 자동화되면 좋겠는 것은?"</p>
-<hr />
-<h3 id="step-2">Step 2: 아이디어 평가하기<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
-<p><strong>목표</strong>: 여러 아이디어 중 하나를 선택하기</p>
-<p>아이디어가 몇 개 나왔다면, 아래 기준으로 점수를 매겨보세요 (1~5점):</p>
-<table>
-<thead>
-<tr>
-<th>평가 기준</th>
-<th>아이디어 A</th>
-<th>아이디어 B</th>
-<th>아이디어 C</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>실용성 (쓸모있나?)</td>
-<td>?</td>
-<td>?</td>
-<td>?</td>
-</tr>
-<tr>
-<td>실현 가능성 (만들 수 있나?)</td>
-<td>?</td>
-<td>?</td>
-<td>?</td>
-</tr>
-<tr>
-<td>흥미도 (재미있나?)</td>
-<td>?</td>
-<td>?</td>
-<td>?</td>
-</tr>
-<tr>
-<td>부품 보유 여부</td>
-<td>?</td>
-<td>?</td>
-<td>?</td>
-</tr>
-<tr>
-<td><strong>총점</strong></td>
-<td>?</td>
-<td>?</td>
-<td>?</td>
-</tr>
-</tbody>
-</table>
-<p>가장 점수가 높은 아이디어를 선택하세요!</p>
-<p><strong>여기서 잠깐! 🤔</strong></p>
-<p>"너무 쉬운 것 같은데..." 걱정되나요? 
-<strong>괜찮아요!</strong> 처음엔 작게 시작하고, 나중에 기능을 추가하면 됩니다.</p>
-<hr />
-<h3 id="step-3">Step 3: 기획서 작성하기<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
-<p><strong>목표</strong>: 선택한 아이디어를 구체적인 기획서로 정리하기</p>
-<p>아래 템플릿을 채워보세요:</p>
-<hr />
-<h2 id="_5">📄 프로젝트 기획서 템플릿<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<h3 id="1_1">1️⃣ 기본 정보<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<h2 id="_3">📚 미리 알아야 할 것<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>이전 장까지 배운 내용을 간단히 복습해 볼게요.</p>
 <ul>
-<li><strong>프로젝트명</strong>: </li>
-<li><strong>만드는 사람</strong>: </li>
-<li><strong>예상 제작 기간</strong>: 약 2시간 (다음 2차시)</li>
+<li><strong>함수 정의와 호출</strong>: <code>def 함수이름(매개변수):</code> 형태로 함수를 만들고, <code>return</code>으로 값을 돌려주는 방법</li>
+<li><strong>조건문과 반복문</strong>: <code>if/elif/else</code>, <code>while</code>, <code>for</code> 를 사용해 프로그램 흐름을 제어하는 방법</li>
+<li><strong>리스트와 딕셔너리</strong>: 여러 데이터를 묶어서 관리하는 방법</li>
+<li><strong><code>input()</code> 함수</strong>: 사용자로부터 키보드 입력을 받는 방법</li>
 </ul>
-<h3 id="2_1">2️⃣ 프로젝트 소개<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>위 개념이 기억나지 않으면, 해당 장을 빠르게 훑어본 뒤 돌아오세요. 이 장은 "코드를 작성하기 <em>전에</em> 생각을 정리하는 방법"을 배우는 시간이에요! 😊</p>
+</blockquote>
+<hr />
+<h2 id="_4">💡 왜 이걸 배우나요?<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>레고 블록으로 큰 성을 만든다고 상상해 보세요. 아무 계획 없이 블록을 쌓기 시작하면 어떻게 될까요? 중간에 "아, 여기 문을 넣었어야 했는데…" 하며 다시 허무는 일이 반복될 거예요.</p>
+<p><strong>프로그래밍도 똑같습니다.</strong></p>
+<p>실제 현업 개발자들도 코드를 작성하기 전에 반드시 <strong>설계 단계</strong>를 거칩니다. 어떤 기능이 필요한지 목록을 만들고, 전체 흐름을 그림으로 그리고, 각 부분을 누가(어떤 함수가) 담당할지 미리 결정하죠.</p>
+<p>이 습관을 지금부터 들이면 여러분은:</p>
 <ul>
-<li><strong>한 줄 설명</strong>: (이 기기는 무엇인가요?)</li>
-<li><strong>해결하려는 문제</strong>: (어떤 불편함을 해결하나요?)</li>
-<li><strong>사용 대상</strong>: (누가 사용하나요?)</li>
+<li>🧩 코드 작성이 훨씬 <strong>빠르고 수월</strong>해집니다</li>
+<li>🐛 버그(오류)가 생겼을 때 <strong>어디를 고쳐야 하는지</strong> 금방 찾습니다</li>
+<li>🤝 나중에 다른 사람과 <strong>협업</strong>할 때도 자연스럽게 소통할 수 있습니다</li>
 </ul>
-<h3 id="3-3">3️⃣ 핵심 기능 (3개 이내)<a class="headerlink" href="#3-3" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>기능</th>
-<th>설명</th>
-<th>우선순위</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>기능 1</td>
-<td></td>
-<td>⭐⭐⭐ 필수</td>
-</tr>
-<tr>
-<td>기능 2</td>
-<td></td>
-<td>⭐⭐ 중요</td>
-</tr>
-<tr>
-<td>기능 3</td>
-<td></td>
-<td>⭐ 있으면 좋음</td>
-</tr>
-</tbody>
-</table>
-<h3 id="4">4️⃣ 필요한 부품<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>부품</th>
-<th>용도</th>
-<th>연결 포트</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="5-2">5️⃣ 개발 단계 (2시간 기준)<a class="headerlink" href="#5-2" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>단계</th>
-<th>할 일</th>
-<th>예상 시간</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1단계</td>
-<td>하드웨어 연결</td>
-<td>20분</td>
-</tr>
-<tr>
-<td>2단계</td>
-<td>기본 기능 구현</td>
-<td>40분</td>
-</tr>
-<tr>
-<td>3단계</td>
-<td>기능 통합</td>
-<td>30분</td>
-</tr>
-<tr>
-<td>4단계</td>
-<td>테스트 및 개선</td>
-<td>20분</td>
-</tr>
-<tr>
-<td>5단계</td>
-<td>발표 준비</td>
-<td>10분</td>
-</tr>
-</tbody>
-</table>
-<h3 id="6">6️⃣ 예상 결과물<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<p>이번 장에서는 <strong>"가위바위보 게임"</strong>을 함께 설계해 볼 거예요. 코드를 한 줄도 쓰지 않고, 오직 <strong>생각하고 정리하는 것</strong>만으로 게임의 80%를 완성하는 경험을 하게 됩니다!</p>
+<hr />
+<h2 id="_5">📚 핵심 개념<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="1">개념 1: 게임 기획서 — 무엇을 만들지 글로 적기 📝<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p><strong>1) 비유로 시작</strong></p>
+<p>요리를 할 때 레시피를 먼저 읽어보는 것처럼, 게임을 만들기 전에 "어떤 게임인지"를 글로 정리하는 것이 <strong>게임 기획서</strong>입니다. 레시피 없이 요리하면 재료를 빠뜨리거나 순서를 잘못하는 것처럼, 기획서 없이 코딩하면 꼭 빠뜨리는 기능이 생깁니다.</p>
+<p><strong>2) 정확한 정의</strong></p>
+<p><strong>게임 기획서</strong>란, 게임의 규칙, 진행 방식, 승리/패배 조건, 사용자가 보게 되는 화면(출력) 등을 글로 정리한 문서입니다. 거창할 필요 없어요. 노트에 몇 줄 적는 것만으로도 충분합니다.</p>
+<p><strong>3) 예시로 확인 — 가위바위보 게임 기획서</strong></p>
+<blockquote>
+<p><strong>🎮 게임 이름</strong>: 가위바위보 대결!</p>
+<p><strong>🎯 게임 목표</strong>: 컴퓨터와 가위바위보를 해서 먼저 3번 이기면 승리</p>
+<p><strong>📋 게임 규칙</strong>:
+- 플레이어는 가위, 바위, 보 중 하나를 선택한다
+- 컴퓨터도 랜덤으로 하나를 선택한다
+- 가위 &gt; 보, 보 &gt; 바위, 바위 &gt; 가위
+- 비기면 다시 한다 (무승부)
+- 먼저 3승을 달성한 쪽이 최종 승리</p>
+<p><strong>🖥️ 화면에 보이는 것</strong>:
+- 게임 시작 환영 메시지
+- 매 라운드: 현재 점수, 선택 안내, 결과
+- 게임 종료: 최종 결과와 다시 하기 여부</p>
+<p><strong>🔄 게임 종료 후</strong>: "다시 하시겠습니까? (y/n)"으로 물어본다</p>
+</blockquote>
+<p>이렇게 적어두면, 나중에 코딩할 때 "아, 뭘 만들어야 하더라?" 하고 헤매지 않아요.</p>
+<hr />
+<h3 id="2-flowchart">개념 2: 순서도(Flowchart) — 흐름을 그림으로 보기 🗺️<a class="headerlink" href="#2-flowchart" title="Permanent link">&para;</a></h3>
+<p><strong>1) 비유로 시작</strong></p>
+<p>놀이공원에 가면 입구에 있는 <strong>안내 지도</strong>를 떠올려 보세요. 지도를 보면 "입구 → 회전목마 → 점심 식사 → 롤러코스터 → 출구" 같은 동선을 한눈에 파악할 수 있죠. <strong>순서도</strong>는 프로그램의 안내 지도입니다.</p>
+<p><strong>2) 정확한 정의</strong></p>
+<p><strong>순서도(Flowchart)</strong>는 프로그램의 실행 흐름을 도형과 화살표로 표현한 그림입니다.</p>
 <ul>
-<li><strong>작동 시나리오</strong>: (사용자가 어떻게 사용하나요?)</li>
-<li><strong>성공 기준</strong>: (뭐가 되면 성공인가요?)</li>
+<li><strong>둥근 사각형</strong>: 시작/끝</li>
+<li><strong>직사각형</strong>: 처리(동작)</li>
+<li><strong>마름모</strong>: 조건 분기(예/아니오)</li>
+<li><strong>화살표</strong>: 흐름 방향</li>
 </ul>
+<p><strong>3) 예시로 확인 — 가위바위보 게임 순서도</strong></p>
+<div class="mermaid">flowchart TD
+    A([🎮 게임 시작]) --&gt; B[환영 메시지 출력]
+    B --&gt; C[점수 초기화: 플레이어=0, 컴퓨터=0]
+    C --&gt; D{누군가 3승 했나?}
+    D -- 아니오 --&gt; E[플레이어에게 선택 입력받기]
+    E --&gt; F[컴퓨터 랜덤 선택]
+    F --&gt; G[승패 판정]
+    G --&gt; H[결과와 현재 점수 출력]
+    H --&gt; D
+    D -- 예 --&gt; I[최종 결과 출력]
+    I --&gt; J{다시 하겠습니까?}
+    J -- 예 --&gt; C
+    J -- 아니오 --&gt; K([게임 종료])</div>
+<p>순서도를 그려놓으면 "아, 이 부분에서 반복이 일어나는구나", "여기서 조건 분기가 필요하구나"라는 것이 <strong>눈에 보입니다</strong>. 코드로 옮기기가 훨씬 쉬워져요!</p>
+<blockquote>
+<p>💡 <strong>잠깐!</strong> 순서도를 완벽하게 그릴 필요는 없어요. 
+핵심 흐름만 잡아도 충분합니다. 나중에 코딩하면서 수정하면 돼요!</p>
+</blockquote>
 <hr />
-<h2 id="_6">📝 기획서 예시: 스마트 알람시계<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<p>실제로 기획서가 어떻게 채워지는지 볼까요?</p>
-<h3 id="1_2">1️⃣ 기본 정보<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h3>
+<h3 id="3-decomposition">개념 3: 분할 사고(Decomposition) — 큰 문제를 작게 나누기 🧩<a class="headerlink" href="#3-decomposition" title="Permanent link">&para;</a></h3>
+<p><strong>1) 비유로 시작</strong></p>
+<p>피자 한 판을 한입에 먹을 수 있을까요? 불가능하죠! 🍕 조각으로 나눠야 먹을 수 있어요. 프로그래밍도 마찬가지입니다. "가위바위보 게임을 만들어라"라는 큰 문제는 한 번에 해결하기 어렵지만, <strong>작은 조각으로 나누면</strong> 각각은 아주 쉬워집니다.</p>
+<p><strong>2) 정확한 정의</strong></p>
+<p><strong>분할 사고(Decomposition)</strong>란, 복잡한 문제를 해결 가능한 작은 단위로 쪼개는 사고 방식입니다. 컴퓨터 과학에서 가장 중요한 사고법 중 하나이며, 이렇게 나눈 각 조각이 바로 <strong>함수</strong>가 됩니다.</p>
+<p><strong>3) 예시로 확인</strong></p>
+<p>"가위바위보 게임"이라는 큰 문제를 나눠 볼게요:</p>
+<div class="mermaid">flowchart TD
+    A["🎮 가위바위보 게임&lt;br/&gt;(큰 문제)"] --&gt; B["1. 환영 메시지 보여주기"]
+    A --&gt; C["2. 플레이어 입력 받기"]
+    A --&gt; D["3. 컴퓨터 선택 만들기"]
+    A --&gt; E["4. 승패 판정하기"]
+    A --&gt; F["5. 결과 출력하기"]
+    A --&gt; G["6. 게임 전체 진행하기"]
+    A --&gt; H["7. 다시 할지 물어보기"]</div>
+<p>이렇게 나누면 각 조각은 짧은 함수 하나로 만들 수 있어요. "환영 메시지 보여주기"는 <code>print()</code>만 몇 줄이면 되고, "컴퓨터 선택 만들기"는 <code>random.choice()</code> 한 줄이면 됩니다.</p>
+<blockquote>
+<p>🍕 <strong>기억하세요</strong>: "한입 크기"로 나누면 어떤 문제든 해결할 수 있어요!</p>
+</blockquote>
+<hr />
+<h3 id="4">개념 4: 함수 설계서 — 각 함수의 역할 미리 정하기 📋<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p><strong>1) 비유로 시작</strong></p>
+<p>회사에서 프로젝트를 할 때, 팀원마다 <strong>역할 분담표</strong>를 만들죠? "김 대리는 디자인 담당, 이 사원은 자료 조사 담당…" 이렇게요. 함수 설계서도 똑같습니다. 각 함수에게 <strong>이름, 맡은 일, 필요한 재료(입력), 결과물(출력)</strong>을 미리 정해주는 거예요.</p>
+<p><strong>2) 정확한 정의</strong></p>
+<p><strong>함수 설계서</strong>란, 코드를 작성하기 전에 각 함수의 다음 네 가지를 미리 결정한 문서입니다:</p>
 <ul>
-<li><strong>프로젝트명</strong>: 똑똑한 아침 알람시계</li>
-<li><strong>만드는 사람</strong>: 김피코</li>
-<li><strong>예상 제작 기간</strong>: 약 2시간</li>
+<li><strong>함수 이름</strong>: 무슨 일을 하는지 알 수 있는 이름</li>
+<li><strong>역할</strong>: 이 함수가 하는 일 한 줄 설명</li>
+<li><strong>매개변수(입력)</strong>: 함수가 동작하려면 외부에서 받아야 하는 값</li>
+<li><strong>반환값(출력)</strong>: 함수가 일을 끝내고 돌려주는 결과</li>
 </ul>
-<h3 id="2_2">2️⃣ 프로젝트 소개<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h3>
+<p><strong>3) 예시로 확인 — 가위바위보 게임 함수 설계서</strong></p>
+<p><strong>함수 1: <code>show_welcome()</code></strong>
+- <strong>역할</strong>: 게임 시작 환영 메시지를 화면에 출력한다
+- <strong>매개변수</strong>: 없음
+- <strong>반환값</strong>: 없음</p>
+<p><strong>함수 2: <code>get_player_choice()</code></strong>
+- <strong>역할</strong>: 플레이어에게 가위/바위/보 중 하나를 입력받아 돌려준다
+- <strong>매개변수</strong>: 없음
+- <strong>반환값</strong>: <code>"가위"</code>, <code>"바위"</code>, <code>"보"</code> 중 하나 (문자열)</p>
+<p><strong>함수 3: <code>get_computer_choice()</code></strong>
+- <strong>역할</strong>: 컴퓨터의 선택을 랜덤으로 만들어 돌려준다
+- <strong>매개변수</strong>: 없음
+- <strong>반환값</strong>: <code>"가위"</code>, <code>"바위"</code>, <code>"보"</code> 중 하나 (문자열)</p>
+<p><strong>함수 4: <code>decide_winner(player, computer)</code></strong>
+- <strong>역할</strong>: 플레이어와 컴퓨터의 선택을 비교해 승패를 판정한다
+- <strong>매개변수</strong>: <code>player</code>(플레이어 선택), <code>computer</code>(컴퓨터 선택)
+- <strong>반환값</strong>: <code>"플레이어"</code>, <code>"컴퓨터"</code>, <code>"무승부"</code> 중 하나 (문자열)</p>
+<p><strong>함수 5: <code>show_round_result(round_num, player, computer, winner, scores)</code></strong>
+- <strong>역할</strong>: 한 라운드의 결과를 보기 좋게 출력한다
+- <strong>매개변수</strong>: 라운드 번호, 양쪽 선택, 승자, 현재 점수
+- <strong>반환값</strong>: 없음</p>
+<p><strong>함수 6: <code>play_game()</code></strong>
+- <strong>역할</strong>: 게임 전체를 진행하는 메인 함수 (다른 함수들을 호출)
+- <strong>매개변수</strong>: 없음
+- <strong>반환값</strong>: 없음</p>
+<blockquote>
+<p>💡 <strong>잠깐!</strong> 여기까지 이해가 잘 되셨나요?
+"아직 코드를 안 썼는데, 벌써 게임이 완성된 것 같은 기분"이 든다면 정상이에요!
+이게 바로 설계의 힘입니다. 천천히 다시 읽어봐도 좋아요! 😄</p>
+</blockquote>
+<hr />
+<h2 id="_6">🔨 따라하기<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>지금부터 위에서 배운 4가지 개념을 직접 실습해 봅니다. <strong>가위바위보 게임</strong>을 설계하고, 함수 뼈대(스켈레톤) 코드까지 작성하는 것이 목표예요!</p>
+<h3 id="step-1">Step 1: 기획서 작성하기 ✍️<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 게임의 전체 모습을 글로 정리합니다.</p>
+<p>아래 내용을 여러분의 노트(또는 메모장)에 직접 적어보세요. 그냥 읽기만 하면 효과가 절반으로 줄어요!</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[나의 게임 기획서]
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>게임 이름: 가위바위보 대결!
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>게임 장르: 텍스트 기반 대전 게임
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>게임 규칙:
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>1. 플레이어가 가위/바위/보 중 하나를 선택한다
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>2. 컴퓨터가 랜덤으로 하나를 선택한다
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>3. 승패를 판정한다 (가위&gt;보, 보&gt;바위, 바위&gt;가위)
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>4. 비기면 무승부, 점수 변동 없음
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>5. 먼저 3승한 쪽이 최종 승리
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>화면에 보여줄 것:
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>- 시작: &quot;🎮 가위바위보 대결에 오신 것을 환영합니다!&quot;
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>- 매 라운드: 라운드 번호, 선택 결과, 승패, 현재 점수
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>- 종료: 최종 승자 발표, 다시 하기 여부
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>필요한 Python 기능:
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>- random 모듈 (컴퓨터 선택용)
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>- input() 함수 (플레이어 입력용)
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>- while 반복문 (3승까지 반복)
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>- if/elif/else (승패 판정)
+</span></code></pre></div>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: 기획서를 적었나요? 규칙, 화면 구성, 필요한 기능이 모두 포함되어 있으면 성공이에요!</p>
+</blockquote>
+<hr />
+<h3 id="step-2">Step 2: 순서도 그리기 🗺️<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 게임의 흐름을 시각적으로 정리합니다.</p>
+<p>종이에 직접 그려도 되고, 앞에서 본 Mermaid 순서도를 참고해도 좋아요. 핵심은 <strong>"어떤 순서로 진행되는가"</strong>와 <strong>"어디서 분기(갈림길)가 생기는가"</strong>를 파악하는 것입니다.</p>
+<p>여러분이 그릴 순서도의 핵심 포인트:</p>
 <ul>
-<li><strong>한 줄 설명</strong>: 인터넷에서 시간을 받아와 알람을 울리고 날씨를 보여주는 시계</li>
-<li><strong>해결하려는 문제</strong>: 아침에 일어날 때 오늘 날씨를 바로 확인하고 싶다</li>
-<li><strong>사용 대상</strong>: 나 (책상 위에 두고 사용)</li>
+<li><strong>반복이 일어나는 곳</strong>: "누군가 3승할 때까지" 라운드 반복</li>
+<li><strong>조건 분기가 일어나는 곳</strong>: 승패 판정, 3승 도달 확인, 다시 하기 여부</li>
 </ul>
-<h3 id="3">3️⃣ 핵심 기능<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>기능</th>
-<th>설명</th>
-<th>우선순위</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>시계 표시</td>
-<td>OLED에 현재 시간 표시</td>
-<td>⭐⭐⭐ 필수</td>
-</tr>
-<tr>
-<td>알람</td>
-<td>설정 시간에 부저로 알림</td>
-<td>⭐⭐ 중요</td>
-</tr>
-<tr>
-<td>날씨 표시</td>
-<td>현재 날씨 정보 표시</td>
-<td>⭐ 있으면 좋음</td>
-</tr>
-</tbody>
-</table>
-<h3 id="4_1">4️⃣ 필요한 부품<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>부품</th>
-<th>용도</th>
-<th>연결 포트</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>OLED</td>
-<td>시간/날씨 표시</td>
-<td>I2C</td>
-</tr>
-<tr>
-<td>부저</td>
-<td>알람 소리</td>
-<td>D20</td>
-</tr>
-<tr>
-<td>버튼</td>
-<td>알람 끄기</td>
-<td>D18</td>
-</tr>
-</tbody>
-</table>
-<h3 id="5">5️⃣ 개발 단계<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>단계</th>
-<th>할 일</th>
-<th>예상 시간</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1단계</td>
-<td>OLED 연결 및 시간 표시</td>
-<td>20분</td>
-</tr>
-<tr>
-<td>2단계</td>
-<td>NTP 시간 동기화</td>
-<td>20분</td>
-</tr>
-<tr>
-<td>3단계</td>
-<td>알람 기능 추가</td>
-<td>25분</td>
-</tr>
-<tr>
-<td>4단계</td>
-<td>버튼으로 알람 끄기</td>
-<td>20분</td>
-</tr>
-<tr>
-<td>5단계</td>
-<td>테스트 및 발표 준비</td>
-<td>15분</td>
-</tr>
-</tbody>
-</table>
-<h3 id="6_1">6️⃣ 예상 결과물<a class="headerlink" href="#6_1" title="Permanent link">&para;</a></h3>
+<div class="mermaid">flowchart TD
+    START([시작]) --&gt; WELCOME[환영 메시지 출력]
+    WELCOME --&gt; INIT[점수 초기화]
+    INIT --&gt; CHECK{3승한 사람이&lt;br/&gt;있는가?}
+    CHECK -- 아니오 --&gt; INPUT[플레이어 선택 입력]
+    INPUT --&gt; VALID{유효한&lt;br/&gt;입력인가?}
+    VALID -- 아니오 --&gt; ERRMSG[잘못된 입력 안내] --&gt; INPUT
+    VALID -- 예 --&gt; COMP[컴퓨터 랜덤 선택]
+    COMP --&gt; JUDGE[승패 판정]
+    JUDGE --&gt; SCORE[점수 업데이트]
+    SCORE --&gt; DISPLAY[라운드 결과 출력]
+    DISPLAY --&gt; CHECK
+    CHECK -- 예 --&gt; FINAL[최종 결과 출력]
+    FINAL --&gt; AGAIN{다시&lt;br/&gt;하겠는가?}
+    AGAIN -- 예 --&gt; INIT
+    AGAIN -- 아니오 --&gt; END([종료])</div>
+<p>위 순서도를 자세히 보세요. 코드를 쓰기 전에 이미 프로그램의 <strong>모든 흐름</strong>이 보이지 않나요? </p>
+<p>특히 주의해서 볼 부분:
+- "유효한 입력인가?" → 사용자가 엉뚱한 값을 넣을 경우를 대비합니다
+- 큰 <code>while</code> 루프: CHECK → INPUT → ... → DISPLAY → CHECK 순환
+- 바깥 루프: "다시 하겠는가?"에서 INIT으로 돌아가는 순환</p>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: 순서도를 보고 "아, 반복문이 여기 필요하겠다", "여기서 if문을 써야겠다"라는 느낌이 오면 잘 따라오고 계신 거예요!</p>
+</blockquote>
+<hr />
+<h3 id="step-3">Step 3: 분할 사고로 함수 목록 만들기 🧩<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 순서도의 각 블록을 함수로 나눕니다.</p>
+<p>순서도를 다시 보면서, 비슷한 역할을 하는 블록을 묶어 봅시다:</p>
+<p><strong>함수로 만들 블록 정리:</strong></p>
 <ul>
-<li><strong>작동 시나리오</strong>: 전원 켜면 → WiFi 연결 → 시간 표시 → 설정 시간에 부저 울림 → 버튼 누르면 알람 꺼짐</li>
-<li><strong>성공 기준</strong>: 정확한 시간이 표시되고, 알람이 제 시간에 울리면 성공!</li>
+<li><strong><code>show_welcome()</code></strong> ← "환영 메시지 출력" 블록</li>
+<li><strong><code>get_player_choice()</code></strong> ← "플레이어 선택 입력" + "유효한 입력인가?" + "잘못된 입력 안내" 블록</li>
+<li><strong><code>get_computer_choice()</code></strong> ← "컴퓨터 랜덤 선택" 블록</li>
+<li><strong><code>decide_winner(player, computer)</code></strong> ← "승패 판정" 블록</li>
+<li><strong><code>show_round_result(...)</code></strong> ← "라운드 결과 출력" 블록</li>
+<li><strong><code>play_game()</code></strong> ← 나머지 전체 흐름을 관리하는 "감독" 역할</li>
 </ul>
-<hr />
-<h2 id="_7">⚠️ 자주 하는 실수<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<h3 id="1_3">실수 1: 너무 큰 목표 설정<a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h3>
-<p><strong>증상</strong>: "AI 음성인식 스마트홈 시스템을 만들 거예요!"</p>
-<p><strong>원인</strong>: 처음이라 현실적인 범위를 가늠하기 어려움</p>
-<p><strong>해결</strong>: 
-<div class="highlight"><pre><span></span><code>❌ 잘못된 목표: &quot;모든 기능이 다 되는 완벽한 시스템&quot;
-
-✅ 올바른 목표: &quot;일단 LED 하나 켜는 것부터!&quot;
-</code></pre></div></p>
-<p><strong>Tip</strong>: 핵심 기능 1개만 확실히 되게 만들고, 나머지는 "추가 기능"으로!</p>
-<hr />
-<h3 id="2_3">실수 2: 기획 없이 바로 코딩 시작<a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h3>
-<p><strong>증상</strong>: 코딩하다 중간에 "어... 이제 뭐하지?"</p>
-<p><strong>원인</strong>: 전체 그림 없이 시작함</p>
-<p><strong>해결</strong>:
-<div class="highlight"><pre><span></span><code>❌ 잘못된 순서: 코딩 → 막힘 → 고민 → 다시 시작
-
-✅ 올바른 순서: 기획 → 설계 → 코딩 → 완성
-</code></pre></div></p>
-<hr />
-<h3 id="3_1">실수 3: 없는 부품으로 기획<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
-<p><strong>증상</strong>: "초음파 센서로 할 거예요!" (근데 우리 키트에 없음)</p>
-<p><strong>원인</strong>: 가지고 있는 부품을 확인하지 않음</p>
-<p><strong>해결</strong>: 기획 전에 <strong>부품 목록을 먼저 확인</strong>하세요!</p>
-<hr />
-<h2 id="_8">✅ 스스로 점검하기<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p><strong>사실 확인</strong>: 좋은 프로젝트의 세 가지 조건은 무엇인가요?</p>
-</li>
-<li>
-<p><strong>적용 질문</strong>: 여러분의 프로젝트는 어떤 문제를 해결하나요?</p>
-</li>
-<li>
-<p><strong>이유 질문</strong>: 왜 기획을 먼저 하고 코딩을 나중에 하는 게 좋을까요?</p>
-</li>
-</ol>
-<details>
-<summary>정답 확인</summary>
-
-1. 실용적(쓸모있음) + 실현 가능(만들 수 있음) + 재미있음
-
-2. (여러분의 답을 적어보세요!)
-
-3. 전체 방향을 먼저 정해야 중간에 헤매지 않고, 필요한 것을 미리 준비할 수 있기 때문입니다. 집을 지을 때 설계도 없이 바로 벽돌을 쌓지 않는 것과 같아요!
-
-</details>
-
-<hr />
-<h2 id="_9">🚀 더 해보기<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<h3 id="1_4">도전 1: 기획서 완성하기 (필수!)<a class="headerlink" href="#1_4" title="Permanent link">&para;</a></h3>
-<p>오늘 수업 시간 안에 <strong>기획서를 완성</strong>하세요. 빈칸 없이 모두 채워야 합니다!</p>
-<h3 id="2_4">도전 2: 동료 피드백 받기<a class="headerlink" href="#2_4" title="Permanent link">&para;</a></h3>
-<p>옆 친구와 기획서를 교환하고, 아래 질문에 답해주세요:
-- 이 프로젝트가 뭘 하는지 이해가 되나요?
-- 2시간 안에 만들 수 있을 것 같나요?
-- 더 좋은 아이디어가 있나요?</p>
-<h3 id="3_2">도전 3: 스케치 그리기 ⭐<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h3>
-<p>완성된 프로젝트가 어떻게 생겼을지 간단히 그림으로 그려보세요. 부품 배치, 버튼 위치 등을 표시하면 더 좋아요!</p>
-<hr />
-<h2 id="_10">📋 오늘의 체크리스트<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<p>다음 시간 전까지 꼭 완료하세요:</p>
-<ul>
-<li>[ ] 프로젝트 아이디어 선정 완료</li>
-<li>[ ] 기획서 템플릿 모든 항목 작성 완료</li>
-<li>[ ] 필요한 부품 목록 확인 완료</li>
-<li>[ ] 친구에게 기획서 피드백 받기 (선택)</li>
-</ul>
-<hr />
-<h2 id="_11">🔗 다음 장으로<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
-<p>오늘은 <strong>무엇을 만들지</strong> 계획을 세웠어요!</p>
-<p>여러분의 기획서가 완성되었다면, 다음 시간부터는 진짜 <strong>만들기</strong>가 시작됩니다! 🔧</p>
 <div class="mermaid">flowchart LR
-    A[📋 오늘: 기획] --&gt; B[⚙️ 다음: 제작] --&gt; C[🎤 마지막: 발표]
+    A["play_game()&lt;br/&gt;🎬 감독"] --&gt; B["show_welcome()&lt;br/&gt;👋 인사"]
+    A --&gt; C["get_player_choice()&lt;br/&gt;🙋 입력받기"]
+    A --&gt; D["get_computer_choice()&lt;br/&gt;🤖 컴퓨터 선택"]
+    A --&gt; E["decide_winner()&lt;br/&gt;⚖️ 판정"]
+    A --&gt; F["show_round_result()&lt;br/&gt;📊 결과 출력"]</div>
+<p><code>play_game()</code>은 영화 감독처럼, 다른 함수들을 <strong>적절한 순서로 호출</strong>하는 역할을 합니다. 실제 일은 각 함수가 나눠서 하죠!</p>
+<blockquote>
+<p>💡 <strong>팁</strong>: 함수 이름을 지을 때는 "이 함수가 뭘 하는지" 영어로 짧게 적는 것이 좋아요.
+<code>get_</code>으로 시작하면 "무언가를 가져온다", <code>show_</code>로 시작하면 "화면에 보여준다"는 뜻이에요.</p>
+</blockquote>
+<hr />
+<h3 id="step-4">Step 4: 함수 설계서 완성하기 📋<a class="headerlink" href="#step-4" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 각 함수의 입력(매개변수)과 출력(반환값)을 구체적으로 결정합니다.</p>
+<p>아래 내용을 노트에 직접 정리해 보세요:</p>
+<p><strong><code>show_welcome()</code></strong>
+- 하는 일: 게임 제목과 규칙 안내 출력
+- 입력: 없음
+- 출력: 없음 (화면에 출력만)</p>
+<p><strong><code>get_player_choice()</code></strong>
+- 하는 일: 가위/바위/보 입력받기, 잘못된 입력이면 다시 물어보기
+- 입력: 없음
+- 출력: <code>"가위"</code>, <code>"바위"</code>, <code>"보"</code> 중 하나 반환</p>
+<p><strong><code>get_computer_choice()</code></strong>
+- 하는 일: 랜덤으로 가위/바위/보 중 하나 선택
+- 입력: 없음
+- 출력: <code>"가위"</code>, <code>"바위"</code>, <code>"보"</code> 중 하나 반환</p>
+<p><strong><code>decide_winner(player, computer)</code></strong>
+- 하는 일: 두 선택을 비교해서 누가 이겼는지 판정
+- 입력: <code>player</code>(문자열), <code>computer</code>(문자열)
+- 출력: <code>"플레이어"</code>, <code>"컴퓨터"</code>, <code>"무승부"</code> 중 하나 반환</p>
+<p><strong><code>show_round_result(round_num, player, computer, winner, scores)</code></strong>
+- 하는 일: 이번 라운드 결과를 보기 좋게 출력
+- 입력: 라운드 번호(정수), 양쪽 선택(문자열), 승자(문자열), 점수(딕셔너리)
+- 출력: 없음 (화면에 출력만)</p>
+<p><strong><code>play_game()</code></strong>
+- 하는 일: 게임 전체 진행 (환영 → 라운드 반복 → 종료 → 다시하기)
+- 입력: 없음
+- 출력: 없음</p>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: 6개 함수의 역할/입력/출력을 모두 정리했나요? 축하합니다! 설계의 80%가 완성되었어요! 🎉</p>
+</blockquote>
+<hr />
+<h3 id="step-5">Step 5: 함수 뼈대(스켈레톤) 코드 작성하기 🦴<a class="headerlink" href="#step-5" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 설계서를 바탕으로 함수의 껍데기를 먼저 만듭니다.</p>
+<p>드디어 코드를 쓸 시간이에요! 하지만 아직 <strong>내용을 채우지는 않습니다</strong>. 함수의 이름, 매개변수, 독스트링(설명), <code>pass</code>만 넣어서 <strong>뼈대만 세우는 것</strong>이 이 단계의 목표예요.</p>
+<blockquote>
+<p><strong>"스켈레톤 코드"</strong>란? 🦴
+건물을 지을 때 먼저 철골 구조를 세우는 것처럼, 함수의 <strong>구조만 먼저</strong> 만들어 놓는 코드를 말해요. <code>pass</code>는 "아직 내용은 없지만 나중에 채울 거야"라는 뜻의 파이썬 키워드입니다.</p>
+</blockquote>
+<p>새 파일을 만들고 아래 코드를 직접 타이핑해 보세요:</p>
+<p>```python
+import random</p>
+<p>def show_welcome():
+    """게임 시작 환영 메시지를 출력한다."""
+    pass</p>
+<p>def get_player_choice():
+    """플레이어에게 가위/바위/보를 입력받아 반환한다.
+    잘못된 입력이면 다시 물어본다.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">Returns</span><span class="o">:</span>
+<span class="w">    </span><span class="n">str</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;가위&quot;</span><span class="o">,</span><span class="w"> </span><span class="s2">&quot;바위&quot;</span><span class="o">,</span><span class="w"> </span><span class="s2">&quot;보&quot;</span><span class="w"> </span><span class="err">중</span><span class="w"> </span><span class="err">하나</span>
+<span class="s2">&quot;&quot;</span><span class="err">&quot;</span>
+<span class="n">pass</span>
+</code></pre></div>
 
-    style A fill:#fff9c4,stroke:#f9a825
-    style B fill:#e3f2fd,stroke:#1976d2
-    style C fill:#e8f5e9,stroke:#388e3c</div>
-<p><strong>다음 장에서는</strong>:
-- 기획서대로 하드웨어 연결하기
-- 단계별로 코드 작성하기
-- 기능 통합하고 테스트하기</p>
-<p>기획서 잘 보관하세요! 다음 시간에 그대로 가져와야 해요! 📄✨</p>
+<p>def get_computer_choice():
+    """컴퓨터의 선택을 랜덤으로 만들어 반환한다.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">Returns</span><span class="o">:</span>
+<span class="w">    </span><span class="n">str</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;가위&quot;</span><span class="o">,</span><span class="w"> </span><span class="s2">&quot;바위&quot;</span><span class="o">,</span><span class="w"> </span><span class="s2">&quot;보&quot;</span><span class="w"> </span><span class="err">중</span><span class="w"> </span><span class="err">하나</span>
+<span class="s2">&quot;&quot;</span><span class="err">&quot;</span>
+<span class="n">pass</span>
+</code></pre></div>
+
+<p>def decide_winner(player, computer):
+    """플레이어와 컴퓨터의 선택을 비교해 승자를 반환한다.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">Args</span><span class="o">:</span>
+<span class="w">    </span><span class="n">player</span><span class="w"> </span><span class="o">(</span><span class="n">str</span><span class="o">):</span><span class="w"> </span><span class="err">플레이어의</span><span class="w"> </span><span class="err">선택</span>
+<span class="w">    </span><span class="n">computer</span><span class="w"> </span><span class="o">(</span><span class="n">str</span><span class="o">):</span><span class="w"> </span><span class="err">컴퓨터의</span><span class="w"> </span><span class="err">선택</span>
+
+<span class="n">Returns</span><span class="o">:</span>
+<span class="w">    </span><span class="n">str</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;플레이어&quot;</span><span class="o">,</span><span class="w"> </span><span class="s2">&quot;컴퓨터&quot;</span><span class="o">,</span><span class="w"> </span><span class="s2">&quot;무승부&quot;</span><span class="w"> </span><span class="err">중</span><span class="w"> </span><span class="err">하나</span>
+<span class="s2">&quot;&quot;</span><span class="err">&quot;</span>
+<span class="n">pass</span>
+</code></pre></div>
+
+<p>def show_round_result(round_num, player, computer, winner, scores):
+    """한 라운드의 결과를 화면에 출력한다.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">Args</span><span class="o">:</span>
+<span class="w">    </span><span class="n">round_num</span><span class="w"> </span><span class="o">(</span><span class="n">int</span><span class="o">):</span><span class="w"> </span><span class="err">라운드</span><span class="w"> </span><span class="err">번호</span>
+<span class="w">    </span><span class="n">player</span><span class="w"> </span><span class="o">(</span><span class="n">str</span><span class="o">):</span><span class="w"> </span><span class="err">플레이어의</span><span class="w"> </span><span class="err">선택</span>
+<span class="w">    </span><span class="n">computer</span><span class="w"> </span><span class="o">(</span><span class="n">str</span><span class="o">):</span><span class="w"> </span><span class="err">컴퓨터의</span><span class="w"> </span><span class="err">선택</span>
+<span class="w">    </span><span class="n">winner</span><span class="w"> </span><span class="o">(</span><span class="n">str</span><span class="o">):</span><span class="w"> </span><span class="err">이번</span><span class="w"> </span><span class="err">라운드</span><span class="w"> </span><span class="err">승자</span>
+<span class="w">    </span><span class="n">scores</span><span class="w"> </span><span class="o">(</span><span class="n">dict</span><span class="o">):</span><span class="w"> </span><span class="o">{</span><span class="s2">&quot;플레이어&quot;</span><span class="o">:</span><span class="w"> </span><span class="err">점수</span><span class="o">,</span><span class="w"> </span><span class="s2">&quot;컴퓨터&quot;</span><span class="o">:</span><span class="w"> </span><span class="err">점수</span><span class="o">}</span>
+<span class="s2">&quot;&quot;</span><span class="err">&quot;</span>
+<span class="n">pass</span>
+</code></pre></div>
+
+<p>def play_game():
+    """가위바위</p>
 
 
 
@@ -2660,7 +2119,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

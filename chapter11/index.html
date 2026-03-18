@@ -6,11 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="프로그래밍 경험이 없는 고등학생을 위한 라즈베리파이 피코 입문서로, 6주간 직접 만들고 확인하며 배우는 실습 중심 교육 자료입니다.">
+        <meta name="description" content="컴퓨터를 몰라도 괜찮아, 2주 뒤엔 내 손으로 게임을 만든다! 프로그래밍 경험이 전혀 없는 고등학생도 혼자서 완주할 수 있는 C언어 입문 자기주도 학습서입니다.">
       
       
-        <meta name="author" content="Created with Data-AI-Book Generator">
+        <meta name="author" content="Created with EduFlow">
       
+      
+        <link rel="canonical" href="https://baesy5.github.io/c_language_01/chapter11/">
       
       
         <link rel="prev" href="../chapter10/">
@@ -23,15 +25,18 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
-        <title>나만의 멜로디 - 학교종 연주하기 - 고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트</title>
+        <title>함수에 값을 주고받기 — 매개변수와 반환값 깊이 이해하기 - 처음 만드는 나의 첫 C언어 게임</title>
       
     
     
       <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -45,8 +50,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"JetBrains Mono"}</style>
       
     
     
@@ -61,7 +66,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -70,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#11-" class="md-skip">
+        <a href="#_1" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -84,7 +96,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="상단/헤더">
-    <a href=".." title="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" class="md-header__button md-logo" aria-label="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" data-md-component="logo">
+    <a href=".." title="처음 만드는 나의 첫 C언어 게임" class="md-header__button md-logo" aria-label="처음 만드는 나의 첫 C언어 게임" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -98,18 +110,44 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트
+            처음 만드는 나의 첫 C언어 게임
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              나만의 멜로디 - 학교종 연주하기
+              함수에 값을 주고받기 — 매개변수와 반환값 깊이 이해하기
             
           </span>
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="다크 모드로 전환"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로 전환" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="라이트 모드로 전환"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로 전환" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -204,7 +242,9 @@
           
   
   
-  Part 1 - 피코와 첫 만남
+    
+  
+  Part 1 - [1권] 프로그래밍 세계에 첫 발 내딛기
 
         </a>
       </li>
@@ -220,31 +260,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../chapter04/" class="md-tabs__link">
+        <a href="../chapter06/" class="md-tabs__link">
           
   
   
-  Part 2 - 빛으로 말하기 - LED 제어
-
-        </a>
-      </li>
     
   
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../chapter07/" class="md-tabs__link">
-          
-  
-  
-  Part 3 - 입력을 받아라 - 버튼과 상호작용
+  Part 2 - [1권] 프로그램에 판단력 불어넣기
 
         </a>
       </li>
@@ -262,11 +284,13 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../chapter10/" class="md-tabs__link">
+        <a href="../chapter09/" class="md-tabs__link">
           
   
   
-  Part 4 - 소리로 표현하기 - 부저 활용
+    
+  
+  Part 3 - [1권] 코드를 깔끔하게 정리하는 힘 — 함수
 
         </a>
       </li>
@@ -286,7 +310,9 @@
           
   
   
-  Part 5 - 세상을 감지하라 - 센서 활용
+    
+  
+  Part 4 - [2권] 게임을 더 풍성하게 — 배열과 실전 도구
 
         </a>
       </li>
@@ -306,7 +332,9 @@
           
   
   
-  Part 6 - 나만의 스마트 기기 - 통합 프로젝트
+    
+  
+  Part 5 - [2권] 최종 프로젝트 — 내 손으로 게임 완성하기
 
         </a>
       </li>
@@ -336,13 +364,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" class="md-nav__button md-logo" aria-label="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" data-md-component="logo">
+    <a href=".." title="처음 만드는 나의 첫 C언어 게임" class="md-nav__button md-logo" aria-label="처음 만드는 나의 첫 C언어 게임" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트
+    처음 만드는 나의 첫 C언어 게임
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -382,6 +410,18 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -404,7 +444,7 @@
   <span class="md-ellipsis">
     
   
-    Part 1 - 피코와 첫 만남
+    Part 1 - [1권] 프로그래밍 세계에 첫 발 내딛기
   
 
     
@@ -420,7 +460,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 1 - 피코와 첫 만남
+    Part 1 - [1권] 프로그래밍 세계에 첫 발 내딛기
   
 
           </label>
@@ -440,7 +480,7 @@
   <span class="md-ellipsis">
     
   
-    피코야, 반가워! - 하드웨어 살펴보기
+    왜 C언어를 배워야 할까? — 이 책의 사용법
   
 
     
@@ -468,7 +508,7 @@
   <span class="md-ellipsis">
     
   
-    개발 환경 설정 - Thonny 설치하기
+    내 컴퓨터에 작업실 꾸미기 — 개발 환경 설치
   
 
     
@@ -496,7 +536,7 @@
   <span class="md-ellipsis">
     
   
-    Hello, Pico! - 첫 번째 프로그램 실행
+    처음 만나는 C언어 — Hello, World!
   
 
     
@@ -509,65 +549,6 @@
   
 
               
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Part 2 - 빛으로 말하기 - LED 제어
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Part 2 - 빛으로 말하기 - LED 제어
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -583,7 +564,7 @@
   <span class="md-ellipsis">
     
   
-    브레드보드와 친해지기 - LED 회로 구성
+    데이터를 담는 상자 — 변수와 자료형
   
 
     
@@ -611,35 +592,7 @@
   <span class="md-ellipsis">
     
   
-    깜빡깜빡 - LED 점멸 프로그램
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../chapter06/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    무지개 신호등 - 다중 LED 패턴
+    컴퓨터에게 계산 시키기 — 연산자 활용
   
 
     
@@ -668,6 +621,14 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -680,17 +641,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 3 - 입력을 받아라 - 버튼과 상호작용
+    Part 2 - [1권] 프로그램에 판단력 불어넣기
   
 
     
@@ -701,16 +662,44 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 3 - 입력을 받아라 - 버튼과 상호작용
+    Part 2 - [1권] 프로그램에 판단력 불어넣기
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    갈림길에서 선택하기 — if 조건문
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -726,7 +715,7 @@
   <span class="md-ellipsis">
     
   
-    버튼 연결하기 - 디지털 입력의 시작
+    같은 일을 반복하기 — for와 while 반복문
   
 
     
@@ -754,35 +743,7 @@
   <span class="md-ellipsis">
     
   
-    누르면 반응해! - 조건문 활용
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../chapter09/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    반응속도 게임 만들기
+    여기까지 잘 왔어! — 중간 점검 미니 게임 만들기
   
 
     
@@ -813,6 +774,16 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -828,17 +799,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 4 - 소리로 표현하기 - 부저 활용
+    Part 3 - [1권] 코드를 깔끔하게 정리하는 힘 — 함수
   
 
     
@@ -849,16 +820,44 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 4 - 소리로 표현하기 - 부저 활용
+    Part 3 - [1권] 코드를 깔끔하게 정리하는 힘 — 함수
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    왜 코드를 나눠야 할까? — 함수가 필요한 이유
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -874,7 +873,7 @@
   <span class="md-ellipsis">
     
   
-    삐- 소리의 원리 - 부저 연결과 PWM
+    나만의 함수 만들기 — 함수 정의와 호출
   
 
     
@@ -911,7 +910,7 @@
   <span class="md-ellipsis">
     
   
-    나만의 멜로디 - 학교종 연주하기
+    함수에 값을 주고받기 — 매개변수와 반환값 깊이 이해하기
   
 
     
@@ -929,7 +928,7 @@
   <span class="md-ellipsis">
     
   
-    나만의 멜로디 - 학교종 연주하기
+    함수에 값을 주고받기 — 매개변수와 반환값 깊이 이해하기
   
 
     
@@ -955,10 +954,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 이 장에서 배우는 것
+        🎯 이 장의 학습 목표
       
     </span>
   </a>
@@ -966,7 +965,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 미리 알아야 할 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         💡 왜 이걸 배우나요?
@@ -977,7 +987,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         📚 핵심 개념
@@ -992,7 +1002,7 @@
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 1: 음계와 주파수
+        개념 1: 매개변수 — 함수에게 전달하는 택배 상자 📦
       
     </span>
   </a>
@@ -1003,7 +1013,7 @@
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 2: 악보를 코드로 표현하기
+        개념 2: 반환값 — 함수가 돌려보내는 결과물 🎁
       
     </span>
   </a>
@@ -1011,10 +1021,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 3: 함수 - 코드 재사용의 마법
+        개념 3: 값의 흐름 추적하기 — 그림으로 이해하기 🗺️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 여러 개의 매개변수 — 택배 상자를 여러 개 보내기 📦📦
       
     </span>
   </a>
@@ -1027,7 +1048,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         🔨 따라하기
@@ -1042,7 +1063,7 @@
   <a href="#step-1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: 음계 사전 만들기
+        Step 1: 기본 매개변수 함수 만들기
       
     </span>
   </a>
@@ -1050,10 +1071,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2" class="md-nav__link">
+  <a href="#step-2-return" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: 음 재생 함수 만들기
+        Step 2: return으로 결과 돌려받기
       
     </span>
   </a>
@@ -1064,7 +1085,7 @@
   <a href="#step-3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: 학교종 악보를 코드로!
+        Step 3: 여러 매개변수로 실용적인 함수 만들기
       
     </span>
   </a>
@@ -1072,49 +1093,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-4" class="md-nav__link">
+  <a href="#step-4-print-return" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4: 멜로디 연주하기
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📝 전체 코드
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⚠️ 자주 하는 실수
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="⚠️ 자주 하는 실수">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 1: 딕셔너리 키 오타
+        Step 4: print와 return의 차이를 직접 체험하기
       
     </span>
   </a>
@@ -1122,21 +1104,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
+  <a href="#step-5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        실수 2: 부저 초기화 안 함
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 3: 음 사이에 끊김 없음
+        Step 5: 종합 실습 — 성적 등급 판정기
       
     </span>
   </a>
@@ -1152,7 +1123,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ 스스로 점검하기
+        📝 전체 코드
       
     </span>
   </a>
@@ -1163,19 +1134,19 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 더 해보기
+        ⚠️ 자주 하는 실수
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🚀 더 해보기">
+    <nav class="md-nav" aria-label="⚠️ 자주 하는 실수">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_2" class="md-nav__link">
+  <a href="#1_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        도전 1: 비행기 연주하기 🛫
+        실수 1: 매개변수 개수가 안 맞을 때
       
     </span>
   </a>
@@ -1183,10 +1154,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_2" class="md-nav__link">
+  <a href="#2-return-print" class="md-nav__link">
     <span class="md-ellipsis">
       
-        도전 2: 연주 속도 조절 ⏱️
+        실수 2: return을 빼먹고 print만 쓰기
       
     </span>
   </a>
@@ -1194,10 +1165,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
+  <a href="#3-return" class="md-nav__link">
     <span class="md-ellipsis">
       
-        도전 3: 버튼으로 노래 선택 ⭐
+        실수 3: return 뒤에 코드를 쓰기
       
     </span>
   </a>
@@ -1211,6 +1182,28 @@
       
         <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 스스로 점검하기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 더 해보기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         🔗 다음 장으로
@@ -1243,7 +1236,7 @@
   <span class="md-ellipsis">
     
   
-    피아노 만들기 - 버튼으로 연주
+    함수로 코드를 리모델링하자 — 업다운 게임 리팩토링
   
 
     
@@ -1272,6 +1265,14 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -1284,17 +1285,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 5 - 세상을 감지하라 - 센서 활용
+    Part 4 - [2권] 게임을 더 풍성하게 — 배열과 실전 도구
   
 
     
@@ -1305,12 +1306,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 5 - 세상을 감지하라 - 센서 활용
+    Part 4 - [2권] 게임을 더 풍성하게 — 배열과 실전 도구
   
 
           </label>
@@ -1330,7 +1331,7 @@
   <span class="md-ellipsis">
     
   
-    밝기 감지 - 조도 센서
+    데이터를 줄 세우기 — 배열 기초
   
 
     
@@ -1358,7 +1359,7 @@
   <span class="md-ellipsis">
     
   
-    자동 조명 만들기
+    여러 선택지 깔끔하게 처리하기 — switch문과 게임 메뉴
   
 
     
@@ -1386,7 +1387,7 @@
   <span class="md-ellipsis">
     
   
-    온도계 만들기 - 온도 센서 활용
+    게임에 우연을 더하자 — 난수와 유용한 함수들
   
 
     
@@ -1415,6 +1416,18 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -1427,17 +1440,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 6 - 나만의 스마트 기기 - 통합 프로젝트
+    Part 5 - [2권] 최종 프로젝트 — 내 손으로 게임 완성하기
   
 
     
@@ -1448,12 +1461,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 6 - 나만의 스마트 기기 - 통합 프로젝트
+    Part 5 - [2권] 최종 프로젝트 — 내 손으로 게임 완성하기
   
 
           </label>
@@ -1473,7 +1486,7 @@
   <span class="md-ellipsis">
     
   
-    프로젝트 기획 - 아이디어 구체화
+    게임을 설계하자 — 기획부터 함수 구조 짜기
   
 
     
@@ -1501,7 +1514,7 @@
   <span class="md-ellipsis">
     
   
-    만들기 - 회로 구성과 코딩
+    직접 만드는 가위바위보 게임 — 코딩 실전
   
 
     
@@ -1529,7 +1542,63 @@
   <span class="md-ellipsis">
     
   
-    발표와 공유 - 프로젝트 시연
+    보너스 도전! OX 퀴즈 게임 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    내 코드 다듬기 — 자주 틀리는 오류 모음과 디버깅 팁
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    축하해, 게임 개발자! — 다음 단계로 나아가기
   
 
     
@@ -1577,10 +1646,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 이 장에서 배우는 것
+        🎯 이 장의 학습 목표
       
     </span>
   </a>
@@ -1588,7 +1657,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 미리 알아야 할 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         💡 왜 이걸 배우나요?
@@ -1599,7 +1679,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         📚 핵심 개념
@@ -1614,7 +1694,7 @@
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 1: 음계와 주파수
+        개념 1: 매개변수 — 함수에게 전달하는 택배 상자 📦
       
     </span>
   </a>
@@ -1625,7 +1705,7 @@
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 2: 악보를 코드로 표현하기
+        개념 2: 반환값 — 함수가 돌려보내는 결과물 🎁
       
     </span>
   </a>
@@ -1633,10 +1713,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 3: 함수 - 코드 재사용의 마법
+        개념 3: 값의 흐름 추적하기 — 그림으로 이해하기 🗺️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 여러 개의 매개변수 — 택배 상자를 여러 개 보내기 📦📦
       
     </span>
   </a>
@@ -1649,7 +1740,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         🔨 따라하기
@@ -1664,7 +1755,7 @@
   <a href="#step-1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: 음계 사전 만들기
+        Step 1: 기본 매개변수 함수 만들기
       
     </span>
   </a>
@@ -1672,10 +1763,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2" class="md-nav__link">
+  <a href="#step-2-return" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: 음 재생 함수 만들기
+        Step 2: return으로 결과 돌려받기
       
     </span>
   </a>
@@ -1686,7 +1777,7 @@
   <a href="#step-3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: 학교종 악보를 코드로!
+        Step 3: 여러 매개변수로 실용적인 함수 만들기
       
     </span>
   </a>
@@ -1694,49 +1785,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-4" class="md-nav__link">
+  <a href="#step-4-print-return" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4: 멜로디 연주하기
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📝 전체 코드
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⚠️ 자주 하는 실수
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="⚠️ 자주 하는 실수">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 1: 딕셔너리 키 오타
+        Step 4: print와 return의 차이를 직접 체험하기
       
     </span>
   </a>
@@ -1744,21 +1796,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
+  <a href="#step-5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        실수 2: 부저 초기화 안 함
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 3: 음 사이에 끊김 없음
+        Step 5: 종합 실습 — 성적 등급 판정기
       
     </span>
   </a>
@@ -1774,7 +1815,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ 스스로 점검하기
+        📝 전체 코드
       
     </span>
   </a>
@@ -1785,19 +1826,19 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 더 해보기
+        ⚠️ 자주 하는 실수
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🚀 더 해보기">
+    <nav class="md-nav" aria-label="⚠️ 자주 하는 실수">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_2" class="md-nav__link">
+  <a href="#1_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        도전 1: 비행기 연주하기 🛫
+        실수 1: 매개변수 개수가 안 맞을 때
       
     </span>
   </a>
@@ -1805,10 +1846,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_2" class="md-nav__link">
+  <a href="#2-return-print" class="md-nav__link">
     <span class="md-ellipsis">
       
-        도전 2: 연주 속도 조절 ⏱️
+        실수 2: return을 빼먹고 print만 쓰기
       
     </span>
   </a>
@@ -1816,10 +1857,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
+  <a href="#3-return" class="md-nav__link">
     <span class="md-ellipsis">
       
-        도전 3: 버튼으로 노래 선택 ⭐
+        실수 3: return 뒤에 코드를 쓰기
       
     </span>
   </a>
@@ -1833,6 +1874,28 @@
       
         <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 스스로 점검하기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 더 해보기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         🔗 다음 장으로
@@ -1859,444 +1922,407 @@
 
 
 
-<h1 id="11-">챕터 11: 나만의 멜로디 - 학교종 연주하기<a class="headerlink" href="#11-" title="Permanent link">&para;</a></h1>
-<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ul>
-<li>[ ] 음계(도레미파솔라시도)와 주파수의 관계를 이해할 수 있다</li>
-<li>[ ] 악보를 리스트 데이터로 변환할 수 있다</li>
-<li>[ ] 함수를 만들어 코드를 깔끔하게 정리할 수 있다</li>
-<li>[ ] 피코로 '학교종' 멜로디를 연주할 수 있다</li>
+<h1 id="_1">함수에 값을 주고받기 — 매개변수와 반환값 깊이 이해하기<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p><strong>Part 3 | [1권] 코드를 깔끔하게 정리하는 힘 — 함수</strong></p>
+<hr />
+<h2 id="_2">🎯 이 장의 학습 목표<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>이 장을 마치면 이런 것들을 할 수 있어요!</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 매개변수를 통해 함수에 데이터를 전달하는 원리를 그림으로 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>return</code>을 사용하여 함수 결과를 호출한 곳으로 돌려보낼 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 여러 개의 매개변수를 받는 함수를 작성할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 매개변수와 반환값을 활용한 실용적인 함수를 직접 만들 수 있다</li>
 </ul>
+<p>⏱️ <strong>예상 학습 시간</strong>: 약 2시간</p>
 <hr />
-<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>지난 시간에 부저로 "삐~" 소리를 내봤죠? 이번에는 한 발 더 나아가 <strong>진짜 멜로디</strong>를 연주해봅니다!</p>
-<p>"학교종이 땡땡땡~" 🎵 이 노래, 아시죠? 이 간단한 동요를 피코가 연주하게 만들어볼 거예요.</p>
-<p><strong>이 과정에서 배우는 것들:</strong>
-- <strong>음악의 원리</strong>: 왜 '도'와 '레'는 다른 소리일까? → 주파수!
-- <strong>데이터 구조화</strong>: 악보를 코드로 어떻게 표현할까? → 리스트!
-- <strong>함수 만들기</strong>: 반복되는 코드를 깔끔하게 → 함수!</p>
-<p>프로그래밍으로 음악을 만드는 경험, 생각보다 재밌어요! 🎹</p>
+<h2 id="_3">📚 미리 알아야 할 것<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>지난 장(10장)에서 우리는 함수의 기본을 배웠어요. 혹시 기억이 가물가물하다면 아래만 빠르게 복습해 주세요!</p>
+<ul>
+<li><code>def</code> 키워드로 함수를 만든다</li>
+<li>함수를 <strong>정의</strong>하는 것과 <strong>호출</strong>하는 것은 다르다</li>
+<li>함수를 호출하면 그 함수 안의 코드가 실행된다</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 지난 장에서 배운 기본 함수</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">say_hello</span><span class="p">():</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;안녕하세요!&quot;</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">say_hello</span><span class="p">()</span>  <span class="c1"># 호출 → &quot;안녕하세요!&quot; 출력</span>
+</span></code></pre></div>
+<p>이 함수는 항상 똑같은 인사만 해요. "철수에게 인사", "영희에게 인사"처럼 <strong>상황에 따라 다르게</strong> 동작하게 하려면 어떻게 해야 할까요? 바로 오늘 배울 <strong>매개변수</strong>와 <strong>반환값</strong>이 필요합니다! 🎁</p>
 <hr />
-<h2 id="_3">📚 핵심 개념<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<h3 id="1">개념 1: 음계와 주파수<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>비유로 시작</strong>: "음계는 마치 계단과 같아요"</li>
-<li>도레미파솔라시도는 8개의 계단</li>
-<li>한 칸 올라갈 때마다 소리가 높아져요</li>
-<li>
-<p>이 "높이"를 결정하는 게 바로 <strong>주파수</strong>!</p>
-</li>
-<li>
-<p><strong>정확한 정의</strong>: "주파수는 1초에 공기가 몇 번 떨리는지예요"</p>
-</li>
-<li>단위는 Hz (헤르츠)</li>
-<li>숫자가 클수록 높은 음</li>
-<li>
-<p>'도(C4)'는 약 262Hz, '레(D4)'는 약 294Hz</p>
-</li>
-<li>
-<p><strong>예시로 확인</strong>:</p>
-</li>
-</ol>
+<h2 id="_4">💡 왜 이걸 배우나요?<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>지금까지 만든 함수는 마치 <strong>버튼 하나만 있는 자판기</strong>와 같았어요. 누르면 항상 같은 음료가 나오죠. 하지만 현실의 자판기는 <strong>돈을 넣고</strong>, <strong>원하는 음료를 선택</strong>하면, <strong>해당 음료가 나옵니다</strong>.</p>
+<p>프로그래밍도 마찬가지예요!</p>
+<ul>
+<li><strong>매개변수</strong> = 자판기에 넣는 돈과 선택 버튼 (함수에 주는 값)</li>
+<li><strong>반환값</strong> = 자판기에서 나오는 음료 (함수가 돌려주는 결과)</li>
+</ul>
+<p>이 두 가지를 익히면, <strong>진짜로 유용한 함수</strong>를 만들 수 있게 됩니다. 계산기, BMI 측정기, 성적 처리기 등 여러분이 상상하는 거의 모든 기능을 함수로 구현할 수 있어요!</p>
+<hr />
+<h2 id="_5">📚 핵심 개념<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="1">개념 1: 매개변수 — 함수에게 전달하는 택배 상자 📦<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p><strong>🎪 비유로 시작해요</strong></p>
+<p>택배를 보내본 적 있나요? 택배 상자에 물건을 넣어서 수신인(함수)에게 보내면, 수신인은 상자를 열어 물건을 꺼내 사용합니다. <strong>매개변수</strong>는 바로 이 택배 상자 역할이에요.</p>
+<p><strong>📖 정확한 정의</strong></p>
+<p><strong>매개변수(Parameter)</strong> 는 함수가 외부에서 값을 전달받기 위해 마련한 변수입니다. 함수를 정의할 때 괄호 <code>()</code> 안에 적어둡니다.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">say_hello</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>    <span class="c1"># name이 매개변수</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">님, 안녕하세요!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p><strong>인수(Argument)</strong> 는 함수를 호출할 때 실제로 전달하는 값입니다.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">say_hello</span><span class="p">(</span><span class="s2">&quot;철수&quot;</span><span class="p">)</span>    <span class="c1"># &quot;철수&quot;가 인수</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">say_hello</span><span class="p">(</span><span class="s2">&quot;영희&quot;</span><span class="p">)</span>    <span class="c1"># &quot;영희&quot;가 인수</span>
+</span></code></pre></div>
+<p><strong>✅ 예시로 확인</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">say_hello</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">님, 안녕하세요!&quot;</span><span class="p">)</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">say_hello</span><span class="p">(</span><span class="s2">&quot;철수&quot;</span><span class="p">)</span>   <span class="c1"># 출력: 철수님, 안녕하세요!</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">say_hello</span><span class="p">(</span><span class="s2">&quot;영희&quot;</span><span class="p">)</span>   <span class="c1"># 출력: 영희님, 안녕하세요!</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">say_hello</span><span class="p">(</span><span class="s2">&quot;민수&quot;</span><span class="p">)</span>   <span class="c1"># 출력: 민수님, 안녕하세요!</span>
+</span></code></pre></div>
+<p>같은 함수인데 전달하는 값에 따라 결과가 달라져요! 이것이 매개변수의 힘입니다. 💪</p>
+<blockquote>
+<p>💡 <strong>헷갈리지 마세요!</strong>
+- <strong>매개변수(Parameter)</strong>: 함수를 <strong>만들 때</strong> 괄호 안에 쓰는 이름 → <code>name</code>
+- <strong>인수(Argument)</strong>: 함수를 <strong>부를 때</strong> 괄호 안에 넣는 실제 값 → <code>"철수"</code></p>
+<p>일상에서는 두 용어를 혼용하기도 해요. 지금은 "함수에 값을 넘긴다"는 개념만 확실히 잡으면 됩니다!</p>
+</blockquote>
+<hr />
+<h3 id="2">개념 2: 반환값 — 함수가 돌려보내는 결과물 🎁<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p><strong>🎪 비유로 시작해요</strong></p>
+<p>세탁소에 더러운 옷(매개변수)을 맡기면, 세탁소는 깨끗한 옷(반환값)을 돌려줍니다. 함수도 마찬가지예요. 값을 받아 처리한 뒤, 결과를 <strong>돌려보낼</strong> 수 있습니다.</p>
+<p><strong>📖 정확한 정의</strong></p>
+<p><strong>반환값(Return Value)</strong> 은 함수가 <code>return</code> 키워드를 사용하여 호출한 곳으로 돌려보내는 값입니다.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">double</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">number</span> <span class="o">*</span> <span class="mi">2</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="k">return</span> <span class="n">result</span>       <span class="c1"># 결과를 돌려보낸다!</span>
+</span></code></pre></div>
+<p><strong>✅ 예시로 확인</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">double</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">number</span> <span class="o">*</span> <span class="mi">2</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="k">return</span> <span class="n">result</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">answer</span> <span class="o">=</span> <span class="n">double</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>      <span class="c1"># double 함수가 10을 돌려줌 → answer에 저장</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>           <span class="c1"># 출력: 10</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">double</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>        <span class="c1"># 출력: 14 (바로 출력도 가능!)</span>
+</span></code></pre></div>
+<p><code>return</code>이 있으면 함수의 결과를 <strong>변수에 저장</strong>하거나 <strong>다른 계산에 활용</strong>할 수 있어요. <code>print()</code>만 쓰는 것과는 완전히 다릅니다!</p>
+<blockquote>
+<p>⚠️ <strong><code>print()</code>와 <code>return</code>은 다릅니다!</strong>
+- <code>print()</code> → 화면에 보여주기만 할 뿐, 값을 돌려주지 않음
+- <code>return</code> → 값을 호출한 곳으로 <strong>실제로 돌려줌</strong> (저장, 계산 가능)</p>
+</blockquote>
+<hr />
+<h3 id="3">개념 3: 값의 흐름 추적하기 — 그림으로 이해하기 🗺️<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>매개변수와 반환값이 어떻게 이동하는지, 흐름을 시각적으로 확인해 봅시다.</p>
 <div class="mermaid">flowchart LR
-    subgraph 음계
-    C["🎵 도&lt;br/&gt;262Hz"] --&gt; D["🎵 레&lt;br/&gt;294Hz"] --&gt; E["🎵 미&lt;br/&gt;330Hz"] --&gt; F["🎵 파&lt;br/&gt;349Hz"]
-    F --&gt; G["🎵 솔&lt;br/&gt;392Hz"] --&gt; A["🎵 라&lt;br/&gt;440Hz"] --&gt; B["🎵 시&lt;br/&gt;494Hz"] --&gt; C2["🎵 높은도&lt;br/&gt;523Hz"]
-    end
-    style C fill:#ffcdd2,stroke:#e53935
-    style D fill:#ffe0b2,stroke:#fb8c00
-    style E fill:#fff9c4,stroke:#fdd835
-    style F fill:#c8e6c9,stroke:#43a047
-    style G fill:#b3e5fc,stroke:#039be5
-    style A fill:#d1c4e9,stroke:#7e57c2
-    style B fill:#f8bbd9,stroke:#ec407a
-    style C2 fill:#ffcdd2,stroke:#e53935</div>
-<p><strong>쉽게 말하면</strong>: 도레미파솔라시도는 각각 정해진 주파수(진동수)가 있고, 그 주파수를 부저에 보내면 해당 음이 나와요!</p>
+    A["호출하는 코드\n answer = double(5)"] --&gt;|"5를 전달 📦"| B["double 함수\nnumber = 5\nresult = 5 * 2"]
+    B --&gt;|"10을 반환 🎁"| C["answer = 10"]</div>
+<p>이 흐름을 더 자세히 풀어볼게요.</p>
+<div class="mermaid">sequenceDiagram
+    participant 메인코드
+    participant double함수
+
+    메인코드-&gt;&gt;double함수: double(5) 호출, 5를 전달
+    Note right of double함수: number = 5
+    Note right of double함수: result = 5 * 2 = 10
+    double함수--&gt;&gt;메인코드: return 10 (결과 반환)
+    Note left of 메인코드: answer = 10</div>
+<p><strong>흐름 정리</strong>
+1. 메인 코드에서 <code>double(5)</code> 호출 → 숫자 5가 함수로 전달됨
+2. 함수 안에서 <code>number</code>에 5가 담김
+3. <code>number * 2</code> 계산 → 10이 됨
+4. <code>return result</code>로 10을 호출한 곳으로 돌려보냄
+5. 돌아온 10이 <code>answer</code> 변수에 저장됨</p>
+<blockquote>
+<p>💡 <strong>잠깐!</strong> 여기까지 이해가 잘 되셨나요?
+어렵게 느껴져도 괜찮아요. 값이 "들어갔다가 나온다"는 흐름만 기억하세요!
+택배를 보내고(매개변수) → 가공된 결과물을 받는다(반환값) 🎯</p>
+</blockquote>
 <hr />
-<h3 id="2">개념 2: 악보를 코드로 표현하기<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>비유로 시작</strong>: "악보는 마치 레시피와 같아요"</li>
-<li>레시피: "당근 100g, 3분 볶기"</li>
-<li>악보: "솔, 0.5초 연주"</li>
-<li>
-<p>둘 다 <strong>무엇을 + 얼마나</strong>의 조합!</p>
-</li>
-<li>
-<p><strong>정확한 정의</strong>: "음 하나는 (주파수, 길이)의 쌍으로 표현해요"
-   <div class="highlight"><pre><span></span><code><span class="n">음표</span> <span class="o">=</span> <span class="p">(</span><span class="n">주파수</span><span class="p">,</span> <span class="n">길이</span><span class="p">)</span>
-<span class="n">멜로디</span> <span class="o">=</span> <span class="p">[</span><span class="n">음표1</span><span class="p">,</span> <span class="n">음표2</span><span class="p">,</span> <span class="n">음표3</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>예시로 확인</strong>: "학교종" 첫 소절
-   <div class="highlight"><pre><span></span><code>악보: 솔솔라라 솔솔미
-코드: [(392, 0.5), (392, 0.5), (440, 0.5), (440, 0.5), 
-       (392, 0.5), (392, 0.5), (330, 1.0)]
-</code></pre></div></p>
-</li>
-</ol>
-<p><strong>쉽게 말하면</strong>: 리스트 안에 (주파수, 길이) 튜플을 넣으면 악보가 됩니다!</p>
+<h3 id="4">개념 4: 여러 개의 매개변수 — 택배 상자를 여러 개 보내기 📦📦<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p><strong>🎪 비유로 시작해요</strong></p>
+<p>카페에서 음료를 주문할 때 "아메리카노, 아이스, 톨 사이즈"처럼 여러 정보를 함께 전달하죠? 함수도 매개변수를 <strong>여러 개</strong> 받을 수 있습니다!</p>
+<p><strong>📖 정확한 정의</strong></p>
+<p>매개변수를 여러 개 쓸 때는 쉼표(<code>,</code>)로 구분합니다.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>          <span class="c1"># 매개변수 2개</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">introduce</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">city</span><span class="p">):</span>   <span class="c1"># 매개변수 3개</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;저는 </span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">에 사는 </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2">살 </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">입니다.&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p><strong>✅ 예시로 확인</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">result</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>           <span class="c1"># 출력: 10</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># 매개변수의 순서가 중요합니다!</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">subtract</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    <span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="nb">print</span><span class="p">(</span><span class="n">subtract</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>  <span class="c1"># 출력: 7  (10 - 3)</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="nb">print</span><span class="p">(</span><span class="n">subtract</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>  <span class="c1"># 출력: -7 (3 - 10) ← 순서가 바뀌면 결과도 달라요!</span>
+</span></code></pre></div>
+<blockquote>
+<p>🔑 <strong>핵심 포인트</strong>: 함수를 호출할 때 넣는 인수의 <strong>순서</strong>가 매개변수의 <strong>순서</strong>와 일치해야 합니다!</p>
+</blockquote>
+<div class="mermaid">flowchart LR
+    A["subtract(10, 3)"] --&gt;|"첫 번째 값 10"| B["a = 10"]
+    A --&gt;|"두 번째 값 3"| C["b = 3"]
+    B --&gt; D["a - b = 10 - 3 = 7"]
+    C --&gt; D</div>
 <hr />
-<h3 id="3-">개념 3: 함수 - 코드 재사용의 마법<a class="headerlink" href="#3-" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>비유로 시작</strong>: "함수는 마치 자판기와 같아요"</li>
-<li>돈을 넣고(입력) → 버튼 누르면(호출) → 음료가 나와요(결과)</li>
-<li>
-<p>내부에서 어떻게 동작하는지 몰라도 사용 가능!</p>
-</li>
-<li>
-<p><strong>정확한 정의</strong>: "함수는 이름 붙인 코드 묶음이에요"
-   <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">함수이름</span><span class="p">(</span><span class="n">입력값</span><span class="p">):</span>
-    <span class="n">실행할</span> <span class="n">코드</span>
-    <span class="k">return</span> <span class="n">결과값</span>  <span class="c1"># 선택사항</span>
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>예시로 확인</strong>:
-   <div class="highlight"><pre><span></span><code><span class="c1"># 함수 정의 (자판기 만들기)</span>
-<span class="k">def</span> <span class="nf">인사하기</span><span class="p">(</span><span class="n">이름</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;안녕, </span><span class="si">{</span><span class="n">이름</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
-
-<span class="c1"># 함수 호출 (자판기 사용)</span>
-<span class="n">인사하기</span><span class="p">(</span><span class="s2">&quot;피코&quot;</span><span class="p">)</span>  <span class="c1"># 출력: 안녕, 피코!</span>
-</code></pre></div></p>
-</li>
-</ol>
-<p><strong>쉽게 말하면</strong>: 자주 쓰는 코드에 이름을 붙여두면, 그 이름만 불러서 재사용할 수 있어요!</p>
-<hr />
-<h2 id="_4">🔨 따라하기<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<h3 id="step-1">Step 1: 음계 사전 만들기<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
-<p><strong>목표</strong>: 도레미파솔라시도의 주파수를 저장하기</p>
-<p><strong>코드</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: 음계 주파수 정의 ===</span>
-<span class="c1"># 도레미파솔라시도 각 음의 주파수를 딕셔너리에 저장해요</span>
-
-<span class="c1"># --- WHY: 왜 필요한지 ---</span>
-<span class="c1"># 매번 숫자를 기억하기 어려우니까 이름으로 찾을 수 있게!</span>
-
-<span class="c1"># HOW: 어떻게 동작하는지</span>
-<span class="n">notes</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;C4&#39;</span><span class="p">:</span> <span class="mi">262</span><span class="p">,</span>   <span class="c1"># 도</span>
-    <span class="s1">&#39;D4&#39;</span><span class="p">:</span> <span class="mi">294</span><span class="p">,</span>   <span class="c1"># 레</span>
-    <span class="s1">&#39;E4&#39;</span><span class="p">:</span> <span class="mi">330</span><span class="p">,</span>   <span class="c1"># 미</span>
-    <span class="s1">&#39;F4&#39;</span><span class="p">:</span> <span class="mi">349</span><span class="p">,</span>   <span class="c1"># 파</span>
-    <span class="s1">&#39;G4&#39;</span><span class="p">:</span> <span class="mi">392</span><span class="p">,</span>   <span class="c1"># 솔</span>
-    <span class="s1">&#39;A4&#39;</span><span class="p">:</span> <span class="mi">440</span><span class="p">,</span>   <span class="c1"># 라</span>
-    <span class="s1">&#39;B4&#39;</span><span class="p">:</span> <span class="mi">494</span><span class="p">,</span>   <span class="c1"># 시</span>
-    <span class="s1">&#39;C5&#39;</span><span class="p">:</span> <span class="mi">523</span><span class="p">,</span>   <span class="c1"># 높은 도</span>
-    <span class="s1">&#39;REST&#39;</span><span class="p">:</span> <span class="mi">0</span>    <span class="c1"># 쉼표 (소리 없음)</span>
-<span class="p">}</span>
-
-<span class="c1"># 테스트: 솔 음의 주파수 확인</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;솔(G4)의 주파수:&quot;</span><span class="p">,</span> <span class="n">notes</span><span class="p">[</span><span class="s1">&#39;G4&#39;</span><span class="p">],</span> <span class="s2">&quot;Hz&quot;</span><span class="p">)</span>
-</code></pre></div></p>
+<h2 id="_6">🔨 따라하기<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>실제로 코드를 작성하며 감을 잡아봅시다! 🖥️</p>
+<h3 id="step-1">Step 1: 기본 매개변수 함수 만들기<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 이름을 받아 환영 메시지를 출력하는 함수를 만들어요.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">welcome</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🎉 </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">님, 환영합니다!&quot;</span><span class="p">)</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;오늘도 즐거운 코딩 되세요!&quot;</span><span class="p">)</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">welcome</span><span class="p">(</span><span class="s2">&quot;철수&quot;</span><span class="p">)</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="n">welcome</span><span class="p">(</span><span class="s2">&quot;영희&quot;</span><span class="p">)</span>
+</span></code></pre></div>
 <p><strong>실행 결과</strong>:
-<div class="highlight"><pre><span></span><code>솔(G4)의 주파수: 392 Hz
-</code></pre></div></p>
-<p><strong>여기서 잠깐! 🤔</strong>
-딕셔너리를 쓰면 <code>notes['G4']</code>처럼 이름으로 주파수를 찾을 수 있어요. 숫자 392를 외우는 것보다 훨씬 편하죠?</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>🎉 철수님, 환영합니다!
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>오늘도 즐거운 코딩 되세요!
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>🎉 영희님, 환영합니다!
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>오늘도 즐거운 코딩 되세요!
+</span></code></pre></div></p>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: 이름만 바꿔서 호출했는데 다른 메시지가 나오면 성공!</p>
+</blockquote>
 <hr />
-<h3 id="step-2">Step 2: 음 재생 함수 만들기<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
-<p><strong>목표</strong>: 한 음을 연주하는 함수 만들기</p>
-<p><strong>코드</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: 음 재생 함수 ===</span>
-<span class="c1"># 주파수와 길이를 받아서 부저로 소리 내는 함수</span>
-
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">import</span> <span class="nn">time</span>
-
-<span class="c1"># 부저 설정 (D20 포트)</span>
-<span class="n">buzzer</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
-
-<span class="c1"># --- WHY: 왜 함수로 만드나 ---</span>
-<span class="c1"># &quot;주파수 설정 → 대기 → 끄기&quot;를 매번 쓰기 귀찮으니까!</span>
-
-<span class="k">def</span> <span class="nf">play_tone</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">duration</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    한 음을 연주하는 함수</span>
-<span class="sd">    frequency: 주파수 (Hz)</span>
-<span class="sd">    duration: 길이 (초)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">frequency</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># 쉼표면</span>
-        <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 소리 끄기</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>  <span class="c1"># 주파수 설정</span>
-        <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">30000</span><span class="p">)</span>  <span class="c1"># 소리 켜기</span>
-
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>  <span class="c1"># 길이만큼 대기</span>
-    <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># 소리 끄기</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>      <span class="c1"># 음 사이 짧은 쉼</span>
-
-<span class="c1"># 테스트: 도레미 연주</span>
-<span class="n">play_tone</span><span class="p">(</span><span class="mi">262</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># 도</span>
-<span class="n">play_tone</span><span class="p">(</span><span class="mi">294</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># 레</span>
-<span class="n">play_tone</span><span class="p">(</span><span class="mi">330</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># 미</span>
-</code></pre></div></p>
+<h3 id="step-2-return">Step 2: return으로 결과 돌려받기<a class="headerlink" href="#step-2-return" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 두 수 중 큰 수를 찾아 <strong>돌려주는</strong> 함수를 만들어요.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">find_bigger</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>        <span class="k">return</span> <span class="n">a</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>        <span class="k">return</span> <span class="n">b</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="n">bigger</span> <span class="o">=</span> <span class="n">find_bigger</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;더 큰 수는 </span><span class="si">{</span><span class="n">bigger</span><span class="si">}</span><span class="s2">입니다.&quot;</span><span class="p">)</span>   <span class="c1"># 출력: 더 큰 수는 25입니다.</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="c1"># 반환값을 다른 계산에 활용할 수도 있어요!</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="n">result</span> <span class="o">=</span> <span class="n">find_bigger</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">100</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>   <span class="c1"># 출력: 107 (7 + 100)</span>
+</span></code></pre></div>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: <code>find_bigger(7, 3) + 100</code>이 107로 나오면 성공! <code>return</code> 덕분에 결과를 다른 계산에 쓸 수 있는 거예요.</p>
+</blockquote>
+<hr />
+<h3 id="step-3">Step 3: 여러 매개변수로 실용적인 함수 만들기<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: BMI를 계산하는 함수를 만들어요!</p>
+<blockquote>
+<p>BMI 공식: 체중(kg) ÷ (키(m) × 키(m))</p>
+</blockquote>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">calculate_bmi</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="n">height_cm</span><span class="p">):</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="n">height_m</span> <span class="o">=</span> <span class="n">height_cm</span> <span class="o">/</span> <span class="mi">100</span>          <span class="c1"># cm를 m로 변환</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="n">bmi</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">/</span> <span class="p">(</span><span class="n">height_m</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>      <span class="c1"># BMI 계산</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">bmi</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                <span class="c1"># 소수점 1자리로 반올림하여 반환</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1"># 사용해 봅시다</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="n">my_bmi</span> <span class="o">=</span> <span class="n">calculate_bmi</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mi">175</span><span class="p">)</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;BMI: </span><span class="si">{</span><span class="n">my_bmi</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>                <span class="c1"># 출력: BMI: 22.9</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="n">friend_bmi</span> <span class="o">=</span> <span class="n">calculate_bmi</span><span class="p">(</span><span class="mi">55</span><span class="p">,</span> <span class="mi">160</span><span class="p">)</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;친구의 BMI: </span><span class="si">{</span><span class="n">friend_bmi</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>      <span class="c1"># 출력: 친구의 BMI: 21.5</span>
+</span></code></pre></div>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: 몸무게 70kg, 키 175cm를 넣었을 때 22.9가 나오면 성공!</p>
+</blockquote>
+<hr />
+<h3 id="step-4-print-return">Step 4: print와 return의 차이를 직접 체험하기<a class="headerlink" href="#step-4-print-return" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 이 차이를 확실히 느껴봅시다. 이것은 입문자가 <strong>가장 많이 헷갈리는 부분</strong>이에요!</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># print만 사용하는 함수</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">add_print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1"># return을 사용하는 함수</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">add_return</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="c1"># 차이를 확인해 봅시다!</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="n">result1</span> <span class="o">=</span> <span class="n">add_print</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>     <span class="c1"># 화면에 8이 출력됨</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;result1의 값: </span><span class="si">{</span><span class="n">result1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   <span class="c1"># 출력: result1의 값: None 😱</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="n">result2</span> <span class="o">=</span> <span class="n">add_return</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>    <span class="c1"># 화면에 아무것도 안 나옴</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;result2의 값: </span><span class="si">{</span><span class="n">result2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   <span class="c1"># 출력: result2의 값: 8 ✅</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="c1"># return이 있어야 이런 게 가능해요!</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="n">total</span> <span class="o">=</span> <span class="n">add_return</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="n">add_return</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;합계: </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>            <span class="c1"># 출력: 합계: 38</span>
+</span></code></pre></div>
+<p><code>add_print</code> 함수는 화면에 보여주기만 하고, 실제로 값을 돌려주지 않아서 <code>result1</code>이 <code>None</code>이 됩니다. 반면 <code>add_return</code> 함수는 값을 돌려주므로 저장하거나 추가 계산에 활용할 수 있어요!</p>
+<blockquote>
+<p>💡 <strong>기억하세요</strong>: 함수 결과를 <strong>나중에 쓸 일</strong>이 있다면 반드시 <code>return</code>을 사용하세요!</p>
+</blockquote>
+<hr />
+<h3 id="step-5">Step 5: 종합 실습 — 성적 등급 판정기<a class="headerlink" href="#step-5" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 점수를 받아 등급을 반환하는 함수를 만들어요.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_grade</span><span class="p">(</span><span class="n">score</span><span class="p">):</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>        <span class="k">return</span> <span class="s2">&quot;A&quot;</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="p">:</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>        <span class="k">return</span> <span class="s2">&quot;B&quot;</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">:</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>        <span class="k">return</span> <span class="s2">&quot;C&quot;</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>    <span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>        <span class="k">return</span> <span class="s2">&quot;D&quot;</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>        <span class="k">return</span> <span class="s2">&quot;F&quot;</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="c1"># 사용해 봅시다</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="n">my_grade</span> <span class="o">=</span> <span class="n">get_grade</span><span class="p">(</span><span class="mi">85</span><span class="p">)</span>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;내 등급: </span><span class="si">{</span><span class="n">my_grade</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>       <span class="c1"># 출력: 내 등급: B</span>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="c1"># 여러 과목의 등급을 한 번에!</span>
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="n">subjects</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;국어&quot;</span><span class="p">:</span> <span class="mi">92</span><span class="p">,</span> <span class="s2">&quot;수학&quot;</span><span class="p">:</span> <span class="mi">78</span><span class="p">,</span> <span class="s2">&quot;영어&quot;</span><span class="p">:</span> <span class="mi">88</span><span class="p">}</span>
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="k">for</span> <span class="n">subject</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">subjects</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>    <span class="n">grade</span> <span class="o">=</span> <span class="n">get_grade</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">점 → </span><span class="si">{</span><span class="n">grade</span><span class="si">}</span><span class="s2">등급&quot;</span><span class="p">)</span>
+</span></code></pre></div>
 <p><strong>실행 결과</strong>:
-<div class="highlight"><pre><span></span><code>🔊 도~레~미~ 소리가 순서대로 납니다!
-</code></pre></div></p>
-<p><strong>여기서 잠깐! 🤔</strong>
-<code>play_tone</code> 함수 하나로 어떤 음이든 연주할 수 있어요! 주파수와 길이만 바꿔서 호출하면 됩니다.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>내 등급: B
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>국어: 92점 → A등급
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>수학: 78점 → C등급
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>영어: 88점 → B등급
+</span></code></pre></div></p>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: 92점이 A, 78점이 C, 88점이 B로 나오면 성공! <code>return</code>으로 등급을 돌려받았기 때문에 이렇게 자유롭게 활용할 수 있는 거예요.</p>
+</blockquote>
 <hr />
-<h3 id="step-3">Step 3: 학교종 악보를 코드로!<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
-<p><strong>목표</strong>: "학교종" 멜로디를 리스트로 만들기</p>
-<div class="mermaid">flowchart TB
-    subgraph 악보["🎼 학교종 악보"]
-    A["솔솔라라 솔솔미"] --&gt; B["솔솔미미 레~~"]
-    B --&gt; C["솔솔라라 솔솔미"] --&gt; D["솔미레미 도~~"]
-    end
-    style 악보 fill:#fff3e0,stroke:#ff9800</div>
-<p><strong>코드</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: 학교종 악보 데이터 ===</span>
-<span class="c1"># (음이름, 길이) 형태로 멜로디 저장</span>
-
-<span class="c1"># --- WHY: 왜 이렇게 ---</span>
-<span class="c1"># 리스트에 순서대로 넣으면 반복문으로 쭉 연주 가능!</span>
-
-<span class="c1"># 음계 딕셔너리 (Step 1에서 만든 것)</span>
-<span class="n">notes</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;C4&#39;</span><span class="p">:</span> <span class="mi">262</span><span class="p">,</span> <span class="s1">&#39;D4&#39;</span><span class="p">:</span> <span class="mi">294</span><span class="p">,</span> <span class="s1">&#39;E4&#39;</span><span class="p">:</span> <span class="mi">330</span><span class="p">,</span> <span class="s1">&#39;F4&#39;</span><span class="p">:</span> <span class="mi">349</span><span class="p">,</span>
-    <span class="s1">&#39;G4&#39;</span><span class="p">:</span> <span class="mi">392</span><span class="p">,</span> <span class="s1">&#39;A4&#39;</span><span class="p">:</span> <span class="mi">440</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">:</span> <span class="mi">494</span><span class="p">,</span> <span class="s1">&#39;C5&#39;</span><span class="p">:</span> <span class="mi">523</span><span class="p">,</span>
-    <span class="s1">&#39;REST&#39;</span><span class="p">:</span> <span class="mi">0</span>
-<span class="p">}</span>
-
-<span class="c1"># 학교종 멜로디: (음이름, 박자)</span>
-<span class="c1"># 0.5 = 반박자, 1.0 = 한박자, 1.5 = 한박자 반</span>
-<span class="n">school_bell</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="c1"># 1절: 솔솔라라 솔솔미</span>
-    <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;E4&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
-
-    <span class="c1"># 2절: 솔솔미미 레~~</span>
-    <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;E4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;E4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;D4&#39;</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;REST&#39;</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span>  <span class="c1"># 짧은 쉼</span>
-
-    <span class="c1"># 3절: 솔솔라라 솔솔미</span>
-    <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;E4&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
-
-    <span class="c1"># 4절: 솔미레미 도~~</span>
-    <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;E4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;D4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;E4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;C4&#39;</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
-<span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;악보 준비 완료! 음표 개수:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">school_bell</span><span class="p">))</span>
-</code></pre></div></p>
+<h2 id="_7">📝 전체 코드<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>지금까지 배운 개념을 하나로 합친 종합 예제입니다. 복사해서 바로 실행해 보세요!</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># ===== 매개변수와 반환값 종합 실습 =====</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1"># 1. BMI 계산 함수</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">calculate_bmi</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="n">height_cm</span><span class="p">):</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>    <span class="n">height_m</span> <span class="o">=</span> <span class="n">height_cm</span> <span class="o">/</span> <span class="mi">100</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="n">bmi</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">/</span> <span class="p">(</span><span class="n">height_m</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">bmi</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="c1"># 2. BMI 상태 판정 함수</span>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_bmi_status</span><span class="p">(</span><span class="n">bmi</span><span class="p">):</span>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>    <span class="k">if</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mf">18.5</span><span class="p">:</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>        <span class="k">return</span> <span class="s2">&quot;저체중&quot;</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>    <span class="k">elif</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mi">23</span><span class="p">:</span>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>        <span class="k">return</span> <span class="s2">&quot;정상&quot;</span>
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>    <span class="k">elif</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mi">25</span><span class="p">:</span>
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>        <span class="k">return</span> <span class="s2">&quot;과체중&quot;</span>
+</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>        <span class="k">return</span> <span class="s2">&quot;비만&quot;</span>
+</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>
+</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="c1"># 3. 두 함수를 조합하여 사용!</span>
+</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="k">def</span><span class="w"> </span><span class="nf">health_check</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">height_cm</span><span class="p">):</span>
+</span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a>    <span class="n">bmi</span> <span class="o">=</span> <span class="n">calculate_bmi</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="n">height_cm</span><span class="p">)</span>
+</span><span id="__span-15-23"><a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a>    <span class="n">status</span> <span class="o">=</span> <span class="n">get_bmi_status</span><span class="p">(</span><span class="n">bmi</span><span class="p">)</span>
+</span><span id="__span-15-24"><a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">님의 BMI: </span><span class="si">{</span><span class="n">bmi</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">)&quot;</span>
+</span><span id="__span-15-25"><a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a>
+</span><span id="__span-15-26"><a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a><span class="c1"># 실행</span>
+</span><span id="__span-15-27"><a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a><span class="nb">print</span><span class="p">(</span><span class="n">health_check</span><span class="p">(</span><span class="s2">&quot;철수&quot;</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">175</span><span class="p">))</span>
+</span><span id="__span-15-28"><a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a><span class="nb">print</span><span class="p">(</span><span class="n">health_check</span><span class="p">(</span><span class="s2">&quot;영희&quot;</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">160</span><span class="p">))</span>
+</span><span id="__span-15-29"><a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a><span class="nb">print</span><span class="p">(</span><span class="n">health_check</span><span class="p">(</span><span class="s2">&quot;민수&quot;</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">170</span><span class="p">))</span>
+</span></code></pre></div>
 <p><strong>실행 결과</strong>:
-<div class="highlight"><pre><span></span><code>악보 준비 완료! 음표 개수: 25
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>철수님의 BMI: 22.9 (정상)
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>영희님의 BMI: 21.5 (정상)
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>민수님의 BMI: 31.1 (비만)
+</span></code></pre></div></p>
+<blockquote>
+<p>💡 <strong>핵심 포인트</strong>: <code>health_check</code> 함수 안에서 <code>calculate_bmi</code>와 <code>get_bmi_status</code> 함수를 <strong>조합</strong>해서 사용했어요! 함수의 반환값을 다른 함수의 인수로 전달할 수 있다는 것, 이것이 <code>return</code>의 진짜 힘입니다! 🚀</p>
+</blockquote>
 <hr />
-<h3 id="step-4">Step 4: 멜로디 연주하기<a class="headerlink" href="#step-4" title="Permanent link">&para;</a></h3>
-<p><strong>목표</strong>: 반복문으로 전체 멜로디 연주</p>
-<p><strong>코드</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: 멜로디 연주 함수 ===</span>
-<span class="c1"># 악보 리스트를 받아서 전체 연주</span>
-
-<span class="k">def</span> <span class="nf">play_melody</span><span class="p">(</span><span class="n">melody</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    멜로디 전체를 연주하는 함수</span>
-<span class="sd">    melody: [(음이름, 길이), ...] 형태의 리스트</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🎵 연주 시작!&quot;</span><span class="p">)</span>
-
-    <span class="k">for</span> <span class="n">note_name</span><span class="p">,</span> <span class="n">duration</span> <span class="ow">in</span> <span class="n">melody</span><span class="p">:</span>
-        <span class="n">freq</span> <span class="o">=</span> <span class="n">notes</span><span class="p">[</span><span class="n">note_name</span><span class="p">]</span>  <span class="c1"># 음이름 → 주파수 변환</span>
-        <span class="n">play_tone</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">duration</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🎵 연주 끝!&quot;</span><span class="p">)</span>
-
-<span class="c1"># 학교종 연주!</span>
-<span class="n">play_melody</span><span class="p">(</span><span class="n">school_bell</span><span class="p">)</span>
-</code></pre></div></p>
-<p><strong>여기서 잠깐! 🤔</strong>
-<code>for note_name, duration in melody:</code> 이 부분이 핵심이에요!
-- <code>melody</code> 리스트에서 하나씩 꺼내서
-- <code>note_name</code>과 <code>duration</code>에 자동으로 나눠 담아요
-- 이걸 <strong>언패킹(unpacking)</strong>이라고 해요</p>
-<hr />
-<h2 id="_5">📝 전체 코드<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># === 🎵 학교종 연주 프로그램 ===</span>
-<span class="c1"># 피코가 &quot;학교종이 땡땡땡~&quot;을 연주합니다!</span>
-
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">import</span> <span class="nn">time</span>
-
-<span class="c1"># --- 부저 설정 ---</span>
-<span class="n">buzzer</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>  <span class="c1"># D20 포트</span>
-
-<span class="c1"># --- 음계 주파수 딕셔너리 ---</span>
-<span class="n">notes</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;C4&#39;</span><span class="p">:</span> <span class="mi">262</span><span class="p">,</span>   <span class="c1"># 도</span>
-    <span class="s1">&#39;D4&#39;</span><span class="p">:</span> <span class="mi">294</span><span class="p">,</span>   <span class="c1"># 레</span>
-    <span class="s1">&#39;E4&#39;</span><span class="p">:</span> <span class="mi">330</span><span class="p">,</span>   <span class="c1"># 미</span>
-    <span class="s1">&#39;F4&#39;</span><span class="p">:</span> <span class="mi">349</span><span class="p">,</span>   <span class="c1"># 파</span>
-    <span class="s1">&#39;G4&#39;</span><span class="p">:</span> <span class="mi">392</span><span class="p">,</span>   <span class="c1"># 솔</span>
-    <span class="s1">&#39;A4&#39;</span><span class="p">:</span> <span class="mi">440</span><span class="p">,</span>   <span class="c1"># 라</span>
-    <span class="s1">&#39;B4&#39;</span><span class="p">:</span> <span class="mi">494</span><span class="p">,</span>   <span class="c1"># 시</span>
-    <span class="s1">&#39;C5&#39;</span><span class="p">:</span> <span class="mi">523</span><span class="p">,</span>   <span class="c1"># 높은 도</span>
-    <span class="s1">&#39;REST&#39;</span><span class="p">:</span> <span class="mi">0</span>    <span class="c1"># 쉼표</span>
-<span class="p">}</span>
-
-<span class="c1"># --- 함수 정의 ---</span>
-<span class="k">def</span> <span class="nf">play_tone</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">duration</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;한 음을 연주하는 함수&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">frequency</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>
-        <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">30000</span><span class="p">)</span>
-
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
-    <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">play_melody</span><span class="p">(</span><span class="n">melody</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;멜로디 전체를 연주하는 함수&quot;&quot;&quot;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🎵 연주 시작!&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">note_name</span><span class="p">,</span> <span class="n">duration</span> <span class="ow">in</span> <span class="n">melody</span><span class="p">:</span>
-        <span class="n">freq</span> <span class="o">=</span> <span class="n">notes</span><span class="p">[</span><span class="n">note_name</span><span class="p">]</span>
-        <span class="n">play_tone</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">duration</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🎵 연주 끝!&quot;</span><span class="p">)</span>
-
-<span class="c1"># --- 학교종 악보 ---</span>
-<span class="n">school_bell</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;E4&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;E4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;E4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;D4&#39;</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;REST&#39;</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;E4&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;E4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;D4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;E4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;C4&#39;</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
-<span class="p">]</span>
-
-<span class="c1"># --- 연주 실행 ---</span>
-<span class="n">play_melody</span><span class="p">(</span><span class="n">school_bell</span><span class="p">)</span>
-
-<span class="c1"># 정리</span>
-<span class="n">buzzer</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;프로그램 종료&quot;</span><span class="p">)</span>
-</code></pre></div>
-<hr />
-<h2 id="_6">⚠️ 자주 하는 실수<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<h3 id="1_1">실수 1: 딕셔너리 키 오타<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
-<p><strong>증상</strong>: <code>KeyError: 'g4'</code></p>
-<p><strong>원인</strong>: 대소문자가 다르면 다른 키로 인식!</p>
-<p><strong>해결</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># 잘못된 코드</span>
-<span class="n">freq</span> <span class="o">=</span> <span class="n">notes</span><span class="p">[</span><span class="s1">&#39;g4&#39;</span><span class="p">]</span>  <span class="c1"># 소문자 g</span>
-
-<span class="c1"># 올바른 코드</span>
-<span class="n">freq</span> <span class="o">=</span> <span class="n">notes</span><span class="p">[</span><span class="s1">&#39;G4&#39;</span><span class="p">]</span>  <span class="c1"># 대문자 G (딕셔너리에 정의된 대로!)</span>
-</code></pre></div></p>
-<hr />
-<h3 id="2_1">실수 2: 부저 초기화 안 함<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
-<p><strong>증상</strong>: 소리가 안 나거나 이상한 소리</p>
-<p><strong>원인</strong>: <code>PWM</code> 설정을 안 했거나 핀 번호가 틀림</p>
-<p><strong>해결</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># 잘못된 코드</span>
-<span class="n">buzzer</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>  <span class="c1"># PWM이 아닌 일반 Pin</span>
-
-<span class="c1"># 올바른 코드</span>
-<span class="n">buzzer</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>  <span class="c1"># PWM으로 감싸야 해요!</span>
-</code></pre></div></p>
-<hr />
-<h3 id="3">실수 3: 음 사이에 끊김 없음<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
-<p><strong>증상</strong>: 음이 뭉개져서 들림</p>
-<p><strong>원인</strong>: 음과 음 사이 쉬는 시간이 없음</p>
-<p><strong>해결</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># 잘못된 코드</span>
-<span class="k">def</span> <span class="nf">play_tone</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">duration</span><span class="p">):</span>
-    <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>
-    <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">30000</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
-    <span class="c1"># 바로 다음 음으로 넘어감</span>
-
-<span class="c1"># 올바른 코드</span>
-<span class="k">def</span> <span class="nf">play_tone</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">duration</span><span class="p">):</span>
-    <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>
-    <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">30000</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
-    <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># 소리 끄기</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>      <span class="c1"># ← 음 사이 짧은 쉼 추가!</span>
-</code></pre></div></p>
-<hr />
-<h2 id="_7">✅ 스스로 점검하기<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p><strong>사실 확인</strong>: '라(A4)'의 주파수는 몇 Hz인가요?</p>
-</li>
-<li>
-<p><strong>적용 질문</strong>: "도미솔"을 연주하려면 악보 리스트를 어떻게 만들어야 할까요?</p>
-</li>
-<li>
-<p><strong>이유 질문</strong>: 왜 <code>play_tone</code> 함수를 만들어서 사용하나요? 그냥 코드를 반복해서 쓰면 안 되나요?</p>
-</li>
-</ol>
-<details>
-<summary>정답 확인</summary>
-
-1. **440Hz**입니다. 참고로 A4(라)는 음악에서 기준음으로 사용해요!
-
-2. ```python
-   do_mi_sol = [
-       ('C4', 0.5),  # 도
-       ('E4', 0.5),  # 미
-       ('G4', 0.5)   # 솔
-   ]
-   ```
-
-3. 함수를 사용하면:
-   - **재사용**: 같은 코드를 여러 번 쓸 필요 없음
-   - **수정 용이**: 한 곳만 고치면 전체에 적용
-   - **가독성**: 코드가 깔끔해짐
-
-</details>
-
-<hr />
-<h2 id="_8">🚀 더 해보기<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<h3 id="1_2">도전 1: 비행기 연주하기 🛫<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h3>
-<p>"비행기" 동요를 연주해보세요!
-<div class="highlight"><pre><span></span><code>미레도레 미미미 (날아라 비행기)
-</code></pre></div></p>
-<p><strong>힌트</strong>: 
-<div class="highlight"><pre><span></span><code><span class="n">airplane</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s1">&#39;E4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;D4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;C4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;D4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;E4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;E4&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;E4&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-<span class="p">]</span>
-</code></pre></div></p>
-<hr />
-<h3 id="2_2">도전 2: 연주 속도 조절 ⏱️<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h3>
-<p>BPM(빠르기)을 조절하는 기능을 추가해보세요!</p>
-<p><strong>힌트</strong>:
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">play_melody</span><span class="p">(</span><span class="n">melody</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">note_name</span><span class="p">,</span> <span class="n">duration</span> <span class="ow">in</span> <span class="n">melody</span><span class="p">:</span>
-        <span class="n">freq</span> <span class="o">=</span> <span class="n">notes</span><span class="p">[</span><span class="n">note_name</span><span class="p">]</span>
-        <span class="n">play_tone</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">duration</span> <span class="o">/</span> <span class="n">speed</span><span class="p">)</span>  <span class="c1"># speed로 나누면 빨라짐</span>
-</code></pre></div></p>
-<hr />
-<h3 id="3_1">도전 3: 버튼으로 노래 선택 ⭐<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
-<p>버튼을 누를 때마다 다른 노래가 연주되게 만들어보세요!</p>
-<p><strong>힌트</strong>:
-<div class="highlight"><pre><span></span><code><span class="n">songs</span> <span class="o">=</span> <span class="p">[</span><span class="n">school_bell</span><span class="p">,</span> <span class="n">airplane</span><span class="p">,</span> <span class="n">my_song</span><span class="p">]</span>  <span class="c1"># 노래 목록</span>
-<span class="n">current</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># 현재 노래 번호</span>
-
-<span class="c1"># 버튼 누르면</span>
-<span class="n">current</span> <span class="o">=</span> <span class="p">(</span><span class="n">current</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">songs</span><span class="p">)</span>  <span class="c1"># 다음 노래로</span>
-<span class="n">play_melody</span><span class="p">(</span><span class="n">songs</span><span class="p">[</span><span class="n">current</span><span class="p">])</span>
-</code></pre></div></p>
-<hr />
-<h2 id="_9">🔗 다음 장으로<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<p>축하해요! 🎉 이번 장에서 배운 것들:</p>
+<h2 id="_8">⚠️ 자주 하는 실수<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">실수 1: 매개변수 개수가 안 맞을 때<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>        <span class="c1"># ❌ TypeError: 2개를 기대하는데 1개만 줌</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># ❌ TypeError: 2개를 기대하는데 3개를 줌</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>     <span class="c1"># ✅ 올바른 호출</span>
+</span></code></pre></div>
 <ul>
-<li>✅ 음계와 주파수의 관계 (도=262Hz, 레=294Hz...)</li>
-<li>✅ 악보를 리스트 데이터로 변환하기</li>
-<li>✅ 함수를 만들어 코드 재사용하기</li>
-<li>✅ 피코로 "학교종" 연주 성공!</li>
+<li><strong>왜 이런 일이 생기나요?</strong> 함수를 정의할 때 정한 매개변수 개수와, 호출할 때 넣는 인수 개수가 일치해야 합니다.</li>
+<li><strong>이렇게 해결해요</strong>: 함수 정의를 확인하고, 매개변수 개수에 맞춰 인수를 전달하세요.</li>
 </ul>
-<p><strong>함수</strong>는 프로그래밍에서 정말 중요한 개념이에요. 코드를 깔끔하게 정리하고, 재사용하고, 관리하기 쉽게 만들어주죠.</p>
-<p>다음 장에서는 <strong>OLED 디스플레이</strong>를 다뤄볼 거예요. 지금까지 소리와 빛으로 표현했다면, 이제는 <strong>화면에 글자와 그림</strong>을 그려봅시다! 📺</p>
+<h3 id="2-return-print">실수 2: return을 빼먹고 print만 쓰기<a class="headerlink" href="#2-return-print" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">add_wrong</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>      <span class="c1"># 화면에 보여주기만 함</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="n">result</span> <span class="o">=</span> <span class="n">add_wrong</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>    <span class="c1"># 8이 출력되지만...</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>            <span class="c1"># ❌ TypeError! result는 None이라서 계산 불가</span>
+</span></code></pre></div>
+<ul>
+<li><strong>왜 이런 일이 생기나요?</strong> <code>print()</code>는 화면 출력만 하고, 값을 돌려주지 않습니다. <code>return</code>이 없으면 함수는 자동으로 <code>None</code>을 반환해요.</li>
+<li><strong>이렇게 해결해요</strong>: 결과를 활용해야 한다면 <code>return</code>을 사용하세요.</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">add_correct</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>       <span class="c1"># ✅ 값을 돌려줌!</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="n">result</span> <span class="o">=</span> <span class="n">add_correct</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>      <span class="c1"># 출력: 16</span>
+</span></code></pre></div>
+<h3 id="3-return">실수 3: return 뒤에 코드를 쓰기<a class="headerlink" href="#3-return" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">example</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;이 줄은 실행될까요?&quot;</span><span class="p">)</span>   <span class="c1"># ❌ 절대 실행되지 않음!</span>
+</span></code></pre></div>
+<ul>
+<li><strong>왜 이런 일이 생기나요?</strong> <code>return</code>을 만나면 함수는 <strong>즉시 종료</strong>됩니다. 그 뒤의 코드는 영원히 실행되지 않아요.</li>
+<li><strong>이렇게 해결해요</strong>: <code>print()</code>가 필요하다면 <code>return</code> 전에 쓰세요.</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">example</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;계산을 시작합니다!&quot;</span><span class="p">)</span>     <span class="c1"># ✅ return 전이라 실행됨</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+</span></code></pre></div>
+<hr />
+<h2 id="_9">✅ 스스로 점검하기<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>오늘 배운 내용을 스스로 확인해 보세요!</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 매개변수와 인수의 차이를 말할 수 있나요?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>print()</code>와 <code>return</code>의 차이를 설명할 수 있나요?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 매개변수가 2개 이상인 함수를 만들 수 있나요?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 함수의 반환값을 변수에 저장하고 활용할 수 있나요?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 함수의 반환값을 다른 함수의 인수로 전달할 수 있나요?</li>
+</ul>
+<blockquote>
+<p>3개 이상 체크했다면, 오늘의 학습 목표를 충분히 달성한 거예요! 👏</p>
+</blockquote>
+<hr />
+<h2 id="_10">🚀 더 해보기<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>자신감이 붙었다면 아래 도전 과제를 풀어보세요!</p>
+<p><strong>도전 1</strong>: 세 수를 받아 평균을 반환하는 함수 <code>average(a, b, c)</code>를 만들어 보세요.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># 힌트: (a + b + c) / 3</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>    <span class="c1"># 여기를 채워보세요!</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>    <span class="k">pass</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">average</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">70</span><span class="p">))</span>  <span class="c1"># 80.0이 나와야 해요</span>
+</span></code></pre></div>
+<p><strong>도전 2</strong>: 온도 변환 함수를 만들어 보세요.
+- 섭씨 → 화씨 공식: 화씨 = 섭씨 × 9/5 + 32
+- 함수 이름: <code>celsius_to_fahrenheit(celsius)</code></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># 이 함수를 완성하면...</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">celsius_to_fahrenheit</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>    <span class="c1"># 32.0</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">celsius_to_fahrenheit</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>  <span class="c1"># 212.0</span>
+</span></code></pre></div>
+<hr />
+<h2 id="_11">🔗 다음 장으로<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>오늘 매개변수와 반환값의 기본을 확실히 익혔습니다! 🎉</p>
+<p>다음 장에서는 <strong>기본값 매개변수, 키워드 인수</strong> 같은 함수의 편리한 기능들을 배워볼 거예요. "매개변수에 기본값을 설정해두면 호출할 때 생략할 수 있다"는 것, 궁금하지 않으세요? 😊</p>
+<blockquote>
+<p>오늘 핵심만 기억하세요:
+- <strong>매개변수</strong> = 함수에게 보내는 택배 📦
+- <strong>반환값(return)</strong> = 함수가 돌려주는 결과물 🎁
+- <code>print</code>는 보여주기만, <code>return</code>은 <strong>진짜로</strong> 돌려주기!</p>
+</blockquote>
+<p>수고하셨습니다! 🙌</p>
 
 
 
@@ -2352,7 +2378,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

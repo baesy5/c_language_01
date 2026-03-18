@@ -6,11 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="프로그래밍 경험이 없는 고등학생을 위한 라즈베리파이 피코 입문서로, 6주간 직접 만들고 확인하며 배우는 실습 중심 교육 자료입니다.">
+        <meta name="description" content="컴퓨터를 몰라도 괜찮아, 2주 뒤엔 내 손으로 게임을 만든다! 프로그래밍 경험이 전혀 없는 고등학생도 혼자서 완주할 수 있는 C언어 입문 자기주도 학습서입니다.">
       
       
-        <meta name="author" content="Created with Data-AI-Book Generator">
+        <meta name="author" content="Created with EduFlow">
       
+      
+        <link rel="canonical" href="https://baesy5.github.io/c_language_01/chapter17/">
       
       
         <link rel="prev" href="../chapter16/">
@@ -23,15 +25,18 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
-        <title>만들기 - 회로 구성과 코딩 - 고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트</title>
+        <title>직접 만드는 가위바위보 게임 — 코딩 실전 - 처음 만드는 나의 첫 C언어 게임</title>
       
     
     
       <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -45,8 +50,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"JetBrains Mono"}</style>
       
     
     
@@ -61,7 +66,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -70,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chapter-17-" class="md-skip">
+        <a href="#_1" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -84,7 +96,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="상단/헤더">
-    <a href=".." title="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" class="md-header__button md-logo" aria-label="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" data-md-component="logo">
+    <a href=".." title="처음 만드는 나의 첫 C언어 게임" class="md-header__button md-logo" aria-label="처음 만드는 나의 첫 C언어 게임" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -98,18 +110,44 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트
+            처음 만드는 나의 첫 C언어 게임
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              만들기 - 회로 구성과 코딩
+              직접 만드는 가위바위보 게임 — 코딩 실전
             
           </span>
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="다크 모드로 전환"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로 전환" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="라이트 모드로 전환"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로 전환" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -204,7 +242,9 @@
           
   
   
-  Part 1 - 피코와 첫 만남
+    
+  
+  Part 1 - [1권] 프로그래밍 세계에 첫 발 내딛기
 
         </a>
       </li>
@@ -220,11 +260,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../chapter04/" class="md-tabs__link">
+        <a href="../chapter06/" class="md-tabs__link">
           
   
   
-  Part 2 - 빛으로 말하기 - LED 제어
+    
+  
+  Part 2 - [1권] 프로그램에 판단력 불어넣기
 
         </a>
       </li>
@@ -240,31 +282,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../chapter07/" class="md-tabs__link">
+        <a href="../chapter09/" class="md-tabs__link">
           
   
   
-  Part 3 - 입력을 받아라 - 버튼과 상호작용
-
-        </a>
-      </li>
     
   
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../chapter10/" class="md-tabs__link">
-          
-  
-  
-  Part 4 - 소리로 표현하기 - 부저 활용
+  Part 3 - [1권] 코드를 깔끔하게 정리하는 힘 — 함수
 
         </a>
       </li>
@@ -284,7 +308,9 @@
           
   
   
-  Part 5 - 세상을 감지하라 - 센서 활용
+    
+  
+  Part 4 - [2권] 게임을 더 풍성하게 — 배열과 실전 도구
 
         </a>
       </li>
@@ -306,7 +332,9 @@
           
   
   
-  Part 6 - 나만의 스마트 기기 - 통합 프로젝트
+    
+  
+  Part 5 - [2권] 최종 프로젝트 — 내 손으로 게임 완성하기
 
         </a>
       </li>
@@ -336,13 +364,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" class="md-nav__button md-logo" aria-label="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" data-md-component="logo">
+    <a href=".." title="처음 만드는 나의 첫 C언어 게임" class="md-nav__button md-logo" aria-label="처음 만드는 나의 첫 C언어 게임" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트
+    처음 만드는 나의 첫 C언어 게임
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -382,6 +410,18 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -404,7 +444,7 @@
   <span class="md-ellipsis">
     
   
-    Part 1 - 피코와 첫 만남
+    Part 1 - [1권] 프로그래밍 세계에 첫 발 내딛기
   
 
     
@@ -420,7 +460,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 1 - 피코와 첫 만남
+    Part 1 - [1권] 프로그래밍 세계에 첫 발 내딛기
   
 
           </label>
@@ -440,7 +480,7 @@
   <span class="md-ellipsis">
     
   
-    피코야, 반가워! - 하드웨어 살펴보기
+    왜 C언어를 배워야 할까? — 이 책의 사용법
   
 
     
@@ -468,7 +508,7 @@
   <span class="md-ellipsis">
     
   
-    개발 환경 설정 - Thonny 설치하기
+    내 컴퓨터에 작업실 꾸미기 — 개발 환경 설치
   
 
     
@@ -496,7 +536,7 @@
   <span class="md-ellipsis">
     
   
-    Hello, Pico! - 첫 번째 프로그램 실행
+    처음 만나는 C언어 — Hello, World!
   
 
     
@@ -509,65 +549,6 @@
   
 
               
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Part 2 - 빛으로 말하기 - LED 제어
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Part 2 - 빛으로 말하기 - LED 제어
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -583,7 +564,7 @@
   <span class="md-ellipsis">
     
   
-    브레드보드와 친해지기 - LED 회로 구성
+    데이터를 담는 상자 — 변수와 자료형
   
 
     
@@ -611,35 +592,7 @@
   <span class="md-ellipsis">
     
   
-    깜빡깜빡 - LED 점멸 프로그램
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../chapter06/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    무지개 신호등 - 다중 LED 패턴
+    컴퓨터에게 계산 시키기 — 연산자 활용
   
 
     
@@ -668,6 +621,14 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -680,17 +641,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 3 - 입력을 받아라 - 버튼과 상호작용
+    Part 2 - [1권] 프로그램에 판단력 불어넣기
   
 
     
@@ -701,16 +662,44 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 3 - 입력을 받아라 - 버튼과 상호작용
+    Part 2 - [1권] 프로그램에 판단력 불어넣기
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    갈림길에서 선택하기 — if 조건문
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -726,7 +715,7 @@
   <span class="md-ellipsis">
     
   
-    버튼 연결하기 - 디지털 입력의 시작
+    같은 일을 반복하기 — for와 while 반복문
   
 
     
@@ -754,35 +743,7 @@
   <span class="md-ellipsis">
     
   
-    누르면 반응해! - 조건문 활용
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../chapter09/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    반응속도 게임 만들기
+    여기까지 잘 왔어! — 중간 점검 미니 게임 만들기
   
 
     
@@ -811,6 +772,16 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -823,17 +794,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 4 - 소리로 표현하기 - 부저 활용
+    Part 3 - [1권] 코드를 깔끔하게 정리하는 힘 — 함수
   
 
     
@@ -844,16 +815,44 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 4 - 소리로 표현하기 - 부저 활용
+    Part 3 - [1권] 코드를 깔끔하게 정리하는 힘 — 함수
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    왜 코드를 나눠야 할까? — 함수가 필요한 이유
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -869,7 +868,7 @@
   <span class="md-ellipsis">
     
   
-    삐- 소리의 원리 - 부저 연결과 PWM
+    나만의 함수 만들기 — 함수 정의와 호출
   
 
     
@@ -897,7 +896,7 @@
   <span class="md-ellipsis">
     
   
-    나만의 멜로디 - 학교종 연주하기
+    함수에 값을 주고받기 — 매개변수와 반환값 깊이 이해하기
   
 
     
@@ -925,7 +924,7 @@
   <span class="md-ellipsis">
     
   
-    피아노 만들기 - 버튼으로 연주
+    함수로 코드를 리모델링하자 — 업다운 게임 리팩토링
   
 
     
@@ -954,6 +953,14 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -966,17 +973,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 5 - 세상을 감지하라 - 센서 활용
+    Part 4 - [2권] 게임을 더 풍성하게 — 배열과 실전 도구
   
 
     
@@ -987,12 +994,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 5 - 세상을 감지하라 - 센서 활용
+    Part 4 - [2권] 게임을 더 풍성하게 — 배열과 실전 도구
   
 
           </label>
@@ -1012,7 +1019,7 @@
   <span class="md-ellipsis">
     
   
-    밝기 감지 - 조도 센서
+    데이터를 줄 세우기 — 배열 기초
   
 
     
@@ -1040,7 +1047,7 @@
   <span class="md-ellipsis">
     
   
-    자동 조명 만들기
+    여러 선택지 깔끔하게 처리하기 — switch문과 게임 메뉴
   
 
     
@@ -1068,7 +1075,7 @@
   <span class="md-ellipsis">
     
   
-    온도계 만들기 - 온도 센서 활용
+    게임에 우연을 더하자 — 난수와 유용한 함수들
   
 
     
@@ -1099,6 +1106,18 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -1114,17 +1133,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 6 - 나만의 스마트 기기 - 통합 프로젝트
+    Part 5 - [2권] 최종 프로젝트 — 내 손으로 게임 완성하기
   
 
     
@@ -1135,12 +1154,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 6 - 나만의 스마트 기기 - 통합 프로젝트
+    Part 5 - [2권] 최종 프로젝트 — 내 손으로 게임 완성하기
   
 
           </label>
@@ -1160,7 +1179,7 @@
   <span class="md-ellipsis">
     
   
-    프로젝트 기획 - 아이디어 구체화
+    게임을 설계하자 — 기획부터 함수 구조 짜기
   
 
     
@@ -1197,7 +1216,7 @@
   <span class="md-ellipsis">
     
   
-    만들기 - 회로 구성과 코딩
+    직접 만드는 가위바위보 게임 — 코딩 실전
   
 
     
@@ -1215,7 +1234,7 @@
   <span class="md-ellipsis">
     
   
-    만들기 - 회로 구성과 코딩
+    직접 만드는 가위바위보 게임 — 코딩 실전
   
 
     
@@ -1241,10 +1260,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 이 장에서 배우는 것
+        🎯 이 장의 학습 목표
       
     </span>
   </a>
@@ -1252,7 +1271,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 미리 알아야 할 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         💡 왜 이걸 배우나요?
@@ -1263,7 +1293,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         📚 핵심 개념
@@ -1275,10 +1305,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#1-incremental-development" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 1: 단계별 개발 전략
+        개념 1: 점진적 개발 (Incremental Development)
       
     </span>
   </a>
@@ -1286,10 +1316,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#2-mathrandom" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 2: 디버깅의 기본 원칙
+        개념 2: Math.random()을 활용한 컴퓨터 선택
       
     </span>
   </a>
@@ -1300,7 +1330,18 @@
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 3: 코드 통합의 핵심
+        개념 3: 승패 판정 로직
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 전적 기록과 누적
       
     </span>
   </a>
@@ -1313,7 +1354,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         🔨 따라하기
@@ -1328,7 +1369,7 @@
   <a href="#step-1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: 기획서 점검하기
+        Step 1: 컴퓨터의 선택을 만드는 함수
       
     </span>
   </a>
@@ -1339,7 +1380,7 @@
   <a href="#step-2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: 부품 하나씩 테스트하기
+        Step 2: 승패 판정 함수
       
     </span>
   </a>
@@ -1350,46 +1391,7 @@
   <a href="#step-3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: 기능 통합하기
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📝 전체 코드
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⚠️ 자주 하는 실수
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="⚠️ 자주 하는 실수">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 1: 같은 핀을 두 번 사용
+        Step 3: 한 판 플레이 함수
       
     </span>
   </a>
@@ -1397,10 +1399,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
+  <a href="#step-4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        실수 2: 변수명 오타
+        Step 4: 전적 기록 기능 추가
       
     </span>
   </a>
@@ -1408,10 +1410,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
+  <a href="#step-5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        실수 3: 들여쓰기 오류
+        Step 5: 사용자 입력과 반복 플레이
       
     </span>
   </a>
@@ -1419,10 +1421,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+  <a href="#step-6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        실수 4: 센서 측정 간격 무시
+        Step 6: 전체 조립 및 최종 실행
       
     </span>
   </a>
@@ -1438,79 +1440,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ 스스로 점검하기
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🚀 더 해보기
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🚀 더 해보기">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-led" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 1: LED 패턴 바꾸기
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 2: 온도 단계별 반응
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-oled" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 3: OLED에 상태 표시 ⭐
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🛠️ 문제 해결 가이드
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔗 다음 장으로
+        📝 전체 코드
       
     </span>
   </a>
@@ -1540,7 +1470,63 @@
   <span class="md-ellipsis">
     
   
-    발표와 공유 - 프로젝트 시연
+    보너스 도전! OX 퀴즈 게임 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    내 코드 다듬기 — 자주 틀리는 오류 모음과 디버깅 팁
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    축하해, 게임 개발자! — 다음 단계로 나아가기
   
 
     
@@ -1588,10 +1574,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 이 장에서 배우는 것
+        🎯 이 장의 학습 목표
       
     </span>
   </a>
@@ -1599,7 +1585,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 미리 알아야 할 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         💡 왜 이걸 배우나요?
@@ -1610,7 +1607,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         📚 핵심 개념
@@ -1622,10 +1619,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#1-incremental-development" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 1: 단계별 개발 전략
+        개념 1: 점진적 개발 (Incremental Development)
       
     </span>
   </a>
@@ -1633,10 +1630,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#2-mathrandom" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 2: 디버깅의 기본 원칙
+        개념 2: Math.random()을 활용한 컴퓨터 선택
       
     </span>
   </a>
@@ -1647,7 +1644,18 @@
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 3: 코드 통합의 핵심
+        개념 3: 승패 판정 로직
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 전적 기록과 누적
       
     </span>
   </a>
@@ -1660,7 +1668,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         🔨 따라하기
@@ -1675,7 +1683,7 @@
   <a href="#step-1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: 기획서 점검하기
+        Step 1: 컴퓨터의 선택을 만드는 함수
       
     </span>
   </a>
@@ -1686,7 +1694,7 @@
   <a href="#step-2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: 부품 하나씩 테스트하기
+        Step 2: 승패 판정 함수
       
     </span>
   </a>
@@ -1697,46 +1705,7 @@
   <a href="#step-3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: 기능 통합하기
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📝 전체 코드
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⚠️ 자주 하는 실수
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="⚠️ 자주 하는 실수">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 1: 같은 핀을 두 번 사용
+        Step 3: 한 판 플레이 함수
       
     </span>
   </a>
@@ -1744,10 +1713,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
+  <a href="#step-4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        실수 2: 변수명 오타
+        Step 4: 전적 기록 기능 추가
       
     </span>
   </a>
@@ -1755,10 +1724,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
+  <a href="#step-5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        실수 3: 들여쓰기 오류
+        Step 5: 사용자 입력과 반복 플레이
       
     </span>
   </a>
@@ -1766,10 +1735,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+  <a href="#step-6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        실수 4: 센서 측정 간격 무시
+        Step 6: 전체 조립 및 최종 실행
       
     </span>
   </a>
@@ -1785,79 +1754,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ 스스로 점검하기
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🚀 더 해보기
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🚀 더 해보기">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-led" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 1: LED 패턴 바꾸기
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 2: 온도 단계별 반응
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-oled" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 3: OLED에 상태 표시 ⭐
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🛠️ 문제 해결 가이드
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔗 다음 장으로
+        📝 전체 코드
       
     </span>
   </a>
@@ -1881,454 +1778,428 @@
 
 
 
-<h1 id="chapter-17-">Chapter 17: 만들기 - 회로 구성과 코딩<a class="headerlink" href="#chapter-17-" title="Permanent link">&para;</a></h1>
-<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ul>
-<li>[ ] 설계서를 보고 실제 회로를 구성할 수 있다</li>
-<li>[ ] 여러 기능을 하나의 프로그램으로 통합할 수 있다</li>
-<li>[ ] 오류를 체계적으로 찾아 해결하는 디버깅을 할 수 있다</li>
+<h1 id="_1">직접 만드는 가위바위보 게임 — 코딩 실전<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="_2">🎯 이 장의 학습 목표<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>이 장을 마치면 다음을 할 수 있습니다:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 설계한 함수 구조대로 가위바위보 게임을 <strong>완성</strong>할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 컴퓨터의 랜덤 선택, 승패 판정, 전적 기록 기능을 <strong>함수로 구현</strong>할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 반복 플레이와 최종 결과 출력 기능을 추가하여 <strong>완성도를 높일</strong> 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 코드를 <strong>점진적으로 작성하고 테스트</strong>하는 개발 방식을 체험할 수 있다</li>
 </ul>
+<p>⏱️ 예상 학습 시간: <strong>약 2시간 30분</strong></p>
 <hr />
-<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>지난 시간에 열심히 기획서를 작성했죠? 이제 <strong>진짜 만들 시간</strong>입니다! 🎉</p>
-<p>설계도만 있으면 집이 저절로 지어지지 않듯, 기획서만 있다고 스마트 기기가 완성되지 않아요. 직접 부품을 연결하고, 코드를 작성하고, 테스트해야 합니다.</p>
-<p>여기서 중요한 건 <strong>문제가 생겨도 당황하지 않는 것</strong>이에요. 프로 개발자들도 코드 작성 시간보다 <strong>디버깅 시간</strong>이 더 길다고 해요. 오류를 만나고 해결하는 과정에서 진짜 실력이 쌓입니다!</p>
+<h2 id="_3">📚 미리 알아야 할 것<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>이전 장(16장)에서 우리는 가위바위보 게임의 <strong>설계도</strong>를 만들었습니다. 혹시 기억이 잘 안 나시더라도 걱정 마세요. 핵심만 빠르게 복습해 볼게요.</p>
+<p><strong>이전 장에서 준비한 것들:</strong></p>
+<ul>
+<li>🎯 <strong>게임 흐름도</strong>: 사용자 입력 → 컴퓨터 선택 → 승패 판정 → 결과 출력 → 반복 여부 → 전적 출력</li>
+<li>🧩 <strong>함수 분리 계획</strong>: 기능별로 함수를 나누기로 했어요</li>
+<li>📦 <strong>변수/배열 설계</strong>: 전적을 기록할 변수들을 미리 정했어요</li>
+</ul>
+<p>이번 장에서는 그 설계도를 <strong>진짜 동작하는 코드</strong>로 바꿉니다. 마치 건축 설계도를 보고 집을 짓는 것처럼, 한 벽돌씩 쌓아올리겠습니다! 🧱</p>
 <hr />
-<h2 id="_3">📚 핵심 개념<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<h3 id="1">개념 1: 단계별 개발 전략<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
-<p>프로젝트를 만들 때 한 번에 모든 걸 완성하려고 하면 어디서 문제가 생겼는지 찾기 어려워요.</p>
-<ol>
-<li><strong>비유로 시작</strong>: "마치 요리할 때 재료를 하나씩 맛보며 확인하는 것처럼, 코드도 조금씩 테스트하며 만들어요"</li>
-<li><strong>정확한 정의</strong>: "단계별 개발은 기능을 작은 단위로 나누어 각각 완성하고 테스트한 후, 하나씩 합치는 방법입니다"</li>
-<li><strong>예시로 확인</strong>: "스마트 알람을 만든다면 ① LED만 테스트 → ② 부저만 테스트 → ③ 센서만 테스트 → ④ 합치기"</li>
-</ol>
-<p><strong>쉽게 말하면</strong>: 작게 나눠서 각각 성공시킨 후, 하나씩 합쳐요!</p>
-<h3 id="2">개념 2: 디버깅의 기본 원칙<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<h2 id="_4">💡 왜 이걸 배우나요?<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>프로그래밍을 배우는 과정에서 가장 큰 벽은 <strong>"개별 문법은 아는데, 이걸 합쳐서 뭔가를 만들 수가 없어요"</strong> 라는 순간입니다.</p>
+<p>이번 장이 바로 그 벽을 넘는 경험입니다.</p>
+<p>지금까지 배운 <strong>변수, 조건문, 반복문, 함수, 배열</strong> — 이 모든 것이 하나의 게임 안에서 어우러집니다. 조각들을 맞추는 퍼즐처럼, 각 문법이 제 자리를 찾아가는 걸 직접 느끼게 될 거예요.</p>
+<p>그리고 무엇보다, <strong>"내가 직접 게임을 만들었다!"</strong> 라는 성취감은 앞으로의 학습에 엄청난 동력이 됩니다. 🔥</p>
+<hr />
+<h2 id="_5">📚 핵심 개념<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>이번 장에서 집중할 핵심 개념은 <strong>4가지</strong>입니다.</p>
+<hr />
+<h3 id="1-incremental-development">개념 1: 점진적 개발 (Incremental Development)<a class="headerlink" href="#1-incremental-development" title="Permanent link">&para;</a></h3>
+<p><strong>🎨 비유로 시작</strong></p>
+<p>요리를 할 때, 모든 재료를 한꺼번에 냄비에 넣고 "맛있어져라!" 하지 않잖아요? 양파를 먼저 볶고 맛을 보고, 고기를 넣고 맛을 보고, 소스를 넣고 또 맛을 봅니다. 코딩도 똑같아요!</p>
+<p><strong>📖 정확한 정의</strong></p>
+<p>점진적 개발이란, 프로그램을 <strong>한 번에 완성하지 않고</strong>, 작은 부분을 만들 때마다 <strong>실행해서 확인</strong>하고, 제대로 되면 다음 부분을 추가하는 개발 방법입니다.</p>
+<p><strong>💻 예시로 확인</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[나쁜 방법] 전체 코드 200줄을 한 번에 쓰고 → 실행 → 에러 폭탄 💣 → 어디가 문제인지 모름
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>[좋은 방법] 함수 1개 작성 → 실행 → 확인 ✅ → 함수 1개 추가 → 실행 → 확인 ✅ → ...
+</span></code></pre></div>
+<p>이번 장에서는 이 <strong>좋은 방법</strong>을 직접 체험합니다. 매 단계마다 "여기까지 실행해 보세요!" 라고 안내할 거예요.</p>
+<hr />
+<h3 id="2-mathrandom">개념 2: Math.random()을 활용한 컴퓨터 선택<a class="headerlink" href="#2-mathrandom" title="Permanent link">&para;</a></h3>
+<p><strong>🎨 비유로 시작</strong></p>
+<p>주사위를 던져서 1이 나오면 가위, 2가 나오면 바위, 3이 나오면 보를 낸다고 상상해 보세요. 컴퓨터에게 주사위를 쥐어주는 것이 <code>Math.random()</code>입니다.</p>
+<p><strong>📖 정확한 정의</strong></p>
+<p><code>Math.random()</code>은 0 이상 1 미만의 랜덤 소수를 돌려주는 자바스크립트 내장 함수입니다. 이것을 가공하면 <strong>원하는 범위의 정수</strong>를 얻을 수 있어요.</p>
+<p><strong>💻 예시로 확인</strong></p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// 0, 1, 2 중 하나를 랜덤으로 얻는 방법</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">let</span><span class="w"> </span><span class="nx">randomNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1">// Math.random() * 3  → 0 이상 3 미만의 소수 (예: 1.742)</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">// Math.floor(...)     → 소수점 아래를 버림 (예: 1)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1">// 결과: 0, 1, 2 중 하나</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1">// 이것을 가위/바위/보에 매핑</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="kd">let</span><span class="w"> </span><span class="nx">choices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;가위&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;바위&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;보&quot;</span><span class="p">];</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="kd">let</span><span class="w"> </span><span class="nx">computerChoice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">choices</span><span class="p">[</span><span class="nx">randomNumber</span><span class="p">];</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;컴퓨터: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">computerChoice</span><span class="p">);</span>
+</span></code></pre></div>
+<blockquote>
+<p>💡 <code>Math.floor()</code>는 소수점 아래를 <strong>내림</strong>하는 함수예요. <code>Math.floor(2.9)</code>는 <code>2</code>가 됩니다.</p>
+</blockquote>
+<hr />
+<h3 id="3">개념 3: 승패 판정 로직<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p><strong>🎨 비유로 시작</strong></p>
+<p>심판이 경기 결과를 판정하려면 <strong>규칙표</strong>가 필요하죠? 가위바위보의 규칙표는 우리 모두가 알고 있어요:</p>
+<ul>
+<li>가위는 보를 이긴다 ✂️ &gt; 📄</li>
+<li>바위는 가위를 이긴다 ✊ &gt; ✂️</li>
+<li>보는 바위를 이긴다 📄 &gt; ✊</li>
+<li>같으면 무승부</li>
+</ul>
+<p><strong>📖 정확한 정의</strong></p>
+<p>승패 판정은 <strong>사용자의 선택</strong>과 <strong>컴퓨터의 선택</strong>을 비교하여, 미리 정해진 규칙에 따라 <strong>승/패/무</strong>를 결정하는 로직입니다. 조건문(<code>if-else</code>)으로 구현합니다.</p>
+<p><strong>💻 예시로 확인</strong></p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// 판정 규칙을 코드로 표현</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">computer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;무승부&quot;</span><span class="p">;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="p">(</span><span class="nx">user</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;가위&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">computer</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;보&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="p">(</span><span class="nx">user</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;바위&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">computer</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;가위&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="p">(</span><span class="nx">user</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;보&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">computer</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;바위&quot;</span><span class="p">)</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;승리&quot;</span><span class="p">;</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;패배&quot;</span><span class="p">;</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>핵심은 <strong>사용자가 이기는 3가지 경우</strong>를 명시하는 것입니다. 나머지는 자동으로 패배가 되니까요.</p>
+<hr />
+<h3 id="4">개념 4: 전적 기록과 누적<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p><strong>🎨 비유로 시작</strong></p>
+<p>스포츠 경기를 볼 때, 스코어보드에 점수가 계속 쌓이잖아요? 우리 게임에서도 <strong>승리 횟수, 패배 횟수, 무승부 횟수</strong>를 스코어보드처럼 기록해 나갑니다.</p>
+<p><strong>📖 정확한 정의</strong></p>
+<p>게임이 진행될 때마다 결과에 따라 해당 카운터 변수를 1씩 증가시키는 것을 <strong>전적 누적</strong>이라고 합니다. 게임이 끝나면 이 값들을 모아 <strong>최종 전적</strong>을 보여줍니다.</p>
+<p><strong>💻 예시로 확인</strong></p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">let</span><span class="w"> </span><span class="nx">wins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w">    </span><span class="c1">// 승리 횟수</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">let</span><span class="w"> </span><span class="nx">losses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w">  </span><span class="c1">// 패배 횟수</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">let</span><span class="w"> </span><span class="nx">draws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w">   </span><span class="c1">// 무승부 횟수</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1">// 게임 결과에 따라 누적</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;승리&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nx">wins</span><span class="o">++</span><span class="p">;</span><span class="w">       </span><span class="c1">// wins = wins + 1 과 같은 뜻</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;패배&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nx">losses</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="nx">draws</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="p">}</span>
+</span></code></pre></div>
 <div class="mermaid">flowchart LR
-    A[🐛 오류 발생] --&gt; B[🔍 에러 메시지 읽기]
-    B --&gt; C[📍 문제 위치 찾기]
-    C --&gt; D[🧪 가설 세우기]
-    D --&gt; E[✅ 수정 후 테스트]
-    E --&gt;|해결!| F[🎉 성공]
-    E --&gt;|아직...| D
-
-    style A fill:#ffebee,stroke:#c62828
-    style B fill:#fff3e0,stroke:#ef6c00
-    style C fill:#e3f2fd,stroke:#1565c0
-    style D fill:#f3e5f5,stroke:#7b1fa2
-    style E fill:#e8f5e9,stroke:#2e7d32
-    style F fill:#e8f5e9,stroke:#2e7d32</div>
-<ol>
-<li><strong>비유로 시작</strong>: "의사가 증상을 듣고 원인을 찾듯, 에러 메시지는 컴퓨터가 알려주는 '증상'이에요"</li>
-<li><strong>정확한 정의</strong>: "디버깅은 프로그램의 오류(버그)를 찾아 수정하는 과정입니다"</li>
-<li><strong>예시로 확인</strong>: "'NameError: name 'led' is not defined'는 'led라는 이름을 모르겠어요'라는 뜻이에요"</li>
-</ol>
-<p><strong>쉽게 말하면</strong>: 에러 메시지를 친구처럼 대해요 - 뭐가 문제인지 알려주거든요!</p>
-<h3 id="3">개념 3: 코드 통합의 핵심<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
-<p>여러 기능을 합칠 때 가장 중요한 건 <strong>핀 충돌 방지</strong>와 <strong>변수명 정리</strong>예요.</p>
-<div class="mermaid">flowchart TB
-    subgraph 통합 전
-        A1[LED 코드&lt;br/&gt;led = Pin 16] 
-        A2[버튼 코드&lt;br/&gt;btn = Pin 16]
-    end
-
-    subgraph 통합 후
-        B1[LED: Pin 18] 
-        B2[버튼: Pin 16]
-    end
-
-    A1 --&gt; |⚠️ 핀 충돌!| C[오류 발생]
-    통합전 --&gt; |핀 정리| 통합후
-    통합후 --&gt; D[✅ 정상 작동]
-
-    style C fill:#ffcdd2,stroke:#c62828
-    style D fill:#c8e6c9,stroke:#2e7d32</div>
-<p><strong>쉽게 말하면</strong>: 같은 핀을 두 번 사용하면 안 돼요!</p>
+    A["게임 1회 진행"] --&gt; B{"결과는?"}
+    B --&gt;|승리| C["wins + 1"]
+    B --&gt;|패배| D["losses + 1"]
+    B --&gt;|무승부| E["draws + 1"]
+    C --&gt; F["다음 게임 또는 종료"]
+    D --&gt; F
+    E --&gt; F</div>
+<blockquote>
+<p>💡 <strong>잠깐!</strong> 여기까지 4가지 핵심 개념을 살펴봤어요. 이제부터 이 개념들을 <strong>하나씩 조립</strong>하면서 실제 게임을 만들어 봅니다. 설레지 않나요? 😊</p>
+</blockquote>
 <hr />
-<h2 id="_4">🔨 따라하기<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<h3 id="step-1">Step 1: 기획서 점검하기<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
-<p><strong>목표</strong>: 만들기 전에 필요한 것들 확인하기</p>
-<p>시작하기 전에 기획서를 다시 펼쳐보세요:</p>
-<p><strong>✅ 체크리스트</strong>
-- [ ] 사용할 센서/출력장치 목록이 있나요?
-- [ ] 각 부품의 연결 포트가 정해졌나요?
-- [ ] 핀 번호가 겹치는 건 없나요?</p>
-<p>📌 <strong>예시 - 스마트 알람 기획서 요약</strong></p>
-<table>
-<thead>
-<tr>
-<th>부품</th>
-<th>역할</th>
-<th>연결 포트</th>
-<th>핀 번호</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DHT11</td>
-<td>온도 감지</td>
-<td>D16</td>
-<td>GP16</td>
-</tr>
-<tr>
-<td>LED</td>
-<td>상태 표시</td>
-<td>D18</td>
-<td>GP18</td>
-</tr>
-<tr>
-<td>부저</td>
-<td>알람 소리</td>
-<td>D20</td>
-<td>GP20</td>
-</tr>
-<tr>
-<td>버튼</td>
-<td>알람 끄기</td>
-<td>D17</td>
-<td>GP17</td>
-</tr>
-</tbody>
-</table>
-<h3 id="step-2">Step 2: 부품 하나씩 테스트하기<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
-<p><strong>목표</strong>: 각 부품이 제대로 작동하는지 개별 확인</p>
-<p><strong>🔴 LED 테스트 코드</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: LED가 잘 연결됐는지 테스트 ===</span>
-<span class="c1"># 먼저 LED만 따로 테스트해봐요</span>
-
-<span class="c1"># --- WHY: 나중에 문제 생기면 어디가 문제인지 모르니까 ---</span>
-<span class="c1"># 지금 확인해두면 통합할 때 편해요</span>
-
-<span class="c1"># HOW: 어떻게 동작하는지</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>  <span class="c1"># 핀 제어 라이브러리</span>
-<span class="kn">import</span> <span class="nn">time</span>              <span class="c1"># 시간 함수</span>
-
-<span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>   <span class="c1"># GP18에 LED 연결</span>
-
-<span class="c1"># 3번 깜빡여서 확인</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-    <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>             <span class="c1"># LED 켜기</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LED 켜짐&quot;</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>      <span class="c1"># 0.5초 대기</span>
-    <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>            <span class="c1"># LED 끄기</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LED 꺼짐&quot;</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LED 테스트 완료! ✅&quot;</span><span class="p">)</span>
-</code></pre></div></p>
-<p><strong>실행 결과</strong>:
-<div class="highlight"><pre><span></span><code>LED 켜짐
-LED 꺼짐
-LED 켜짐
-LED 꺼짐
-LED 켜짐
-LED 꺼짐
-LED 테스트 완료! ✅
-</code></pre></div></p>
-<p><strong>여기서 잠깐! 🤔</strong>
-LED가 깜빡이지 않는다면? 
-1. Grove 케이블이 제대로 꽂혔는지 확인
-2. 포트 번호(D18)가 맞는지 확인
-3. LED 모듈의 방향이 맞는지 확인</p>
-<p><strong>🔔 부저 테스트 코드</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: 부저가 잘 작동하는지 테스트 ===</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">import</span> <span class="nn">time</span>
-
-<span class="n">buzzer</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>    <span class="c1"># GP20에 부저 연결</span>
-
-<span class="c1"># 삐~ 소리 한 번</span>
-<span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>        <span class="c1"># 1000Hz 주파수</span>
-<span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32768</span><span class="p">)</span>   <span class="c1"># 50% 듀티 (소리 켜기)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;삐~ 소리 나나요?&quot;</span><span class="p">)</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>       <span class="c1"># 소리 끄기</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;부저 테스트 완료! ✅&quot;</span><span class="p">)</span>
-</code></pre></div></p>
-<p><strong>🌡️ DHT11 센서 테스트 코드</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: 온습도 센서 테스트 ===</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">dht</span>
-<span class="kn">import</span> <span class="nn">time</span>
-
-<span class="n">sensor</span> <span class="o">=</span> <span class="n">dht</span><span class="o">.</span><span class="n">DHT11</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>  <span class="c1"># GP16에 DHT11 연결</span>
-
-<span class="c1"># 3번 측정해보기</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>            <span class="c1"># DHT11은 2초 간격 필요</span>
-    <span class="n">sensor</span><span class="o">.</span><span class="n">measure</span><span class="p">()</span>         <span class="c1"># 측정 실행</span>
-    <span class="n">temp</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">temperature</span><span class="p">()</span>  <span class="c1"># 온도 읽기</span>
-    <span class="n">humid</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">humidity</span><span class="p">()</span>    <span class="c1"># 습도 읽기</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;#</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> 온도: </span><span class="si">{</span><span class="n">temp</span><span class="si">}</span><span class="s2">°C, 습도: </span><span class="si">{</span><span class="n">humid</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;센서 테스트 완료! ✅&quot;</span><span class="p">)</span>
-</code></pre></div></p>
-<h3 id="step-3">Step 3: 기능 통합하기<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
-<p><strong>목표</strong>: 테스트한 부품들을 하나의 프로그램으로 합치기</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: 스마트 알람 - 통합 버전 ===</span>
-<span class="c1"># 온도가 높으면 부저가 울리고 LED가 켜져요</span>
-
-<span class="c1"># --- WHY: 각각 성공한 코드를 하나로 합쳐요 ---</span>
-<span class="c1"># 이미 테스트했으니 자신있게!</span>
-
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">import</span> <span class="nn">dht</span>
-<span class="kn">import</span> <span class="nn">time</span>
-
-<span class="c1"># === 1단계: 모든 부품 초기화 ===</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;부품 초기화 중...&quot;</span><span class="p">)</span>
-<span class="n">sensor</span> <span class="o">=</span> <span class="n">dht</span><span class="o">.</span><span class="n">DHT11</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>  <span class="c1"># 온습도 센서</span>
-<span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>        <span class="c1"># LED</span>
-<span class="n">buzzer</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>         <span class="c1"># 부저</span>
-<span class="n">button</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_DOWN</span><span class="p">)</span>  <span class="c1"># 버튼</span>
-
-<span class="c1"># 알람 기준 온도</span>
-<span class="n">ALARM_TEMP</span> <span class="o">=</span> <span class="mi">28</span>
-
-<span class="c1"># === 2단계: 알람 함수 만들기 ===</span>
-<span class="k">def</span> <span class="nf">alarm_on</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;알람을 켜는 함수&quot;&quot;&quot;</span>
-    <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
-    <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-    <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32768</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🚨 알람 켜짐!&quot;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">alarm_off</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;알람을 끄는 함수&quot;&quot;&quot;</span>
-    <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
-    <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;알람 꺼짐&quot;</span><span class="p">)</span>
-
-<span class="c1"># === 3단계: 메인 루프 ===</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;스마트 알람 시작! (기준 온도: </span><span class="si">{</span><span class="n">ALARM_TEMP</span><span class="si">}</span><span class="s2">°C)&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;버튼을 누르면 알람이 꺼져요&quot;</span><span class="p">)</span>
-
-<span class="n">alarm_active</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># 알람 상태</span>
-
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="c1"># 온도 측정</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">sensor</span><span class="o">.</span><span class="n">measure</span><span class="p">()</span>
-        <span class="n">temp</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">temperature</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;현재 온도: </span><span class="si">{</span><span class="n">temp</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
-
-        <span class="c1"># 온도가 높으면 알람</span>
-        <span class="k">if</span> <span class="n">temp</span> <span class="o">&gt;=</span> <span class="n">ALARM_TEMP</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">alarm_active</span><span class="p">:</span>
-            <span class="n">alarm_on</span><span class="p">()</span>
-            <span class="n">alarm_active</span> <span class="o">=</span> <span class="kc">True</span>
-
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;센서 오류: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-    <span class="c1"># 버튼으로 알람 끄기</span>
-    <span class="k">if</span> <span class="n">button</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">alarm_active</span><span class="p">:</span>
-        <span class="n">alarm_off</span><span class="p">()</span>
-        <span class="n">alarm_active</span> <span class="o">=</span> <span class="kc">False</span>
-
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># 2초마다 체크</span>
-</code></pre></div>
-<p><strong>여기서 잠깐! 🤔</strong>
-<code>try-except</code>는 오류가 나도 프로그램이 멈추지 않게 해줘요. 센서가 가끔 읽기 실패할 수 있거든요!</p>
+<h2 id="_6">🔨 따라하기<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>이제 본격적으로 코드를 작성합니다! 총 <strong>6단계</strong>로 나누어 진행하며, 매 단계마다 실행해서 확인합니다.</p>
+<blockquote>
+<p>🛠️ <strong>준비물</strong>: 웹 브라우저(Chrome 추천)의 개발자 도구 콘솔, 또는 온라인 코딩 환경(replit.com 등)</p>
+<p>이번 실습에서는 <code>prompt()</code>와 <code>alert()</code> 대신 <strong>콘솔 기반</strong>으로 먼저 만든 후, 마지막에 <code>prompt()</code>/<code>alert()</code> 버전도 안내합니다.</p>
+</blockquote>
 <hr />
-<h2 id="_5">📝 전체 코드<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># === 스마트 알람 시스템 v1.0 ===</span>
-<span class="c1"># 온도 기반 알람 + 버튼으로 끄기</span>
-<span class="c1"># 만든이: ____________</span>
-<span class="c1"># 날짜: ____________</span>
-
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">import</span> <span class="nn">dht</span>
-<span class="kn">import</span> <span class="nn">time</span>
-
-<span class="c1"># ========== 설정값 ==========</span>
-<span class="n">ALARM_TEMP</span> <span class="o">=</span> <span class="mi">28</span>      <span class="c1"># 알람 기준 온도</span>
-<span class="n">CHECK_INTERVAL</span> <span class="o">=</span> <span class="mi">2</span>   <span class="c1"># 측정 간격(초)</span>
-
-<span class="c1"># ========== 부품 초기화 ==========</span>
-<span class="n">sensor</span> <span class="o">=</span> <span class="n">dht</span><span class="o">.</span><span class="n">DHT11</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
-<span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
-<span class="n">buzzer</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
-<span class="n">button</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_DOWN</span><span class="p">)</span>
-
-<span class="c1"># ========== 함수 정의 ==========</span>
-<span class="k">def</span> <span class="nf">alarm_on</span><span class="p">():</span>
-    <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
-    <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-    <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32768</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🚨 알람 작동!&quot;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">alarm_off</span><span class="p">():</span>
-    <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
-    <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ 알람 해제&quot;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">read_temperature</span><span class="p">():</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">sensor</span><span class="o">.</span><span class="n">measure</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">sensor</span><span class="o">.</span><span class="n">temperature</span><span class="p">()</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">None</span>
-
-<span class="c1"># ========== 메인 프로그램 ==========</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  스마트 알람 시스템 시작&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  기준 온도: </span><span class="si">{</span><span class="n">ALARM_TEMP</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>
-
-<span class="n">alarm_active</span> <span class="o">=</span> <span class="kc">False</span>
-
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">temp</span> <span class="o">=</span> <span class="n">read_temperature</span><span class="p">()</span>
-
-    <span class="k">if</span> <span class="n">temp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;온도: </span><span class="si">{</span><span class="n">temp</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">temp</span> <span class="o">&gt;=</span> <span class="n">ALARM_TEMP</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">alarm_active</span><span class="p">:</span>
-            <span class="n">alarm_on</span><span class="p">()</span>
-            <span class="n">alarm_active</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">elif</span> <span class="n">temp</span> <span class="o">&lt;</span> <span class="n">ALARM_TEMP</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- 정상&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;센서 읽기 실패&quot;</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">button</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">alarm_active</span><span class="p">:</span>
-        <span class="n">alarm_off</span><span class="p">()</span>
-        <span class="n">alarm_active</span> <span class="o">=</span> <span class="kc">False</span>
-
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">CHECK_INTERVAL</span><span class="p">)</span>
-</code></pre></div>
-<hr />
-<h2 id="_6">⚠️ 자주 하는 실수<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<h3 id="1_1">실수 1: 같은 핀을 두 번 사용<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
-<p><strong>증상</strong>: 
-<div class="highlight"><pre><span></span><code>ValueError: Pin 16 already in use
-</code></pre></div></p>
-<p><strong>원인</strong>: 두 개의 부품을 같은 핀에 연결하려고 함</p>
-<p><strong>해결</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># 잘못된 코드</span>
-<span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
-<span class="n">sensor</span> <span class="o">=</span> <span class="n">dht</span><span class="o">.</span><span class="n">DHT11</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>  <span class="c1"># 충돌!</span>
-
-<span class="c1"># 올바른 코드</span>
-<span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>       <span class="c1"># LED는 18번</span>
-<span class="n">sensor</span> <span class="o">=</span> <span class="n">dht</span><span class="o">.</span><span class="n">DHT11</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>  <span class="c1"># 센서는 16번</span>
-</code></pre></div></p>
-<h3 id="2_1">실수 2: 변수명 오타<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
-<p><strong>증상</strong>: 
-<div class="highlight"><pre><span></span><code>NameError: name &#39;buzer&#39; is not defined
-</code></pre></div></p>
-<p><strong>원인</strong>: 변수 이름을 다르게 씀 (buzzer vs buzer)</p>
-<p><strong>해결</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># 잘못된 코드</span>
-<span class="n">buzzer</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
-<span class="n">buzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>      <span class="c1"># 오타!</span>
-
-<span class="c1"># 올바른 코드</span>
-<span class="n">buzzer</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
-<span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>     <span class="c1"># 정확한 이름</span>
-</code></pre></div></p>
-<h3 id="3_1">실수 3: 들여쓰기 오류<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
-<p><strong>증상</strong>: 
-<div class="highlight"><pre><span></span><code>IndentationError: unexpected indent
-</code></pre></div></p>
-<p><strong>원인</strong>: 들여쓰기(스페이스)가 맞지 않음</p>
-<p><strong>해결</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># 잘못된 코드</span>
-<span class="k">if</span> <span class="n">temp</span> <span class="o">&gt;</span> <span class="mi">28</span><span class="p">:</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;덥다!&quot;</span><span class="p">)</span>        <span class="c1"># 들여쓰기 없음</span>
-
-<span class="c1"># 올바른 코드  </span>
-<span class="k">if</span> <span class="n">temp</span> <span class="o">&gt;</span> <span class="mi">28</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;덥다!&quot;</span><span class="p">)</span>    <span class="c1"># 4칸 들여쓰기</span>
-</code></pre></div></p>
-<h3 id="4">실수 4: 센서 측정 간격 무시<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
-<p><strong>증상</strong>: 온도가 항상 이상한 값이 나옴</p>
-<p><strong>원인</strong>: DHT11은 최소 2초 간격이 필요</p>
-<p><strong>해결</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># 잘못된 코드</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">sensor</span><span class="o">.</span><span class="n">measure</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">temperature</span><span class="p">())</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>   <span class="c1"># 너무 빨라!</span>
-
-<span class="c1"># 올바른 코드</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">sensor</span><span class="o">.</span><span class="n">measure</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">temperature</span><span class="p">())</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>     <span class="c1"># 2초 이상!</span>
-</code></pre></div></p>
-<hr />
-<h2 id="_7">✅ 스스로 점검하기<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p><strong>왜 부품을 하나씩 테스트한 후에 통합해야 할까요?</strong></p>
-</li>
-<li>
-<p><strong><code>try-except</code>를 쓰는 이유는 무엇인가요?</strong></p>
-</li>
-<li>
-<p><strong>다음 에러 메시지의 의미는?</strong>
-   <div class="highlight"><pre><span></span><code>NameError: name &#39;sensor&#39; is not defined
-</code></pre></div></p>
-</li>
-</ol>
-<details>
-<summary>정답 확인</summary>
-
-1. 문제가 생겼을 때 어디서 발생했는지 쉽게 찾을 수 있어요. 모두 합쳐놓으면 원인 찾기가 어려워요.
-
-2. 오류가 나도 프로그램이 멈추지 않고 계속 실행되게 해줘요. 센서는 가끔 읽기 실패할 수 있거든요.
-
-3. 'sensor'라는 변수를 정의하지 않고 사용했다는 뜻이에요. `sensor = dht.DHT11(Pin(16))` 같은 코드가 필요해요.
-
-</details>
-
-<hr />
-<h2 id="_8">🚀 더 해보기<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<h3 id="1-led">도전 1: LED 패턴 바꾸기<a class="headerlink" href="#1-led" title="Permanent link">&para;</a></h3>
-<p>알람이 울릴 때 LED가 깜빡이도록 수정해보세요.</p>
-<h3 id="2_2">도전 2: 온도 단계별 반응<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h3>
+<h3 id="step-1">Step 1: 컴퓨터의 선택을 만드는 함수<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 컴퓨터가 가위/바위/보 중 하나를 랜덤으로 고르는 함수를 만듭니다.</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// === Step 1: 컴퓨터 선택 함수 ===</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kd">function</span><span class="w"> </span><span class="nx">getComputerChoice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">choices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;가위&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;바위&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;보&quot;</span><span class="p">];</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">randomIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">choices</span><span class="p">[</span><span class="nx">randomIndex</span><span class="p">];</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="p">}</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1">// 테스트: 5번 실행해서 잘 되는지 확인!</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;컴퓨터 선택:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getComputerChoice</span><span class="p">());</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;컴퓨터 선택:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getComputerChoice</span><span class="p">());</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;컴퓨터 선택:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getComputerChoice</span><span class="p">());</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;컴퓨터 선택:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getComputerChoice</span><span class="p">());</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;컴퓨터 선택:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getComputerChoice</span><span class="p">());</span>
+</span></code></pre></div>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: 실행할 때마다 "가위", "바위", "보" 중 하나가 <strong>랜덤으로</strong> 출력되어야 해요. 5번 중에 적어도 2가지 이상 다른 결과가 나오면 정상입니다!</p>
+</blockquote>
+<p><strong>이 코드가 하는 일을 한 줄씩 살펴볼게요:</strong></p>
 <ul>
-<li>28°C 이상: 빨간 LED</li>
-<li>25~28°C: 노란 LED  </li>
-<li>25°C 미만: 초록 LED</li>
+<li><code>let choices = ["가위", "바위", "보"];</code> → 선택지 3개를 배열에 담습니다</li>
+<li><code>Math.random() * 3</code> → 0 이상 3 미만의 소수를 만듭니다</li>
+<li><code>Math.floor(...)</code> → 소수점을 버려서 0, 1, 2 중 하나의 정수를 얻습니다</li>
+<li><code>choices[randomIndex]</code> → 배열에서 해당 번째 값을 꺼냅니다</li>
+<li><code>return</code> → 함수를 호출한 곳으로 결과를 돌려줍니다</li>
 </ul>
-<h3 id="3-oled">도전 3: OLED에 상태 표시 ⭐<a class="headerlink" href="#3-oled" title="Permanent link">&para;</a></h3>
-<p>현재 온도와 알람 상태를 OLED 화면에 표시해보세요!</p>
-<hr />
-<h2 id="_9">🛠️ 문제 해결 가이드<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<p>문제가 생겼을 때 이 순서로 확인하세요:</p>
 <div class="mermaid">flowchart TD
-    A[문제 발생!] --&gt; B{에러 메시지&lt;br/&gt;있나요?}
-    B --&gt;|있음| C[메시지 읽기]
-    B --&gt;|없음| D[print로 확인]
-
-    C --&gt; E[어느 줄인지 확인]
-    E --&gt; F[그 줄 주변 점검]
-
-    D --&gt; G[의심 구간에&lt;br/&gt;print 추가]
-    G --&gt; H[값 확인]
-
-    F --&gt; I[수정 후 테스트]
-    H --&gt; I
-
-    style A fill:#ffcdd2,stroke:#c62828
-    style I fill:#c8e6c9,stroke:#2e7d32</div>
-<p><strong>💡 디버깅 꿀팁</strong>
-- <code>print()</code>를 자주 써서 값을 확인하세요
-- 문제가 생기면 주석(<code>#</code>)으로 코드를 잠시 비활성화해보세요
-- 작동하던 코드로 돌아가서 천천히 다시 시도하세요</p>
+    A["Math.random()"] --&gt;|"예: 0.742"| B["× 3"]
+    B --&gt;|"예: 2.226"| C["Math.floor()"]
+    C --&gt;|"예: 2"| D["choices 배열에서 2번 인덱스"]
+    D --&gt;|"'보'"| E["return '보'"]</div>
 <hr />
-<h2 id="_10">🔗 다음 장으로<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<p>축하해요! 🎉 설계서를 바탕으로 실제 작동하는 기기를 만들었어요!</p>
-<p><strong>이번 장에서 배운 것</strong>:
-- 단계별 개발로 안전하게 만들기
-- 부품 개별 테스트의 중요성
-- 에러 메시지 읽고 해결하기
-- 코드 통합 시 주의점</p>
-<p><strong>다음 장 예고</strong>: 
-완성된 프로젝트를 <strong>테스트하고 발표</strong>하는 시간이에요! 내 작품을 멋지게 소개하는 방법, 친구들 작품에서 배우는 법을 익혀봅시다. 최종 점검 후 자랑스럽게 발표해봐요! 🏆</p>
+<h3 id="step-2">Step 2: 승패 판정 함수<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 사용자와 컴퓨터의 선택을 받아서 "승리", "패배", "무승부"를 돌려주는 함수를 만듭니다.</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// === Step 2: 승패 판정 함수 ===</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kd">function</span><span class="w"> </span><span class="nx">judge</span><span class="p">(</span><span class="nx">userChoice</span><span class="p">,</span><span class="w"> </span><span class="nx">computerChoice</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">userChoice</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">computerChoice</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;무승부&quot;</span><span class="p">;</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="p">(</span><span class="nx">userChoice</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;가위&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">computerChoice</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;보&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="p">(</span><span class="nx">userChoice</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;바위&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">computerChoice</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;가위&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span><span class="p">(</span><span class="nx">userChoice</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;보&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">computerChoice</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;바위&quot;</span><span class="p">)</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;승리&quot;</span><span class="p">;</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;패배&quot;</span><span class="p">;</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="p">}</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="c1">// 테스트: 다양한 경우를 직접 넣어서 확인!</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">judge</span><span class="p">(</span><span class="s2">&quot;가위&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;보&quot;</span><span class="p">));</span><span class="w">    </span><span class="c1">// &quot;승리&quot;가 나와야 함</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">judge</span><span class="p">(</span><span class="s2">&quot;가위&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;바위&quot;</span><span class="p">));</span><span class="w">  </span><span class="c1">// &quot;패배&quot;가 나와야 함</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">judge</span><span class="p">(</span><span class="s2">&quot;가위&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;가위&quot;</span><span class="p">));</span><span class="w">  </span><span class="c1">// &quot;무승부&quot;가 나와야 함</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">judge</span><span class="p">(</span><span class="s2">&quot;바위&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;가위&quot;</span><span class="p">));</span><span class="w">  </span><span class="c1">// &quot;승리&quot;가 나와야 함</span>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">judge</span><span class="p">(</span><span class="s2">&quot;보&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;바위&quot;</span><span class="p">));</span><span class="w">    </span><span class="c1">// &quot;승리&quot;가 나와야 함</span>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">judge</span><span class="p">(</span><span class="s2">&quot;보&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;가위&quot;</span><span class="p">));</span><span class="w">    </span><span class="c1">// &quot;패배&quot;가 나와야 함</span>
+</span></code></pre></div>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: 위 6가지 테스트 결과가 주석과 일치하면 성공! 특히 <strong>모든 승리 조건 3개</strong>가 다 "승리"로 나오는지 꼭 확인하세요.</p>
+</blockquote>
+<p><strong>왜 이렇게 테스트를 많이 하나요?</strong></p>
+<p>승패 판정은 게임의 핵심입니다. 여기서 실수가 있으면 게임 전체가 엉뚱하게 동작해요. "가위가 바위를 이긴다"고 잘못 코딩하면... 그건 가위바위보가 아니라 이상한 게임이 되겠죠? 😅 그래서 <strong>가능한 모든 경우를 테스트</strong>하는 거예요. 이것을 개발자들은 "테스트 케이스"라고 부릅니다.</p>
+<blockquote>
+<p>💡 <strong>잠깐!</strong> Step 1과 Step 2까지 완성했다면 이미 절반을 넘었어요! 핵심 로직 두 개를 만든 거거든요. 나머지는 이 두 함수를 <strong>연결하고 꾸미는</strong> 작업입니다. 👏</p>
+</blockquote>
+<hr />
+<h3 id="step-3">Step 3: 한 판 플레이 함수<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: Step 1과 Step 2를 합쳐서, 한 판의 게임을 진행하는 함수를 만듭니다.</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// === Step 3: 한 판 플레이 함수 ===</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1">// (Step 1, 2의 함수가 위에 있다고 가정)</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kd">function</span><span class="w"> </span><span class="nx">playRound</span><span class="p">(</span><span class="nx">userChoice</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="c1">// 1. 컴퓨터 선택</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">computerChoice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getComputerChoice</span><span class="p">();</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="c1">// 2. 승패 판정</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">judge</span><span class="p">(</span><span class="nx">userChoice</span><span class="p">,</span><span class="w"> </span><span class="nx">computerChoice</span><span class="p">);</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="c1">// 3. 결과 출력</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;--------------------&quot;</span><span class="p">);</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;🧑 나: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">userChoice</span><span class="p">);</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;🤖 컴퓨터: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">computerChoice</span><span class="p">);</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;승리&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;🎉 결과: 승리!&quot;</span><span class="p">);</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;패배&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;😢 결과: 패배...&quot;</span><span class="p">);</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;🤝 결과: 무승부!&quot;</span><span class="p">);</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;--------------------&quot;</span><span class="p">);</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">    </span><span class="c1">// 4. 결과 값을 돌려줌 (나중에 전적 기록에 사용)</span>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">result</span><span class="p">;</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="p">}</span>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="c1">// 테스트: 직접 선택을 넣어서 한 판 해보기!</span>
+</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="nx">playRound</span><span class="p">(</span><span class="s2">&quot;가위&quot;</span><span class="p">);</span>
+</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="nx">playRound</span><span class="p">(</span><span class="s2">&quot;바위&quot;</span><span class="p">);</span>
+</span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="nx">playRound</span><span class="p">(</span><span class="s2">&quot;보&quot;</span><span class="p">);</span>
+</span></code></pre></div>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: 실행하면 아래와 비슷한 출력이 나와야 해요 (컴퓨터 선택은 랜덤이라 결과는 다를 수 있어요):
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>--------------------
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>🧑 나: 가위
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>🤖 컴퓨터: 보
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>🎉 결과: 승리!
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>--------------------
+</span></code></pre></div></p>
+</blockquote>
+<p><strong>여기서 포인트!</strong></p>
+<p><code>playRound</code> 함수는 <code>getComputerChoice</code>와 <code>judge</code> 함수를 <strong>내부에서 호출</strong>합니다. 함수가 함수를 부르는 거예요. 마치 요리사가 재료 준비 담당자에게 "양파 좀 줘!"라고 말하고, 간 보기 담당자에게 "이거 간 맞아?"라고 물어보는 것과 같아요.</p>
+<div class="mermaid">flowchart TD
+    A["playRound('가위')"] --&gt; B["getComputerChoice() 호출"]
+    B --&gt;|"'바위'"| C["judge('가위', '바위') 호출"]
+    C --&gt;|"'패배'"| D["결과 출력"]
+    D --&gt; E["return '패배'"]</div>
+<hr />
+<h3 id="step-4">Step 4: 전적 기록 기능 추가<a class="headerlink" href="#step-4" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 여러 판을 기록할 수 있도록 전적 변수를 만들고, 결과에 따라 누적합니다.</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">// === Step 4: 전적 기록 추가 ===</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1">// (Step 1, 2, 3의 함수가 위에 있다고 가정)</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1">// 전적 변수 선언</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="kd">let</span><span class="w"> </span><span class="nx">wins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="kd">let</span><span class="w"> </span><span class="nx">losses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="kd">let</span><span class="w"> </span><span class="nx">draws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1">// 전적을 업데이트하는 함수</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="kd">function</span><span class="w"> </span><span class="nx">updateRecord</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;승리&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">        </span><span class="nx">wins</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;패배&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">        </span><span class="nx">losses</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">        </span><span class="nx">draws</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="p">}</span>
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>
+</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="c1">// 전적을 보여주는 함수</span>
+</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="kd">function</span><span class="w"> </span><span class="nx">showRecord</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;====================&quot;</span><span class="p">);</span>
+</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;📊 현재 전적&quot;</span><span class="p">);</span>
+</span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;  승리: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">wins</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;회&quot;</span><span class="p">);</span>
+</span><span id="__span-8-25"><a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;  패배: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">losses</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;회&quot;</span><span class="p">);</span>
+</span><span id="__span-8-26"><a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;  무승부: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">draws</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;회&quot;</span><span class="p">);</span>
+</span><span id="__span-8-27"><a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;  총 &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nx">wins</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">losses</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">draws</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;판 진행&quot;</span><span class="p">);</span>
+</span><span id="__span-8-28"><a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;====================&quot;</span><span class="p">);</span>
+</span><span id="__span-8-29"><a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a><span class="p">}</span>
+</span><span id="__span-8-30"><a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a>
+</span><span id="__span-8-31"><a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a><span class="c1">// 테스트: 수동으로 3판 진행해 보기</span>
+</span><span id="__span-8-32"><a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a><span class="kd">let</span><span class="w"> </span><span class="nx">result1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">playRound</span><span class="p">(</span><span class="s2">&quot;가위&quot;</span><span class="p">);</span>
+</span><span id="__span-8-33"><a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a><span class="nx">updateRecord</span><span class="p">(</span><span class="nx">result1</span><span class="p">);</span>
+</span><span id="__span-8-34"><a id="__codelineno-8-34" name="__codelineno-8-34" href="#__codelineno-8-34"></a>
+</span><span id="__span-8-35"><a id="__codelineno-8-35" name="__codelineno-8-35" href="#__codelineno-8-35"></a><span class="kd">let</span><span class="w"> </span><span class="nx">result2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">playRound</span><span class="p">(</span><span class="s2">&quot;바위&quot;</span><span class="p">);</span>
+</span><span id="__span-8-36"><a id="__codelineno-8-36" name="__codelineno-8-36" href="#__codelineno-8-36"></a><span class="nx">updateRecord</span><span class="p">(</span><span class="nx">result2</span><span class="p">);</span>
+</span><span id="__span-8-37"><a id="__codelineno-8-37" name="__codelineno-8-37" href="#__codelineno-8-37"></a>
+</span><span id="__span-8-38"><a id="__codelineno-8-38" name="__codelineno-8-38" href="#__codelineno-8-38"></a><span class="kd">let</span><span class="w"> </span><span class="nx">result3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">playRound</span><span class="p">(</span><span class="s2">&quot;보&quot;</span><span class="p">);</span>
+</span><span id="__span-8-39"><a id="__codelineno-8-39" name="__codelineno-8-39" href="#__codelineno-8-39"></a><span class="nx">updateRecord</span><span class="p">(</span><span class="nx">result3</span><span class="p">);</span>
+</span><span id="__span-8-40"><a id="__codelineno-8-40" name="__codelineno-8-40" href="#__codelineno-8-40"></a>
+</span><span id="__span-8-41"><a id="__codelineno-8-41" name="__codelineno-8-41" href="#__codelineno-8-41"></a><span class="c1">// 전적 확인!</span>
+</span><span id="__span-8-42"><a id="__codelineno-8-42" name="__codelineno-8-42" href="#__codelineno-8-42"></a><span class="nx">showRecord</span><span class="p">();</span>
+</span></code></pre></div>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: <code>showRecord()</code> 실행 결과에서 <strong>승리 + 패배 + 무승부 = 3</strong>이면 정상! 전적이 제대로 누적되고 있는 거예요.</p>
+</blockquote>
+<p><strong><code>++</code> 연산자 복습:</strong></p>
+<p><code>wins++</code>는 <code>wins = wins + 1</code>과 똑같은 뜻입니다. "현재 값에서 1을 더해서 다시 저장해라"는 의미예요. 게임에서 점수를 1점씩 올리는 것과 같습니다.</p>
+<blockquote>
+<p>💡 여기까지 잘 따라오셨나요? 벌써 게임의 <strong>핵심 기능이 다 완성</strong>되었어요! 남은 건 사용자 입력을 받는 것과 반복 플레이 기능뿐입니다. 거의 다 왔어요! 💪</p>
+</blockquote>
+<hr />
+<h3 id="step-5">Step 5: 사용자 입력과 반복 플레이<a class="headerlink" href="#step-5" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: <code>prompt()</code>로 사용자 입력을 받고, "다시 하시겠습니까?" 기능으로 반복 플레이를 구현합니다.</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">// === Step 5: 사용자 입력 + 반복 플레이 ===</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="kd">function</span><span class="w"> </span><span class="nx">getUserChoice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;가위, 바위, 보 중 하나를 입력하세요:&quot;</span><span class="p">);</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="c1">// 입력값 확인 (잘못된 입력 방지)</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">input</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;가위&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">input</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;바위&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">input</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;보&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">        </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;⚠️ &#39;가위&#39;, &#39;바위&#39;, &#39;보&#39; 중 하나를 정확히 입력해주세요!&quot;</span><span class="p">);</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">  </span><span class="c1">// 잘못된 입력이면 null 반환</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">input</span><span class="p">;</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="p">}</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="c1">// 게임 메인 함수</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="kd">function</span><span class="w"> </span><span class="nx">startGame</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">    </span><span class="c1">// 전적 초기화</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">    </span><span class="nx">wins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">    </span><span class="nx">losses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">    </span><span class="nx">draws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">playing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">playing</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="w">        </span><span class="c1">// 1. 사용자 입력 받기</span>
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">userChoice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getUserChoice</span><span class="p">();</span>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a>
+</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="w">        </span><span class="c1">// 잘못된 입력이면 이번 판 건너뛰기</span>
+</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">userChoice</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="w">            </span><span class="k">continue</span><span class="p">;</span><span class="w">  </span><span class="c1">// while문의 처음으로 돌아감</span>
+</span><span id="__span-9-31"><a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-9-32"><a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a>
+</span><span id="__span-9-33"><a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a><span class="w">        </span><span class="c1">// 2. 한 판 진행</span>
+</span><span id="__span-9-34"><a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">playRound</span><span class="p">(</span><span class="nx">userChoice</span><span class="p">);</span>
+</span><span id="__span-9-35"><a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a>
+</span><span id="__span-9-36"><a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a><span class="w">        </span><span class="c1">// 3. 전적 업데이트</span>
+</span><span id="__span-9-37"><a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a><span class="w">        </span><span class="nx">updateRecord</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+</span><span id="__span-9-38"><a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a>
+</span><span id="__span-9-39"><a id="__codelineno-9-39" name="__codelineno-9-39" href="#__codelineno-9-39"></a><span class="w">        </span><span class="c1">// 4. 계속할지 물어보기</span>
+</span><span id="__span-9-40"><a id="__codelineno-9-40" name="__codelineno-9-40" href="#__codelineno-9-40"></a><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">answer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;다시 하시겠습니까? (예/아니오)&quot;</span><span class="p">);</span>
+</span><span id="__span-9-41"><a id="__codelineno-9-41" name="__codelineno-9-41" href="#__codelineno-9-41"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">answer</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;예&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-42"><a id="__codelineno-9-42" name="__codelineno-9-42" href="#__codelineno-9-42"></a><span class="w">            </span><span class="nx">playing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">  </span><span class="c1">// 반복 종료</span>
+</span><span id="__span-9-43"><a id="__codelineno-9-43" name="__codelineno-9-43" href="#__codelineno-9-43"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-9-44"><a id="__codelineno-9-44" name="__codelineno-9-44" href="#__codelineno-9-44"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-9-45"><a id="__codelineno-9-45" name="__codelineno-9-45" href="#__codelineno-9-45"></a>
+</span><span id="__span-9-46"><a id="__codelineno-9-46" name="__codelineno-9-46" href="#__codelineno-9-46"></a><span class="w">    </span><span class="c1">// 5. 최종 전적 출력</span>
+</span><span id="__span-9-47"><a id="__codelineno-9-47" name="__codelineno-9-47" href="#__codelineno-9-47"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;\n🎮 게임 종료!&quot;</span><span class="p">);</span>
+</span><span id="__span-9-48"><a id="__codelineno-9-48" name="__codelineno-9-48" href="#__codelineno-9-48"></a><span class="w">    </span><span class="nx">showRecord</span><span class="p">();</span>
+</span><span id="__span-9-49"><a id="__codelineno-9-49" name="__codelineno-9-49" href="#__codelineno-9-49"></a><span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;게임이 종료되었습니다! 콘솔에서 전적을 확인하세요.&quot;</span><span class="p">);</span>
+</span><span id="__span-9-50"><a id="__codelineno-9-50" name="__codelineno-9-50" href="#__codelineno-9-50"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>이 코드의 핵심 흐름:</strong></p>
+<div class="mermaid">flowchart TD
+    A["startGame() 시작"] --&gt; B["전적 초기화"]
+    B --&gt; C["while 반복문 시작"]
+    C --&gt; D["getUserChoice()로 입력 받기"]
+    D --&gt; E{"입력이 올바른가?"}
+    E --&gt;|"아니오 (null)"| C
+    E --&gt;|"예"| F["playRound()로 한 판 진행"]
+    F --&gt; G["updateRecord()로 전적 업데이트"]
+    G --&gt; H{"다시 하시겠습니까?"}
+    H --&gt;|"예"| C
+    H --&gt;|"아니오"| I["showRecord()로 최종 전적 출력"]
+    I --&gt; J["게임 종료 🎮"]</div>
+<p><strong><code>continue</code>란?</strong></p>
+<p><code>continue</code>는 반복문 안에서 "이번 회차는 여기서 그만하고, 다시 처음부터!"라는 뜻입니다. 잘못된 입력이 들어왔을 때, 그 입력으로 게임을 진행하지 않고 다시 입력을 받기 위해 사용해요.</p>
+<p><strong><code>null</code>이란?</strong></p>
+<p><code>null</code>은 "값이 없음"을 의미하는 특별한 값입니다. 여기서는 "올바른 입력을 받지 못했다"는 신호로 사용하고 있어요.</p>
+<blockquote>
+<p>⚠️ <strong>주의</strong>: 이 코드는 아직 실행하지 마세요! Step 6에서 전체 코드를 합친 뒤에 한꺼번에 실행합니다.</p>
+</blockquote>
+<hr />
+<h3 id="step-6">Step 6: 전체 조립 및 최종 실행<a class="headerlink" href="#step-6" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 지금까지 만든 모든 함수를 하나로 합쳐서 완전한 게임을 만듭니다.</p>
+<p>이것은 다음 "📝 전체 코드" 섹션에서 한눈에 보여드리겠습니다. 그 전에, 우리가 만든 함수들의 <strong>조립 구조</strong>를 확인해 볼게요:</p>
+<div class="mermaid">flowchart TD
+    subgraph "🎮 startGame - 총사령관"
+        A["게임 시작"]
+        B["while 반복문"]
+        C["게임 종료"]
+    end
+
+    subgraph "⚙️ 부품 함수들"
+        D["getUserChoice\n사용자 입력"]
+        E["getComputerChoice\n컴퓨터 선택"]
+        F["judge\n승패 판정"]
+        G["playRound\n한 판 진행"]
+        H["updateRecord\n전적 업데이트"]
+        I["showRecord\n전적 출력"]
+    end
+
+    B --&gt; D
+    B --&gt; G
+    G --&gt; E
+    G --&gt; F
+    B --&gt; H
+    C --&gt; I</div>
+<p><code>startGame</code>이 <strong>총사령관</strong>처럼 다른 함수들을 적재적소에 호출하고, 각 함수는 자기 역할만 충실히 수행합니다. 이것이 바로 <strong>함수로 역할을 나누는</strong> 프로그래밍의 멋진 점이에요!</p>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: 아래의 전체 코드를 복사해서 실행했을 때, <code>startGame()</code>을 호출하면 게임이 시작되고, 가위/바위/보를 입력하면 결과가 나오고, "아니오"를 입력하면 전적이 출력되면 <strong>대성공</strong>입니다! 🎉</p>
+</blockquote>
+<hr />
+<h2 id="_7">📝 전체 코드<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>아래 코드를 <strong>통째로 복사</strong>해서 브라우저 콘솔이나 코딩 환경에 붙여넣고 실행하세요!</p>
+<p>```javascript
+// ==========================================
+// 🎮 가위바위보 게임 - 완성 코드
+// ==========================================</p>
+<p>// --- 전적 변수 ---
+let wins = 0;
+let losses = 0;
+let draws = 0;</p>
+<p>// --- 함수 1: 컴퓨터 선택 ---
+function getComputerChoice() {
+    let choices = ["가위", "바위", "보"];
+    let randomIndex = Math.floor(Math.random</p>
 
 
 
@@ -2384,7 +2255,7 @@ LED가 깜빡이지 않는다면?
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

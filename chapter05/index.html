@@ -6,11 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="프로그래밍 경험이 없는 고등학생을 위한 라즈베리파이 피코 입문서로, 6주간 직접 만들고 확인하며 배우는 실습 중심 교육 자료입니다.">
+        <meta name="description" content="컴퓨터를 몰라도 괜찮아, 2주 뒤엔 내 손으로 게임을 만든다! 프로그래밍 경험이 전혀 없는 고등학생도 혼자서 완주할 수 있는 C언어 입문 자기주도 학습서입니다.">
       
       
-        <meta name="author" content="Created with Data-AI-Book Generator">
+        <meta name="author" content="Created with EduFlow">
       
+      
+        <link rel="canonical" href="https://baesy5.github.io/c_language_01/chapter05/">
       
       
         <link rel="prev" href="../chapter04/">
@@ -23,15 +25,18 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
-        <title>깜빡깜빡 - LED 점멸 프로그램 - 고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트</title>
+        <title>컴퓨터에게 계산 시키기 — 연산자 활용 - 처음 만드는 나의 첫 C언어 게임</title>
       
     
     
       <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -45,8 +50,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"JetBrains Mono"}</style>
       
     
     
@@ -61,7 +66,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -70,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#-led" class="md-skip">
+        <a href="#chapter-05" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -84,7 +96,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="상단/헤더">
-    <a href=".." title="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" class="md-header__button md-logo" aria-label="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" data-md-component="logo">
+    <a href=".." title="처음 만드는 나의 첫 C언어 게임" class="md-header__button md-logo" aria-label="처음 만드는 나의 첫 C언어 게임" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -98,18 +110,44 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트
+            처음 만드는 나의 첫 C언어 게임
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              깜빡깜빡 - LED 점멸 프로그램
+              컴퓨터에게 계산 시키기 — 연산자 활용
             
           </span>
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="다크 모드로 전환"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로 전환" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="라이트 모드로 전환"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로 전환" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -196,37 +234,19 @@
   
   
   
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../chapter01/" class="md-tabs__link">
-          
-  
-  
-  Part 1 - 피코와 첫 만남
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
     
   
   
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../chapter04/" class="md-tabs__link">
+        <a href="../chapter01/" class="md-tabs__link">
           
   
   
-  Part 2 - 빛으로 말하기 - LED 제어
+    
+  
+  Part 1 - [1권] 프로그래밍 세계에 첫 발 내딛기
 
         </a>
       </li>
@@ -242,11 +262,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../chapter07/" class="md-tabs__link">
+        <a href="../chapter06/" class="md-tabs__link">
           
   
   
-  Part 3 - 입력을 받아라 - 버튼과 상호작용
+    
+  
+  Part 2 - [1권] 프로그램에 판단력 불어넣기
 
         </a>
       </li>
@@ -262,11 +284,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../chapter10/" class="md-tabs__link">
+        <a href="../chapter09/" class="md-tabs__link">
           
   
   
-  Part 4 - 소리로 표현하기 - 부저 활용
+    
+  
+  Part 3 - [1권] 코드를 깔끔하게 정리하는 힘 — 함수
 
         </a>
       </li>
@@ -286,7 +310,9 @@
           
   
   
-  Part 5 - 세상을 감지하라 - 센서 활용
+    
+  
+  Part 4 - [2권] 게임을 더 풍성하게 — 배열과 실전 도구
 
         </a>
       </li>
@@ -306,7 +332,9 @@
           
   
   
-  Part 6 - 나만의 스마트 기기 - 통합 프로젝트
+    
+  
+  Part 5 - [2권] 최종 프로젝트 — 내 손으로 게임 완성하기
 
         </a>
       </li>
@@ -336,13 +364,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" class="md-nav__button md-logo" aria-label="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" data-md-component="logo">
+    <a href=".." title="처음 만드는 나의 첫 C언어 게임" class="md-nav__button md-logo" aria-label="처음 만드는 나의 첫 C언어 게임" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트
+    처음 만드는 나의 첫 C언어 게임
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -378,33 +406,50 @@
       
   
   
+    
   
   
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
-    
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 1 - 피코와 첫 만남
+    Part 1 - [1권] 프로그래밍 세계에 첫 발 내딛기
   
 
     
@@ -415,12 +460,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 1 - 피코와 첫 만남
+    Part 1 - [1권] 프로그래밍 세계에 첫 발 내딛기
   
 
           </label>
@@ -440,7 +485,7 @@
   <span class="md-ellipsis">
     
   
-    피코야, 반가워! - 하드웨어 살펴보기
+    왜 C언어를 배워야 할까? — 이 책의 사용법
   
 
     
@@ -468,7 +513,7 @@
   <span class="md-ellipsis">
     
   
-    개발 환경 설정 - Thonny 설치하기
+    내 컴퓨터에 작업실 꾸미기 — 개발 환경 설치
   
 
     
@@ -496,7 +541,7 @@
   <span class="md-ellipsis">
     
   
-    Hello, Pico! - 첫 번째 프로그램 실행
+    처음 만나는 C언어 — Hello, World!
   
 
     
@@ -509,70 +554,6 @@
   
 
               
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-      
-        
-        
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Part 2 - 빛으로 말하기 - LED 제어
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Part 2 - 빛으로 말하기 - LED 제어
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -588,7 +569,7 @@
   <span class="md-ellipsis">
     
   
-    브레드보드와 친해지기 - LED 회로 구성
+    데이터를 담는 상자 — 변수와 자료형
   
 
     
@@ -625,7 +606,7 @@
   <span class="md-ellipsis">
     
   
-    깜빡깜빡 - LED 점멸 프로그램
+    컴퓨터에게 계산 시키기 — 연산자 활용
   
 
     
@@ -643,7 +624,7 @@
   <span class="md-ellipsis">
     
   
-    깜빡깜빡 - LED 점멸 프로그램
+    컴퓨터에게 계산 시키기 — 연산자 활용
   
 
     
@@ -672,7 +653,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 이 장에서 배우는 것
+        🎯 이 장의 학습 목표
       
     </span>
   </a>
@@ -683,7 +664,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 왜 이걸 배우나요?
+        📚 미리 알아야 할 것
       
     </span>
   </a>
@@ -692,6 +673,17 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         📚 핵심 개념
@@ -703,10 +695,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-gpio" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 1: GPIO 출력 모드
+        개념 1: 산술 연산자 — 다섯 가지 계산 도구 🧮
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="개념 1: 산술 연산자 — 다섯 가지 계산 도구 🧮">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 비유로 시작
       
     </span>
   </a>
@@ -714,10 +718,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-while" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 2: 반복문 (while)
+        2. 정확한 정의
       
     </span>
   </a>
@@ -725,21 +729,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-sleep" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 3: sleep() 함수
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#led" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        💡 개념 연결: LED 점멸의 원리
+        3. 예시로 확인
       
     </span>
   </a>
@@ -750,24 +743,24 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔨 따라하기
+        개념 2: 정수 나눗셈의 함정 — 소수점이 사라진다! 🕵️
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🔨 따라하기">
+    <nav class="md-nav" aria-label="개념 2: 정수 나눗셈의 함정 — 소수점이 사라진다! 🕵️">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1-led" class="md-nav__link">
+  <a href="#1_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: LED 한 번 깜빡이기
+        1. 비유로 시작
       
     </span>
   </a>
@@ -775,10 +768,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2" class="md-nav__link">
+  <a href="#2_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: 무한 반복으로 계속 깜빡이기
+        2. 정확한 정의
       
     </span>
   </a>
@@ -786,13 +779,118 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-3" class="md-nav__link">
+  <a href="#3_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: 깜빡이는 속도 조절하기
+        3. 예시로 확인
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 나머지 연산자(%) — 숨은 영웅 🦸
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="개념 3: 나머지 연산자(%) — 숨은 영웅 🦸">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 비유로 시작
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 정확한 정의
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 예시로 확인
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 연산 우선순위와 괄호 — 계산 순서의 비밀 📐
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="개념 4: 연산 우선순위와 괄호 — 계산 순서의 비밀 📐">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 비유로 시작
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 정확한 정의
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 예시로 확인
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -805,6 +903,89 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
+        🔨 따라하기: 나만의 계산기 프로그램 만들기 🖩
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기: 나만의 계산기 프로그램 만들기 🖩">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 프로젝트 준비
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-scanner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Scanner로 두 숫자 입력받기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 다섯 가지 연산 수행하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: 결과 출력하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: 소수점 나눗셈 결과도 추가하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: 보너스 — 시간 변환 기능 추가 ⏰
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         📝 전체 코드
       
     </span>
@@ -813,7 +994,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         ⚠️ 자주 하는 실수
@@ -825,10 +1006,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#1_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        실수 1: 들여쓰기 빠뜨리기
+        실수 1: 정수 나눗셈 결과가 이상해요! 😱
       
     </span>
   </a>
@@ -836,21 +1017,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-sleep" class="md-nav__link">
+  <a href="#2-0" class="md-nav__link">
     <span class="md-ellipsis">
       
-        실수 2: 끄고 나서 sleep 안 하기
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 3: 프로그램 멈추는 방법 모르기
+        실수 2: 0으로 나누기 — 프로그램이 죽어요! 💀
       
     </span>
   </a>
@@ -859,78 +1029,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ✅ 스스로 점검하기
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🚀 더 해보기
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🚀 더 해보기">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-sos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 1: SOS 신호 만들기 🆘
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-led" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 2: 심장 박동 LED 💓
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-led" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 3: 점점 빨라지는 LED ⭐
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔗 다음 장으로
-      
-    </span>
-  </a>
   
 </li>
       
@@ -938,34 +1036,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../chapter06/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    무지개 신호등 - 다중 LED 패턴
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -986,6 +1056,14 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -998,17 +1076,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 3 - 입력을 받아라 - 버튼과 상호작용
+    Part 2 - [1권] 프로그램에 판단력 불어넣기
   
 
     
@@ -1019,16 +1097,44 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 3 - 입력을 받아라 - 버튼과 상호작용
+    Part 2 - [1권] 프로그램에 판단력 불어넣기
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    갈림길에서 선택하기 — if 조건문
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1044,7 +1150,7 @@
   <span class="md-ellipsis">
     
   
-    버튼 연결하기 - 디지털 입력의 시작
+    같은 일을 반복하기 — for와 while 반복문
   
 
     
@@ -1072,35 +1178,7 @@
   <span class="md-ellipsis">
     
   
-    누르면 반응해! - 조건문 활용
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../chapter09/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    반응속도 게임 만들기
+    여기까지 잘 왔어! — 중간 점검 미니 게임 만들기
   
 
     
@@ -1129,6 +1207,16 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -1141,17 +1229,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 4 - 소리로 표현하기 - 부저 활용
+    Part 3 - [1권] 코드를 깔끔하게 정리하는 힘 — 함수
   
 
     
@@ -1162,16 +1250,44 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 4 - 소리로 표현하기 - 부저 활용
+    Part 3 - [1권] 코드를 깔끔하게 정리하는 힘 — 함수
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    왜 코드를 나눠야 할까? — 함수가 필요한 이유
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1187,7 +1303,7 @@
   <span class="md-ellipsis">
     
   
-    삐- 소리의 원리 - 부저 연결과 PWM
+    나만의 함수 만들기 — 함수 정의와 호출
   
 
     
@@ -1215,7 +1331,7 @@
   <span class="md-ellipsis">
     
   
-    나만의 멜로디 - 학교종 연주하기
+    함수에 값을 주고받기 — 매개변수와 반환값 깊이 이해하기
   
 
     
@@ -1243,7 +1359,7 @@
   <span class="md-ellipsis">
     
   
-    피아노 만들기 - 버튼으로 연주
+    함수로 코드를 리모델링하자 — 업다운 게임 리팩토링
   
 
     
@@ -1272,6 +1388,14 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -1284,17 +1408,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 5 - 세상을 감지하라 - 센서 활용
+    Part 4 - [2권] 게임을 더 풍성하게 — 배열과 실전 도구
   
 
     
@@ -1305,12 +1429,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 5 - 세상을 감지하라 - 센서 활용
+    Part 4 - [2권] 게임을 더 풍성하게 — 배열과 실전 도구
   
 
           </label>
@@ -1330,7 +1454,7 @@
   <span class="md-ellipsis">
     
   
-    밝기 감지 - 조도 센서
+    데이터를 줄 세우기 — 배열 기초
   
 
     
@@ -1358,7 +1482,7 @@
   <span class="md-ellipsis">
     
   
-    자동 조명 만들기
+    여러 선택지 깔끔하게 처리하기 — switch문과 게임 메뉴
   
 
     
@@ -1386,7 +1510,7 @@
   <span class="md-ellipsis">
     
   
-    온도계 만들기 - 온도 센서 활용
+    게임에 우연을 더하자 — 난수와 유용한 함수들
   
 
     
@@ -1415,6 +1539,18 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -1427,17 +1563,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 6 - 나만의 스마트 기기 - 통합 프로젝트
+    Part 5 - [2권] 최종 프로젝트 — 내 손으로 게임 완성하기
   
 
     
@@ -1448,12 +1584,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 6 - 나만의 스마트 기기 - 통합 프로젝트
+    Part 5 - [2권] 최종 프로젝트 — 내 손으로 게임 완성하기
   
 
           </label>
@@ -1473,7 +1609,7 @@
   <span class="md-ellipsis">
     
   
-    프로젝트 기획 - 아이디어 구체화
+    게임을 설계하자 — 기획부터 함수 구조 짜기
   
 
     
@@ -1501,7 +1637,7 @@
   <span class="md-ellipsis">
     
   
-    만들기 - 회로 구성과 코딩
+    직접 만드는 가위바위보 게임 — 코딩 실전
   
 
     
@@ -1529,7 +1665,63 @@
   <span class="md-ellipsis">
     
   
-    발표와 공유 - 프로젝트 시연
+    보너스 도전! OX 퀴즈 게임 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    내 코드 다듬기 — 자주 틀리는 오류 모음과 디버깅 팁
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    축하해, 게임 개발자! — 다음 단계로 나아가기
   
 
     
@@ -1580,7 +1772,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 이 장에서 배우는 것
+        🎯 이 장의 학습 목표
       
     </span>
   </a>
@@ -1591,7 +1783,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 왜 이걸 배우나요?
+        📚 미리 알아야 할 것
       
     </span>
   </a>
@@ -1600,6 +1792,17 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         📚 핵심 개념
@@ -1611,10 +1814,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-gpio" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 1: GPIO 출력 모드
+        개념 1: 산술 연산자 — 다섯 가지 계산 도구 🧮
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="개념 1: 산술 연산자 — 다섯 가지 계산 도구 🧮">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 비유로 시작
       
     </span>
   </a>
@@ -1622,10 +1837,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-while" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 2: 반복문 (while)
+        2. 정확한 정의
       
     </span>
   </a>
@@ -1633,21 +1848,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-sleep" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 3: sleep() 함수
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#led" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        💡 개념 연결: LED 점멸의 원리
+        3. 예시로 확인
       
     </span>
   </a>
@@ -1658,24 +1862,24 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔨 따라하기
+        개념 2: 정수 나눗셈의 함정 — 소수점이 사라진다! 🕵️
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🔨 따라하기">
+    <nav class="md-nav" aria-label="개념 2: 정수 나눗셈의 함정 — 소수점이 사라진다! 🕵️">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1-led" class="md-nav__link">
+  <a href="#1_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: LED 한 번 깜빡이기
+        1. 비유로 시작
       
     </span>
   </a>
@@ -1683,10 +1887,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2" class="md-nav__link">
+  <a href="#2_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: 무한 반복으로 계속 깜빡이기
+        2. 정확한 정의
       
     </span>
   </a>
@@ -1694,13 +1898,118 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-3" class="md-nav__link">
+  <a href="#3_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: 깜빡이는 속도 조절하기
+        3. 예시로 확인
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 나머지 연산자(%) — 숨은 영웅 🦸
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="개념 3: 나머지 연산자(%) — 숨은 영웅 🦸">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 비유로 시작
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 정확한 정의
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 예시로 확인
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 연산 우선순위와 괄호 — 계산 순서의 비밀 📐
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="개념 4: 연산 우선순위와 괄호 — 계산 순서의 비밀 📐">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 비유로 시작
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 정확한 정의
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 예시로 확인
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1713,6 +2022,89 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
+        🔨 따라하기: 나만의 계산기 프로그램 만들기 🖩
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기: 나만의 계산기 프로그램 만들기 🖩">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 프로젝트 준비
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-scanner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Scanner로 두 숫자 입력받기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 다섯 가지 연산 수행하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: 결과 출력하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: 소수점 나눗셈 결과도 추가하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: 보너스 — 시간 변환 기능 추가 ⏰
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         📝 전체 코드
       
     </span>
@@ -1721,7 +2113,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         ⚠️ 자주 하는 실수
@@ -1733,10 +2125,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#1_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        실수 1: 들여쓰기 빠뜨리기
+        실수 1: 정수 나눗셈 결과가 이상해요! 😱
       
     </span>
   </a>
@@ -1744,21 +2136,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-sleep" class="md-nav__link">
+  <a href="#2-0" class="md-nav__link">
     <span class="md-ellipsis">
       
-        실수 2: 끄고 나서 sleep 안 하기
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 3: 프로그램 멈추는 방법 모르기
+        실수 2: 0으로 나누기 — 프로그램이 죽어요! 💀
       
     </span>
   </a>
@@ -1767,78 +2148,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ✅ 스스로 점검하기
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🚀 더 해보기
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🚀 더 해보기">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-sos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 1: SOS 신호 만들기 🆘
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-led" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 2: 심장 박동 LED 💓
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-led" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 3: 점점 빨라지는 LED ⭐
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔗 다음 장으로
-      
-    </span>
-  </a>
   
 </li>
       
@@ -1859,290 +2168,402 @@
 
 
 
-<h1 id="-led">깜빡깜빡 - LED 점멸 프로그램<a class="headerlink" href="#-led" title="Permanent link">&para;</a></h1>
-<p><strong>Part 2</strong>: 빛으로 말하기 - LED 제어</p>
+<h1 id="chapter-05">Chapter 05: 컴퓨터에게 계산 시키기 — 연산자 활용<a class="headerlink" href="#chapter-05" title="Permanent link">&para;</a></h1>
 <hr />
-<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ul>
-<li>[ ] GPIO 핀의 개념과 출력 모드를 설명할 수 있다</li>
-<li>[ ] <code>while</code> 반복문으로 무한히 반복하는 코드를 작성할 수 있다</li>
-<li>[ ] <code>sleep()</code> 함수로 시간 간격을 조절할 수 있다</li>
-<li>[ ] LED를 원하는 속도로 깜빡이게 만들 수 있다</li>
+<h2 id="_1">🎯 이 장의 학습 목표<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>이 장을 마치면 다음을 할 수 있습니다:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 산술 연산자(+, -, *, /, %)를 사용하여 계산 프로그램을 만들 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 정수 나눗셈과 나머지 연산의 차이를 이해하고 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 연산 우선순위와 괄호 사용법을 이해할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 여러 변수와 연산자를 조합하여 의미 있는 결과를 출력할 수 있다</li>
 </ul>
+<p><strong>예상 학습 시간</strong>: 약 1시간 30분</p>
 <hr />
-<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>앞 장에서 LED를 켜고 껐죠? 하지만 한 번 켜고 끝나면 심심하잖아요! 🙄</p>
-<p>실제 세상의 LED를 떠올려 보세요:
-- 🚗 자동차 방향지시등: 깜빡깜빡
-- 🚨 비상구 표시등: 깜빡깜빡
-- 🎄 크리스마스 트리 조명: 반짝반짝</p>
-<p>모두 <strong>반복적으로</strong> 켜졌다 꺼졌다 하죠! 이번 장에서는 컴퓨터에게 "이걸 계속 반복해!"라고 명령하는 방법을 배웁니다. 이게 바로 <strong>반복문</strong>이에요.</p>
-<p>반복문을 익히면 LED뿐 아니라 "센서 값을 계속 읽기", "계속 대기하며 버튼 누름 확인하기" 같은 모든 피지컬 컴퓨팅의 기본이 됩니다!</p>
+<h2 id="_2">📚 미리 알아야 할 것<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>이전 장에서 우리는 <strong>변수</strong>라는 개념을 배웠어요. 기억나시나요?</p>
+<ul>
+<li><strong>변수</strong>는 데이터를 담는 이름표 붙은 상자였죠</li>
+<li><code>int</code>, <code>double</code>, <code>String</code> 같은 <strong>자료형</strong>도 배웠어요</li>
+<li><code>System.out.println()</code>으로 화면에 결과를 출력하는 것도요</li>
+<li><code>Scanner</code>를 사용해 키보드로 값을 입력받는 방법도 살짝 맛봤어요</li>
+</ul>
+<p>이번 장에서는 그 상자(변수)에 담긴 숫자들을 가지고 <strong>계산</strong>을 해볼 거예요! 😄</p>
 <hr />
-<h2 id="_3">📚 핵심 개념<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<h3 id="1-gpio">개념 1: GPIO 출력 모드<a class="headerlink" href="#1-gpio" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p><strong>비유로 시작</strong>: GPIO 핀은 마치 <strong>전기 스위치</strong>와 같아요. 스위치를 켜면(HIGH) 전기가 흐르고, 끄면(LOW) 전기가 멈추죠.</p>
-</li>
-<li>
-<p><strong>정확한 정의</strong>: GPIO(General Purpose Input/Output)는 범용 입출력 핀입니다. <strong>출력 모드</strong>로 설정하면 핀에서 전기 신호(3.3V 또는 0V)를 내보낼 수 있습니다.</p>
-</li>
-<li>
-<p><strong>예시로 확인</strong>: LED를 GP16 핀에 연결하고 출력 모드로 설정하면, 코드로 "켜!" 또는 "꺼!"를 명령할 수 있어요.</p>
-</li>
-</ol>
-<p><strong>쉽게 말하면</strong>: 피코의 핀을 "전기를 내보내는 모드"로 설정하는 거예요.</p>
+<h2 id="_3">💡 왜 이걸 배우나요?<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>컴퓨터(Computer)라는 이름 자체가 <strong>"계산하는 기계"</strong>라는 뜻이에요. 컴퓨터가 탄생한 가장 근본적인 이유가 바로 <strong>계산</strong>이죠.</p>
+<p>우리가 일상에서 당연하게 하는 계산들을 떠올려 봐요:</p>
+<ul>
+<li>🛒 마트에서 장보기: "사과 3개 × 1,500원 = 4,500원"</li>
+<li>💰 더치페이: "총 금액 45,000원 ÷ 3명 = 1인당 15,000원"</li>
+<li>🎮 게임 점수: "기본 점수 100 + 보너스 50 = 총 150점"</li>
+<li>📊 평균 계산: "(80 + 90 + 70) ÷ 3 = 80점"</li>
+</ul>
+<p>프로그래밍에서 <strong>연산자(Operator)</strong>는 이런 계산을 컴퓨터에게 시키는 <strong>명령 기호</strong>예요. 연산자를 알면, 컴퓨터를 나만의 초고속 계산기로 쓸 수 있습니다!</p>
+<blockquote>
+<p>🎯 <strong>이 장의 핵심 한 줄</strong>: 연산자는 컴퓨터에게 "이 숫자들로 이런 계산을 해!"라고 말하는 기호입니다.</p>
+</blockquote>
 <hr />
-<h3 id="2-while">개념 2: 반복문 (while)<a class="headerlink" href="#2-while" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p><strong>비유로 시작</strong>: 반복문은 마치 <strong>노래 반복 재생</strong> 버튼과 같아요. 한 번 누르면 노래가 끝나도 계속 처음부터 다시 재생되죠.</p>
-</li>
-<li>
-<p><strong>정확한 정의</strong>: <code>while True:</code>는 조건이 참(True)인 동안 코드 블록을 <strong>무한히 반복</strong> 실행합니다.</p>
-</li>
-<li>
-<p><strong>예시로 확인</strong>:
-<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;안녕!&quot;</span><span class="p">)</span>  <span class="c1"># 이 줄이 무한히 반복됨</span>
-</code></pre></div></p>
-</li>
-</ol>
-<p><strong>쉽게 말하면</strong>: "이 코드를 영원히 반복해!"라고 명령하는 거예요.</p>
-<hr />
-<h3 id="3-sleep">개념 3: sleep() 함수<a class="headerlink" href="#3-sleep" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p><strong>비유로 시작</strong>: sleep()은 마치 <strong>알람 없는 낮잠</strong>과 같아요. 정해진 시간 동안 아무것도 하지 않고 기다립니다.</p>
-</li>
-<li>
-<p><strong>정확한 정의</strong>: <code>time.sleep(초)</code>는 프로그램을 지정한 초(seconds) 동안 <strong>일시 정지</strong>시킵니다.</p>
-</li>
-<li>
-<p><strong>예시로 확인</strong>:
-<div class="highlight"><pre><span></span><code><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>    <span class="c1"># 1초 대기</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># 0.5초(500ms) 대기</span>
-</code></pre></div></p>
-</li>
-</ol>
-<p><strong>쉽게 말하면</strong>: "잠깐 멈춰!"를 몇 초간 할지 정하는 거예요.</p>
-<hr />
-<h3 id="led">💡 개념 연결: LED 점멸의 원리<a class="headerlink" href="#led" title="Permanent link">&para;</a></h3>
+<h2 id="_4">📚 핵심 개념<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="1">개념 1: 산술 연산자 — 다섯 가지 계산 도구 🧮<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<h4 id="1_1">1. 비유로 시작<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
+<p>여러분의 책상 위에 <strong>계산기</strong>가 있다고 상상해 보세요. 계산기에는 <code>+</code>, <code>-</code>, <code>×</code>, <code>÷</code> 버튼이 있죠? Java에도 이와 똑같은 버튼들이 있어요. 다만 생김새가 약간 달라요. 키보드로 쉽게 입력할 수 있도록 기호가 조금 바뀐 거예요.</p>
+<h4 id="2">2. 정확한 정의<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<p><strong>산술 연산자(Arithmetic Operator)</strong>란, 숫자 데이터에 대해 수학적 계산을 수행하는 기호입니다. Java에는 다섯 가지 기본 산술 연산자가 있어요.</p>
+<ul>
+<li><strong><code>+</code></strong> (덧셈): 두 수를 더합니다</li>
+<li><strong><code>-</code></strong> (뺄셈): 왼쪽 수에서 오른쪽 수를 뺍니다</li>
+<li><strong><code>*</code></strong> (곱셈): 두 수를 곱합니다 — 수학의 × 대신 별표(*)를 써요</li>
+<li><strong><code>/</code></strong> (나눗셈): 왼쪽 수를 오른쪽 수로 나눕니다 — 수학의 ÷ 대신 슬래시(/)를 써요</li>
+<li><strong><code>%</code></strong> (나머지): 나눈 후 <strong>나머지</strong>만 구합니다 — 이건 새로운 거예요!</li>
+</ul>
+<h4 id="3">3. 예시로 확인<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w">   </span><span class="c1">// 13   (덧셈)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w">   </span><span class="c1">// 7    (뺄셈)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w">   </span><span class="c1">// 30   (곱셈)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w">   </span><span class="c1">// 3    (나눗셈 — 어라? 3.33...이 아니네?)</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w">   </span><span class="c1">// 1    (나머지 — 10 ÷ 3 = 3 나머지 1)</span>
+</span></code></pre></div>
+<blockquote>
+<p>💡 <strong>잠깐!</strong> <code>10 / 3</code>의 결과가 <code>3</code>이라고요? <code>3.333...</code>이 아니고요? 네, 맞아요! 이것이 바로 다음에 배울 <strong>정수 나눗셈</strong>의 비밀이에요.</p>
+</blockquote>
 <div class="mermaid">flowchart LR
-    A[💡 LED 켜기] --&gt; B[⏱️ 잠시 대기]
-    B --&gt; C[🌑 LED 끄기]
-    C --&gt; D[⏱️ 잠시 대기]
-    D --&gt; A
-
-    style A fill:#fff9c4,stroke:#f9a825
-    style B fill:#e3f2fd,stroke:#1976d2
-    style C fill:#eceff1,stroke:#546e7a
-    style D fill:#e3f2fd,stroke:#1976d2</div>
-<p>이 네 단계가 <strong>무한히 반복</strong>되면 LED가 깜빡이는 것처럼 보여요!</p>
+    A["10"] --- PLUS["+"] --- B1["3"] --- R1["= 13"]
+    C["10"] --- MINUS["-"] --- D1["3"] --- R2["= 7"]
+    E["10"] --- MULT["*"] --- F1["3"] --- R3["= 30"]
+    G["10"] --- DIV["/"] --- H1["3"] --- R4["= 3"]
+    I["10"] --- MOD["%"] --- J1["3"] --- R5["= 1"]</div>
 <hr />
-<h2 id="_4">🔨 따라하기<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<h3 id="step-1-led">Step 1: LED 한 번 깜빡이기<a class="headerlink" href="#step-1-led" title="Permanent link">&para;</a></h3>
-<p><strong>목표</strong>: LED를 켜고, 1초 기다리고, 끄는 기본 동작 확인하기</p>
-<p><strong>코드</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: LED를 한 번 깜빡이는 코드 ===</span>
-<span class="c1"># LED를 켰다가 1초 후에 끕니다</span>
+<h3 id="2_1">개념 2: 정수 나눗셈의 함정 — 소수점이 사라진다! 🕵️<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<h4 id="1_2">1. 비유로 시작<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h4>
+<p>피자 1판(8조각)을 3명이 <strong>공평하게</strong> 나눠 먹는다고 해봐요.</p>
+<ul>
+<li>한 사람당 <strong>2조각</strong>씩 먹을 수 있어요</li>
+<li>그러면 <strong>2조각</strong>이 남죠</li>
+</ul>
+<p>수학적으로는 8 ÷ 3 = 2.666...이지만, 피자를 실제로 나눌 때는 "한 사람당 2조각, 나머지 2조각"이라고 말하는 게 자연스럽죠. <strong>정수 나눗셈</strong>이 바로 이 방식이에요!</p>
+<h4 id="2_2">2. 정확한 정의<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h4>
+<p><strong>정수(int)끼리 나누면, 결과도 정수</strong>입니다. 소수점 아래는 그냥 <strong>잘려 나가요(버림)</strong>. 반올림이 아니라 버림이에요!</p>
+<p>이걸 <strong>정수 나눗셈(Integer Division)</strong>이라고 해요.</p>
+<h4 id="3_1">3. 예시로 확인<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// 정수 ÷ 정수 = 정수 (소수점 버림!)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w">   </span><span class="c1">// 3    (3.333... → 3)</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">7</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w">    </span><span class="c1">// 3    (3.5 → 3)</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w">    </span><span class="c1">// 0    (0.5 → 0)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1">// 소수점을 살리고 싶다면? double을 사용!</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mf">10.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w">   </span><span class="c1">// 3.3333333333333335</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mf">7.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w">    </span><span class="c1">// 3.5</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mf">1.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w">    </span><span class="c1">// 0.5</span>
+</span></code></pre></div>
+<p>핵심 규칙을 정리하면:</p>
+<ul>
+<li><strong><code>int / int</code></strong> → 결과는 <code>int</code> (소수점 사라짐)</li>
+<li><strong><code>double / int</code></strong> 또는 <strong><code>int / double</code></strong> → 결과는 <code>double</code> (소수점 살아남)</li>
+</ul>
+<div class="mermaid">flowchart TD
+    Q{"나누기 연산에서&lt;br/&gt;둘 다 int인가?"}
+    Q --&gt;|"둘 다 int"| A["결과: int&lt;br/&gt;소수점 버림!&lt;br/&gt;10 / 3 → 3"]
+    Q --&gt;|"하나라도 double"| B["결과: double&lt;br/&gt;소수점 유지!&lt;br/&gt;10.0 / 3 → 3.333..."]
 
-<span class="c1"># --- WHY: 왜 필요한지 ---</span>
-<span class="c1"># 반복하기 전에 기본 동작이 되는지 먼저 확인해야 해요</span>
-
-<span class="c1"># HOW: 어떻게 동작하는지</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>  <span class="c1"># 핀 제어 도구 가져오기</span>
-<span class="kn">import</span> <span class="nn">time</span>              <span class="c1"># 시간 관련 도구 가져오기</span>
-
-<span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>   <span class="c1"># GP16 핀을 출력 모드로 설정</span>
-
-<span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>             <span class="c1"># LED 켜기 (HIGH, 3.3V 출력)</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>            <span class="c1"># 1초 동안 대기</span>
-<span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>             <span class="c1"># LED 끄기 (LOW, 0V 출력)</span>
-</code></pre></div></p>
-<p><strong>실행 결과</strong>:
-<div class="highlight"><pre><span></span><code>(LED가 1초간 켜졌다가 꺼집니다)
-</code></pre></div></p>
-<p><strong>여기서 잠깐! 🤔</strong>
-- <code>value(1)</code> = HIGH = 켜기, <code>value(0)</code> = LOW = 끄기
-- 숫자 16은 Grove Shield의 D16 포트에 해당해요</p>
+    style A fill:#ffcccc,stroke:#cc0000
+    style B fill:#ccffcc,stroke:#00cc00</div>
+<blockquote>
+<p>🔑 <strong>꿀팁</strong>: 나눗셈에서 소수점 결과가 필요하다면, 숫자 하나에 <code>.0</code>만 붙여주세요! <code>10</code>을 <code>10.0</code>으로 바꾸면 됩니다.</p>
+</blockquote>
 <hr />
-<h3 id="step-2">Step 2: 무한 반복으로 계속 깜빡이기<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
-<p><strong>목표</strong>: <code>while True:</code>로 LED가 계속 깜빡이게 만들기</p>
-<p><strong>코드</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: LED를 계속 깜빡이는 코드 ===</span>
-<span class="c1"># LED가 1초마다 켜졌다 꺼졌다를 무한 반복합니다</span>
-
-<span class="c1"># --- WHY: 왜 필요한지 ---</span>
-<span class="c1"># 한 번만 깜빡이면 프로그램이 끝나버려요</span>
-<span class="c1"># 계속 깜빡이려면 반복문이 필요해요!</span>
-
-<span class="c1"># HOW: 어떻게 동작하는지</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">time</span>
-
-<span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
-
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>              <span class="c1"># 아래 코드를 무한 반복!</span>
-    <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>         <span class="c1"># LED 켜기</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>        <span class="c1"># 1초 대기</span>
-    <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>         <span class="c1"># LED 끄기</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>        <span class="c1"># 1초 대기 (이게 없으면?)</span>
-</code></pre></div></p>
-<p><strong>실행 결과</strong>:
-<div class="highlight"><pre><span></span><code>(LED가 1초 켜짐 → 1초 꺼짐 → 반복...)
-</code></pre></div></p>
-<p><strong>여기서 잠깐! 🤔</strong>
-마지막 <code>sleep(1)</code>이 없으면 어떻게 될까요? LED가 꺼지자마자 바로 다시 켜져서 <strong>거의 꺼진 것처럼 안 보여요</strong>! 끄고 나서도 잠깐 기다려야 "깜빡임"이 눈에 보입니다.</p>
+<h3 id="3_2">개념 3: 나머지 연산자(%) — 숨은 영웅 🦸<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h3>
+<h4 id="1_3">1. 비유로 시작<a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h4>
+<p>초등학교 때 나눗셈을 처음 배울 때 기억나시나요?</p>
+<blockquote>
+<p>"13 나누기 4는 <strong>3</strong> 나머지 <strong>1</strong>"</p>
+</blockquote>
+<p>이때 <strong>/는 "몫"</strong>을 구하고, <strong>%는 "나머지"</strong>를 구하는 거예요. 즉, <code>/</code>와 <code>%</code>는 나눗셈의 <strong>짝꿍</strong>이에요!</p>
+<h4 id="2_3">2. 정확한 정의<a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h4>
+<p><strong>나머지 연산자(%)</strong>는 왼쪽 수를 오른쪽 수로 나눈 후 <strong>나머지</strong>만 돌려주는 연산자입니다. 영어로는 <strong>modulo</strong> 또는 <strong>mod</strong>라고 불러요.</p>
+<h4 id="3_3">3. 예시로 확인<a class="headerlink" href="#3_3" title="Permanent link">&para;</a></h4>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">13</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w">   </span><span class="c1">// 3  (몫)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">13</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w">   </span><span class="c1">// 1  (나머지)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w">   </span><span class="c1">// 0  (딱 나눠떨어지면 나머지가 0)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w">   </span><span class="c1">// 1</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">7</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w">    </span><span class="c1">// 1</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">8</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w">    </span><span class="c1">// 0</span>
+</span></code></pre></div>
+<blockquote>
+<p>🤔 <strong>"나머지 연산이 어디에 쓰일까요?"</strong> 정말 많이 쓰여요!</p>
+</blockquote>
+<ul>
+<li><strong>짝수/홀수 판별</strong>: <code>number % 2</code>가 <code>0</code>이면 짝수, <code>1</code>이면 홀수</li>
+<li><strong>배수 확인</strong>: <code>number % 3</code>이 <code>0</code>이면 3의 배수</li>
+<li><strong>시간 계산</strong>: 150분은 몇 시간 몇 분? → <code>150 / 60 = 2시간</code>, <code>150 % 60 = 30분</code></li>
+<li><strong>자릿수 추출</strong>: <code>1234 % 10 = 4</code> (일의 자리)</li>
+</ul>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// 짝수/홀수 판별</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">number</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w">   </span><span class="c1">// 1 → 홀수!</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1">// 150분을 시간과 분으로 변환</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="kt">int</span><span class="w"> </span><span class="n">totalMinutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">150</span><span class="p">;</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="kt">int</span><span class="w"> </span><span class="n">hours</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">totalMinutes</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span><span class="w">    </span><span class="c1">// 2시간</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="kt">int</span><span class="w"> </span><span class="n">minutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">totalMinutes</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span><span class="w">  </span><span class="c1">// 30분</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">hours</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;시간 &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">minutes</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;분&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// 2시간 30분</span>
+</span></code></pre></div>
+<blockquote>
+<p>💡 <strong>잠깐!</strong> 여기까지 이해가 잘 되셨나요?
+<code>/</code>는 몫, <code>%</code>는 나머지 — 이 둘은 항상 짝꿍이라고 기억하세요! 어렵게 느껴져도 괜찮아요. 실습하면서 자연스럽게 익숙해질 거예요!</p>
+</blockquote>
 <hr />
-<h3 id="step-3">Step 3: 깜빡이는 속도 조절하기<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
-<p><strong>목표</strong>: sleep 시간을 바꿔서 빠르게/느리게 깜빡이기</p>
-<p><strong>코드</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: 빠르게 깜빡이는 LED ===</span>
-<span class="c1"># 비상등처럼 빠르게 깜빡입니다</span>
+<h3 id="4">개념 4: 연산 우선순위와 괄호 — 계산 순서의 비밀 📐<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<h4 id="1_4">1. 비유로 시작<a class="headerlink" href="#1_4" title="Permanent link">&para;</a></h4>
+<p>수학 시간에 배운 걸 떠올려 봐요:</p>
+<blockquote>
+<p>2 + 3 × 4 = ?</p>
+</blockquote>
+<p>답이 <code>20</code>인가요, <code>14</code>인가요? 정답은 <strong>14</strong>예요! 곱셈이 덧셈보다 먼저 계산되니까요. Java도 <strong>수학과 똑같은 규칙</strong>을 따릅니다.</p>
+<h4 id="2_4">2. 정확한 정의<a class="headerlink" href="#2_4" title="Permanent link">&para;</a></h4>
+<p><strong>연산 우선순위(Operator Precedence)</strong>란, 여러 연산자가 한 줄에 있을 때 <strong>어떤 연산을 먼저 할지</strong> 정해놓은 규칙이에요.</p>
+<p>Java의 산술 연산 우선순위:</p>
+<ul>
+<li><strong>1순위</strong>: <code>()</code> 괄호 안의 연산이 가장 먼저!</li>
+<li><strong>2순위</strong>: <code>*</code>, <code>/</code>, <code>%</code> (곱셈, 나눗셈, 나머지)</li>
+<li><strong>3순위</strong>: <code>+</code>, <code>-</code> (덧셈, 뺄셈)</li>
+<li><strong>같은 순위끼리</strong>는 <strong>왼쪽에서 오른쪽</strong> 순서로 계산</li>
+</ul>
+<h4 id="3_4">3. 예시로 확인<a class="headerlink" href="#3_4" title="Permanent link">&para;</a></h4>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// 우선순위 확인</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w">       </span><span class="c1">// 14  (곱셈 먼저: 2 + 12 = 14)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">((</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w">     </span><span class="c1">// 20  (괄호 먼저: 5 * 4 = 20)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w">      </span><span class="c1">// 4   (곱셈 먼저: 10 - 6 = 4)</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">((</span><span class="mi">10</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w">    </span><span class="c1">// 24  (괄호 먼저: 8 * 3 = 24)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1">// 같은 우선순위는 왼쪽 → 오른쪽</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w">      </span><span class="c1">// 15  (왼쪽부터: 5 * 3 = 15)</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w">      </span><span class="c1">// 5   (왼쪽부터: 20 / 4 = 5)</span>
+</span></code></pre></div>
+<div class="mermaid">flowchart TD
+    EXPR["2 + 3 * 4"]
+    STEP1["① 먼저: 3 * 4 = 12"]
+    STEP2["② 다음: 2 + 12 = 14"]
+    RESULT["결과: 14"]
 
-<span class="c1"># --- WHY: 왜 필요한지 ---</span>
-<span class="c1"># 상황에 따라 깜빡이는 속도가 달라야 해요</span>
-<span class="c1"># 비상등은 빠르게, 호흡등은 느리게!</span>
+    EXPR --&gt; STEP1 --&gt; STEP2 --&gt; RESULT
 
-<span class="c1"># HOW: 어떻게 동작하는지</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">time</span>
+    EXPR2["(2 + 3) * 4"]
+    STEP3["① 괄호 먼저: 2 + 3 = 5"]
+    STEP4["② 다음: 5 * 4 = 20"]
+    RESULT2["결과: 20"]
 
-<span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
-
-<span class="c1"># 깜빡임 간격을 변수로 만들면 수정이 쉬워요!</span>
-<span class="n">interval</span> <span class="o">=</span> <span class="mf">0.2</span>           <span class="c1"># 0.2초 = 200ms (빠른 깜빡임)</span>
-
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>  <span class="c1"># 변수 사용</span>
-    <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>
-</code></pre></div></p>
-<p><strong>실행 결과</strong>:
-<div class="highlight"><pre><span></span><code>(LED가 0.2초마다 빠르게 깜빡입니다)
-</code></pre></div></p>
-<p><strong>💡 실험해보세요!</strong>
-| interval 값 | 느낌 |
-|------------|------|
-| 0.1 | 매우 빠름 (비상!) |
-| 0.5 | 적당히 빠름 |
-| 1.0 | 느긋함 |
-| 2.0 | 매우 느림 (졸려...) |</p>
+    EXPR2 --&gt; STEP3 --&gt; STEP4 --&gt; RESULT2</div>
+<blockquote>
+<p>🔑 <strong>꿀팁</strong>: 우선순위가 헷갈릴 때는 그냥 <strong>괄호를 쓰세요!</strong> 괄호는 항상 가장 먼저 계산되니까, 의도를 명확하게 표현할 수 있어요. 코드를 읽는 다른 사람(미래의 나 포함!)에게도 친절한 방법이에요.</p>
+</blockquote>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// 괄호를 사용하면 의도가 분명해져요</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kt">int</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="kt">int</span><span class="w"> </span><span class="n">discount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1">// 의도: (가격 × 수량) - 할인</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">price</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">quantity</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">discount</span><span class="p">;</span><span class="w">   </span><span class="c1">// 2500 ✅ 명확!</span>
+</span></code></pre></div>
 <hr />
-<h2 id="_5">📝 전체 코드<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># === LED 점멸 프로그램 ===</span>
-<span class="c1"># 피코의 GP16에 연결된 LED를 깜빡이게 합니다</span>
-<span class="c1"># 실행 후 멈추려면 Thonny의 Stop 버튼을 누르세요!</span>
-
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">time</span>
-
-<span class="c1"># 설정</span>
-<span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>   <span class="c1"># D16 포트의 LED</span>
-<span class="n">interval</span> <span class="o">=</span> <span class="mf">0.5</span>           <span class="c1"># 깜빡임 간격 (초)</span>
-
-<span class="c1"># 무한 반복</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>         <span class="c1"># 켜기</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>
-    <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>         <span class="c1"># 끄기</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>
-</code></pre></div>
+<h2 id="_5">🔨 따라하기: 나만의 계산기 프로그램 만들기 🖩<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>이제 배운 내용을 활용해서 <strong>두 숫자를 입력받고, 다섯 가지 연산 결과를 한 번에 보여주는 계산기</strong>를 만들어 볼게요!</p>
+<h3 id="step-1">Step 1: 프로젝트 준비<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p>에디터(VS Code, IntelliJ 등)를 열고, <code>Calculator.java</code>라는 새 파일을 만들어 주세요.</p>
+<p>아래처럼 기본 틀을 작성합니다:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Calculator</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="c1">// 여기에 코드를 작성할 거예요!</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="p">}</span>
+</span></code></pre></div>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: 파일 이름이 <code>Calculator.java</code>인지, <code>public class Calculator</code>와 이름이 같은지 확인하세요!</p>
+</blockquote>
 <hr />
-<h2 id="_6">⚠️ 자주 하는 실수<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<h3 id="1">실수 1: 들여쓰기 빠뜨리기<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
-<p><strong>증상</strong>: <code>IndentationError: expected an indented block</code></p>
-<p><strong>원인</strong>: <code>while True:</code> 다음 줄은 반드시 들여쓰기(스페이스 4칸)가 필요해요!</p>
-<p><strong>해결</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># 잘못된 코드</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-<span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># ❌ 들여쓰기 없음!</span>
-
-<span class="c1"># 올바른 코드</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># ✅ 스페이스 4칸</span>
-</code></pre></div></p>
+<h3 id="step-2-scanner">Step 2: Scanner로 두 숫자 입력받기<a class="headerlink" href="#step-2-scanner" title="Permanent link">&para;</a></h3>
+<p><code>main</code> 메서드 안에 다음 코드를 추가하세요:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;===== 나만의 계산기 =====&quot;</span><span class="p">);</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;첫 번째 정수를 입력하세요: &quot;</span><span class="p">);</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="kt">int</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;두 번째 정수를 입력하세요: &quot;</span><span class="p">);</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="kt">int</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+</span></code></pre></div>
+<p>여기서 <code>System.out.print()</code>는 <code>println()</code>과 달리 <strong>줄바꿈 없이</strong> 출력해요. 그래서 사용자가 같은 줄에 숫자를 입력할 수 있어요.</p>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: 실행해서 숫자 두 개를 입력할 수 있는지 확인하세요!</p>
+</blockquote>
 <hr />
-<h3 id="2-sleep">실수 2: 끄고 나서 sleep 안 하기<a class="headerlink" href="#2-sleep" title="Permanent link">&para;</a></h3>
-<p><strong>증상</strong>: LED가 계속 켜져 있는 것처럼 보임</p>
-<p><strong>원인</strong>: 끄자마자 바로 다시 켜지면 꺼진 게 안 보여요</p>
-<p><strong>해결</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># 잘못된 코드</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="c1"># ❌ sleep 없이 바로 다시 켜짐!</span>
-
-<span class="c1"># 올바른 코드</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># ✅ 끄고 나서도 대기</span>
-</code></pre></div></p>
+<h3 id="step-3">Step 3: 다섯 가지 연산 수행하기<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
+<p>입력받은 코드 아래에 연산 결과를 변수에 저장하는 코드를 추가합니다:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">// 다섯 가지 연산 수행</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span><span class="w">          </span><span class="c1">// 덧셈</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="kt">int</span><span class="w"> </span><span class="n">difference</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span><span class="w">   </span><span class="c1">// 뺄셈</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="kt">int</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span><span class="w">      </span><span class="c1">// 곱셈</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="kt">int</span><span class="w"> </span><span class="n">quotient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span><span class="w">     </span><span class="c1">// 몫 (정수 나눗셈)</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="kt">int</span><span class="w"> </span><span class="n">remainder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span><span class="w">    </span><span class="c1">// 나머지</span>
+</span></code></pre></div>
+<blockquote>
+<p>💡 <strong>포인트</strong>: 연산 결과를 바로 출력해도 되지만, <strong>변수에 저장해두면</strong> 나중에 여러 번 사용할 수 있어서 편리해요!</p>
+</blockquote>
 <hr />
-<h3 id="3">실수 3: 프로그램 멈추는 방법 모르기<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
-<p><strong>증상</strong>: LED가 계속 깜빡여서 새 코드를 실행 못함</p>
-<p><strong>원인</strong>: <code>while True:</code>는 무한 반복이라 스스로 안 멈춰요!</p>
-<p><strong>해결</strong>:
-- Thonny 상단의 <strong>🔴 Stop</strong> 버튼 클릭
-- 또는 <strong>Ctrl + C</strong> 키 누르기</p>
+<h3 id="step-4">Step 4: 결과 출력하기<a class="headerlink" href="#step-4" title="Permanent link">&para;</a></h3>
+<p>이제 계산 결과를 예쁘게 출력해 봐요:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">// 결과 출력</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span><span class="w">  </span><span class="c1">// 빈 줄 하나</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;===== 계산 결과 =====&quot;</span><span class="p">);</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; + &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">difference</span><span class="p">);</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; * &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">product</span><span class="p">);</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; / &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">quotient</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (몫)&quot;</span><span class="p">);</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; % &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">remainder</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (나머지)&quot;</span><span class="p">);</span>
+</span></code></pre></div>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: <code>10</code>과 <code>3</code>을 입력해 보세요. 결과가 아래와 같이 나와야 해요:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>===== 계산 결과 =====
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>10 + 3 = 13
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>10 - 3 = 7
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>10 * 3 = 30
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>10 / 3 = 3 (몫)
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>10 % 3 = 1 (나머지)
+</span></code></pre></div></p>
+</blockquote>
 <hr />
-<h2 id="_7">✅ 스스로 점검하기<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p><code>Pin(16, Pin.OUT)</code>에서 <code>Pin.OUT</code>의 의미는 무엇인가요?</p>
-</li>
-<li>
-<p><code>while True:</code>를 사용하지 않고 LED를 5번만 깜빡이게 하려면 어떻게 해야 할까요?</p>
-</li>
-<li>
-<p>왜 LED를 끄고 나서도 <code>sleep()</code>이 필요한가요?</p>
-</li>
-</ol>
-<details>
-<summary>정답 확인</summary>
-
-1. **Pin.OUT**: 해당 핀을 **출력 모드**로 설정한다는 의미예요. 핀에서 전기 신호를 내보낼 수 있게 됩니다.
-
-2. `for` 반복문을 사용하면 됩니다:
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>  <span class="c1"># 5번 반복</span>
-    <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-    <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-</code></pre></div>
-
-3. 끄자마자 바로 다시 켜지면, 꺼진 시간이 너무 짧아서 **사람 눈에는 계속 켜져 있는 것처럼** 보여요. 깜빡임을 보려면 끄고 나서도 기다려야 합니다.
-
-</details>
-
+<h3 id="step-5">Step 5: 소수점 나눗셈 결과도 추가하기<a class="headerlink" href="#step-5" title="Permanent link">&para;</a></h3>
+<p>정수 나눗셈만으로는 아쉬우니, <strong>실수 나눗셈 결과</strong>도 함께 보여주면 어떨까요?</p>
+<p>Step 3의 연산 코드 아래에 한 줄을 추가하세요:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kt">double</span><span class="w"> </span><span class="n">realDivision</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span><span class="w">  </span><span class="c1">// 실수 나눗셈</span>
+</span></code></pre></div>
+<p>여기서 <code>(double)</code>은 <strong>형변환(casting)</strong>이라고 해요. <code>num1</code>을 계산할 때 잠깐 <code>double</code>로 바꿔서, 소수점 결과를 얻을 수 있게 하는 거예요. 마치 "이 정수를 실수처럼 취급해줘!"라고 말하는 것과 같아요.</p>
+<p>그리고 출력 부분에 한 줄을 추가합니다:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; ÷ &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">realDivision</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (실수 나눗셈)&quot;</span><span class="p">);</span>
+</span></code></pre></div>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: 다시 <code>10</code>과 <code>3</code>을 입력하면, <code>10 ÷ 3 = 3.3333333333333335 (실수 나눗셈)</code> 이 추가로 나타나야 해요!</p>
+</blockquote>
 <hr />
-<h2 id="_8">🚀 더 해보기<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<h3 id="1-sos">도전 1: SOS 신호 만들기 🆘<a class="headerlink" href="#1-sos" title="Permanent link">&para;</a></h3>
-<p>모스 부호 SOS는 <code>· · · — — — · · ·</code> (짧게 3번, 길게 3번, 짧게 3번)입니다.
-- 짧은 신호: 0.2초
-- 긴 신호: 0.6초
-- 신호 사이: 0.2초 대기</p>
-<h3 id="2-led">도전 2: 심장 박동 LED 💓<a class="headerlink" href="#2-led" title="Permanent link">&para;</a></h3>
-<p>심장처럼 "쿵... 쿵쿵... 쿵... 쿵쿵..." 리듬으로 깜빡이게 만들어보세요!
-- 첫 번째 박동: 짧게
-- 두 번째 박동: 빠르게 두 번
-- 그리고 잠시 쉬기</p>
-<h3 id="3-led">도전 3: 점점 빨라지는 LED ⭐<a class="headerlink" href="#3-led" title="Permanent link">&para;</a></h3>
-<p>시작은 1초 간격으로 깜빡이다가, 점점 빨라져서 0.1초 간격까지 빨라지게 만들어보세요! (힌트: 변수를 반복문 안에서 줄이기)</p>
+<h3 id="step-6">Step 6: 보너스 — 시간 변환 기능 추가 ⏰<a class="headerlink" href="#step-6" title="Permanent link">&para;</a></h3>
+<p>나머지 연산의 실전 활용을 경험해 봐요! 계산기 코드 맨 아래에 다음을 추가하세요:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">// 보너스: 시간 변환</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;변환할 분(minute)을 입력하세요: &quot;</span><span class="p">);</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="kt">int</span><span class="w"> </span><span class="n">totalMinutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="kt">int</span><span class="w"> </span><span class="n">hours</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">totalMinutes</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span><span class="w">     </span><span class="c1">// 몫 = 시간</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="kt">int</span><span class="w"> </span><span class="n">mins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">totalMinutes</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span><span class="w">      </span><span class="c1">// 나머지 = 분</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">totalMinutes</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;분 = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">hours</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;시간 &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mins</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;분&quot;</span><span class="p">);</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+</span></code></pre></div>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: <code>135</code>를 입력하면 <code>135분 = 2시간 15분</code>이 나와야 해요!</p>
+<p>💡 <strong>여기까지 정말 잘 따라오셨어요!</strong> 🎉
+혹시 에러가 나더라도 당황하지 마세요. 오타를 꼼꼼히 확인해 보면 대부분 해결됩니다!</p>
+</blockquote>
 <hr />
-<h2 id="_9">🔗 다음 장으로<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<p>축하해요! 🎉 이제 여러분은:
-- GPIO 핀으로 전기 신호를 <strong>출력</strong>하는 방법
-- <code>while True:</code>로 코드를 <strong>무한 반복</strong>하는 방법
-- <code>sleep()</code>으로 <strong>시간 조절</strong>하는 방법</p>
-<p>을 알게 되었어요!</p>
-<p><strong>다음 장 "밝기 조절 - PWM으로 LED 페이드"</strong> 에서는 LED를 그냥 켜고 끄는 것을 넘어서, <strong>서서히 밝아지고 어두워지게</strong> 만드는 방법을 배웁니다. 마치 고급 무드등처럼요! ✨</p>
+<h2 id="_6">📝 전체 코드<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>아래는 완성된 전체 코드예요. 복사해서 바로 실행할 수 있습니다!</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Calculator</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">        </span><span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">        </span><span class="c1">// === 계산기 ===</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;===== 나만의 계산기 =====&quot;</span><span class="p">);</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;첫 번째 정수를 입력하세요: &quot;</span><span class="p">);</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;두 번째 정수를 입력하세요: &quot;</span><span class="p">);</span>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="w">        </span><span class="c1">// 다섯 가지 연산 수행</span>
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">difference</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
+</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">quotient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
+</span><span id="__span-14-21"><a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">remainder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
+</span><span id="__span-14-22"><a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">realDivision</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
+</span><span id="__span-14-23"><a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a>
+</span><span id="__span-14-24"><a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a><span class="w">        </span><span class="c1">// 결과 출력</span>
+</span><span id="__span-14-25"><a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+</span><span id="__span-14-26"><a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;===== 계산 결과 =====&quot;</span><span class="p">);</span>
+</span><span id="__span-14-27"><a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; + &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span>
+</span><span id="__span-14-28"><a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">difference</span><span class="p">);</span>
+</span><span id="__span-14-29"><a id="__codelineno-14-29" name="__codelineno-14-29" href="#__codelineno-14-29"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; * &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">product</span><span class="p">);</span>
+</span><span id="__span-14-30"><a id="__codelineno-14-30" name="__codelineno-14-30" href="#__codelineno-14-30"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; / &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">quotient</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (몫)&quot;</span><span class="p">);</span>
+</span><span id="__span-14-31"><a id="__codelineno-14-31" name="__codelineno-14-31" href="#__codelineno-14-31"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; % &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">remainder</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (나머지)&quot;</span><span class="p">);</span>
+</span><span id="__span-14-32"><a id="__codelineno-14-32" name="__codelineno-14-32" href="#__codelineno-14-32"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; ÷ &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">realDivision</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (실수 나눗셈)&quot;</span><span class="p">);</span>
+</span><span id="__span-14-33"><a id="__codelineno-14-33" name="__codelineno-14-33" href="#__codelineno-14-33"></a>
+</span><span id="__span-14-34"><a id="__codelineno-14-34" name="__codelineno-14-34" href="#__codelineno-14-34"></a><span class="w">        </span><span class="c1">// === 보너스: 시간 변환 ===</span>
+</span><span id="__span-14-35"><a id="__codelineno-14-35" name="__codelineno-14-35" href="#__codelineno-14-35"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+</span><span id="__span-14-36"><a id="__codelineno-14-36" name="__codelineno-14-36" href="#__codelineno-14-36"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;변환할 분(minute)을 입력하세요: &quot;</span><span class="p">);</span>
+</span><span id="__span-14-37"><a id="__codelineno-14-37" name="__codelineno-14-37" href="#__codelineno-14-37"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">totalMinutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+</span><span id="__span-14-38"><a id="__codelineno-14-38" name="__codelineno-14-38" href="#__codelineno-14-38"></a>
+</span><span id="__span-14-39"><a id="__codelineno-14-39" name="__codelineno-14-39" href="#__codelineno-14-39"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">hours</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">totalMinutes</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
+</span><span id="__span-14-40"><a id="__codelineno-14-40" name="__codelineno-14-40" href="#__codelineno-14-40"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">mins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">totalMinutes</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
+</span><span id="__span-14-41"><a id="__codelineno-14-41" name="__codelineno-14-41" href="#__codelineno-14-41"></a>
+</span><span id="__span-14-42"><a id="__codelineno-14-42" name="__codelineno-14-42" href="#__codelineno-14-42"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">totalMinutes</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;분 = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">hours</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;시간 &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mins</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;분&quot;</span><span class="p">);</span>
+</span><span id="__span-14-43"><a id="__codelineno-14-43" name="__codelineno-14-43" href="#__codelineno-14-43"></a>
+</span><span id="__span-14-44"><a id="__codelineno-14-44" name="__codelineno-14-44" href="#__codelineno-14-44"></a><span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+</span><span id="__span-14-45"><a id="__codelineno-14-45" name="__codelineno-14-45" href="#__codelineno-14-45"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-14-46"><a id="__codelineno-14-46" name="__codelineno-14-46" href="#__codelineno-14-46"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>실행 예시:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>===== 나만의 계산기 =====
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>첫 번째 정수를 입력하세요: 17
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>두 번째 정수를 입력하세요: 5
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>===== 계산 결과 =====
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>17 + 5 = 22
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>17 - 5 = 12
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>17 * 5 = 85
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>17 / 5 = 3 (몫)
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>17 % 5 = 2 (나머지)
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>17 ÷ 5 = 3.4 (실수 나눗셈)
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>변환할 분(minute)을 입력하세요: 200
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>200분 = 3시간 20분
+</span></code></pre></div>
+<hr />
+<h2 id="_7">⚠️ 자주 하는 실수<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="1_5">실수 1: 정수 나눗셈 결과가 이상해요! 😱<a class="headerlink" href="#1_5" title="Permanent link">&para;</a></h3>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">result</span><span class="p">);</span><span class="w">  </span><span class="c1">// 2 (2.5가 아님!)</span>
+</span></code></pre></div>
+<ul>
+<li><strong>왜 이런 일이 생기나요?</strong>: <code>int / int</code>는 결과도 <code>int</code>예요. 소수점은 반올림이 아니라 <strong>버림</strong> 처리됩니다.</li>
+<li><strong>이렇게 해결해요</strong>: 소수점 결과가 필요하면, 하나라도 <code>double</code>로 만들어 주세요!</li>
+</ul>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kt">double</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">    </span><span class="c1">// 2.5 ✅</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="c1">// 또는</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="kt">double</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">  </span><span class="c1">// 2.5 ✅</span>
+</span></code></pre></div>
+<hr />
+<h3 id="2-0">실수 2: 0으로 나누기 — 프로그램이 죽어요! 💀<a class="headerlink" href="#2-0" title="Permanent link">&para;</a></h3>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span><span class="c1">// ❌ ArithmeticException 에러 발생!</span>
+</span></code></pre></div>
+<ul>
+<li><strong>왜 이런 일이 생기나요?</strong>: 수학에서도 0으로 나누는 건 불가능하죠. Java도 마찬가지예요. <code>ArithmeticException</code>이라는 에러가 발생하면서 프로그램이 <strong>강제 종료</strong>됩니다.</li>
+<li><strong>이렇게 해결해요</strong>: 나누기 전에 <strong>0이 아닌지 확인</strong>하세요! (조건문은 다음 장에서 배우지만, 일단 0이 아닌 수를 입력하는 걸로 해결해요.)</li>
+</ul>
+<p>```java
+// 지금은 이렇게 주의하세요
+System.out.print("0이 아닌 정수를 입력하세요: ");
+int num2 =</p>
 
 
 
@@ -2198,7 +2619,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

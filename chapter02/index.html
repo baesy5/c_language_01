@@ -6,11 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="프로그래밍 경험이 없는 고등학생을 위한 라즈베리파이 피코 입문서로, 6주간 직접 만들고 확인하며 배우는 실습 중심 교육 자료입니다.">
+        <meta name="description" content="컴퓨터를 몰라도 괜찮아, 2주 뒤엔 내 손으로 게임을 만든다! 프로그래밍 경험이 전혀 없는 고등학생도 혼자서 완주할 수 있는 C언어 입문 자기주도 학습서입니다.">
       
       
-        <meta name="author" content="Created with Data-AI-Book Generator">
+        <meta name="author" content="Created with EduFlow">
       
+      
+        <link rel="canonical" href="https://baesy5.github.io/c_language_01/chapter02/">
       
       
         <link rel="prev" href="../chapter01/">
@@ -23,15 +25,18 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
-        <title>개발 환경 설정 - Thonny 설치하기 - 고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트</title>
+        <title>내 컴퓨터에 작업실 꾸미기 — 개발 환경 설치 - 처음 만드는 나의 첫 C언어 게임</title>
       
     
     
       <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -45,8 +50,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"JetBrains Mono"}</style>
       
     
     
@@ -61,7 +66,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -70,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chapter-02-thonny" class="md-skip">
+        <a href="#_1" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -84,7 +96,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="상단/헤더">
-    <a href=".." title="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" class="md-header__button md-logo" aria-label="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" data-md-component="logo">
+    <a href=".." title="처음 만드는 나의 첫 C언어 게임" class="md-header__button md-logo" aria-label="처음 만드는 나의 첫 C언어 게임" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -98,18 +110,44 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트
+            처음 만드는 나의 첫 C언어 게임
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              개발 환경 설정 - Thonny 설치하기
+              내 컴퓨터에 작업실 꾸미기 — 개발 환경 설치
             
           </span>
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="다크 모드로 전환"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로 전환" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="라이트 모드로 전환"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로 전환" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -206,7 +244,9 @@
           
   
   
-  Part 1 - 피코와 첫 만남
+    
+  
+  Part 1 - [1권] 프로그래밍 세계에 첫 발 내딛기
 
         </a>
       </li>
@@ -222,11 +262,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../chapter04/" class="md-tabs__link">
+        <a href="../chapter06/" class="md-tabs__link">
           
   
   
-  Part 2 - 빛으로 말하기 - LED 제어
+    
+  
+  Part 2 - [1권] 프로그램에 판단력 불어넣기
 
         </a>
       </li>
@@ -242,31 +284,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../chapter07/" class="md-tabs__link">
+        <a href="../chapter09/" class="md-tabs__link">
           
   
   
-  Part 3 - 입력을 받아라 - 버튼과 상호작용
-
-        </a>
-      </li>
     
   
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../chapter10/" class="md-tabs__link">
-          
-  
-  
-  Part 4 - 소리로 표현하기 - 부저 활용
+  Part 3 - [1권] 코드를 깔끔하게 정리하는 힘 — 함수
 
         </a>
       </li>
@@ -286,7 +310,9 @@
           
   
   
-  Part 5 - 세상을 감지하라 - 센서 활용
+    
+  
+  Part 4 - [2권] 게임을 더 풍성하게 — 배열과 실전 도구
 
         </a>
       </li>
@@ -306,7 +332,9 @@
           
   
   
-  Part 6 - 나만의 스마트 기기 - 통합 프로젝트
+    
+  
+  Part 5 - [2권] 최종 프로젝트 — 내 손으로 게임 완성하기
 
         </a>
       </li>
@@ -336,13 +364,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" class="md-nav__button md-logo" aria-label="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" data-md-component="logo">
+    <a href=".." title="처음 만드는 나의 첫 C언어 게임" class="md-nav__button md-logo" aria-label="처음 만드는 나의 첫 C언어 게임" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트
+    처음 만드는 나의 첫 C언어 게임
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -384,6 +412,18 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -409,7 +449,7 @@
   <span class="md-ellipsis">
     
   
-    Part 1 - 피코와 첫 만남
+    Part 1 - [1권] 프로그래밍 세계에 첫 발 내딛기
   
 
     
@@ -425,7 +465,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 1 - 피코와 첫 만남
+    Part 1 - [1권] 프로그래밍 세계에 첫 발 내딛기
   
 
           </label>
@@ -445,7 +485,7 @@
   <span class="md-ellipsis">
     
   
-    피코야, 반가워! - 하드웨어 살펴보기
+    왜 C언어를 배워야 할까? — 이 책의 사용법
   
 
     
@@ -482,7 +522,7 @@
   <span class="md-ellipsis">
     
   
-    개발 환경 설정 - Thonny 설치하기
+    내 컴퓨터에 작업실 꾸미기 — 개발 환경 설치
   
 
     
@@ -500,7 +540,7 @@
   <span class="md-ellipsis">
     
   
-    개발 환경 설정 - Thonny 설치하기
+    내 컴퓨터에 작업실 꾸미기 — 개발 환경 설치
   
 
     
@@ -526,10 +566,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 이 장에서 배우는 것
+        🎯 이 장의 학습 목표
       
     </span>
   </a>
@@ -537,7 +577,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 미리 알아야 할 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         💡 왜 이걸 배우나요?
@@ -548,7 +599,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         📚 핵심 개념
@@ -563,7 +614,7 @@
   <a href="#1-ide" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 1: IDE (통합 개발 환경)
+        개념 1: IDE (통합 개발 환경) 🏠
       
     </span>
   </a>
@@ -571,171 +622,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-firmware" class="md-nav__link">
+  <a href="#2-compiler" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 2: 펌웨어 (Firmware)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔨 따라하기
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🔨 따라하기">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-thonny" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: Thonny 다운로드 및 설치
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-bootsel" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2: 피코를 BOOTSEL 모드로 연결하기
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-thonny-micropython" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: Thonny에서 MicroPython 펌웨어 설치하기
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📝 연결 확인 테스트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⚠️ 자주 하는 실수
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="⚠️ 자주 하는 실수">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-bootsel" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 1: BOOTSEL 버튼 타이밍 실수
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-thonny" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 2: Thonny에서 피코가 인식 안 됨
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-target-volume" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 3: 펌웨어 설치 중 Target volume 선택 불가
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ✅ 스스로 점검하기
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🚀 더 해보기
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🚀 더 해보기">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-shell" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 1: Shell에서 계산기처럼 사용하기 ⭐
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 2: 피코 정보 확인하기 ⭐⭐
+        개념 2: 컴파일러 (Compiler) 🔄
       
     </span>
   </a>
@@ -746,7 +636,18 @@
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        도전 3: 도움말 살펴보기 ⭐⭐⭐
+        개념 3: 소스 코드와 실행 파일 📄➡️⚙️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 터미널 (Terminal) ⌨️
       
     </span>
   </a>
@@ -759,13 +660,102 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 다음 장으로
+        🔨 따라하기: 개발 환경 설치
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기: 개발 환경 설치">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: VS Code 설치하기 🛠️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-gcc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: GCC 컴파일러 설치하기 🔧
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: GCC 컴파일러 설치하기 🔧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows 사용자
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mac 사용자
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 환경 변수 설정하기 (Windows만 해당) ⚙️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-vs-code-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: VS Code에 C언어 확장 설치하기 🧩
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-hello-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Hello, World! 코드 작성 및 실행하기 🌍
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -792,7 +782,7 @@
   <span class="md-ellipsis">
     
   
-    Hello, Pico! - 첫 번째 프로그램 실행
+    처음 만나는 C언어 — Hello, World!
   
 
     
@@ -805,65 +795,6 @@
   
 
               
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Part 2 - 빛으로 말하기 - LED 제어
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Part 2 - 빛으로 말하기 - LED 제어
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -879,7 +810,7 @@
   <span class="md-ellipsis">
     
   
-    브레드보드와 친해지기 - LED 회로 구성
+    데이터를 담는 상자 — 변수와 자료형
   
 
     
@@ -907,35 +838,7 @@
   <span class="md-ellipsis">
     
   
-    깜빡깜빡 - LED 점멸 프로그램
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../chapter06/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    무지개 신호등 - 다중 LED 패턴
+    컴퓨터에게 계산 시키기 — 연산자 활용
   
 
     
@@ -964,6 +867,14 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -976,17 +887,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 3 - 입력을 받아라 - 버튼과 상호작용
+    Part 2 - [1권] 프로그램에 판단력 불어넣기
   
 
     
@@ -997,16 +908,44 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 3 - 입력을 받아라 - 버튼과 상호작용
+    Part 2 - [1권] 프로그램에 판단력 불어넣기
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    갈림길에서 선택하기 — if 조건문
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1022,7 +961,7 @@
   <span class="md-ellipsis">
     
   
-    버튼 연결하기 - 디지털 입력의 시작
+    같은 일을 반복하기 — for와 while 반복문
   
 
     
@@ -1050,35 +989,7 @@
   <span class="md-ellipsis">
     
   
-    누르면 반응해! - 조건문 활용
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../chapter09/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    반응속도 게임 만들기
+    여기까지 잘 왔어! — 중간 점검 미니 게임 만들기
   
 
     
@@ -1107,6 +1018,16 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -1119,17 +1040,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 4 - 소리로 표현하기 - 부저 활용
+    Part 3 - [1권] 코드를 깔끔하게 정리하는 힘 — 함수
   
 
     
@@ -1140,16 +1061,44 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 4 - 소리로 표현하기 - 부저 활용
+    Part 3 - [1권] 코드를 깔끔하게 정리하는 힘 — 함수
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    왜 코드를 나눠야 할까? — 함수가 필요한 이유
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1165,7 +1114,7 @@
   <span class="md-ellipsis">
     
   
-    삐- 소리의 원리 - 부저 연결과 PWM
+    나만의 함수 만들기 — 함수 정의와 호출
   
 
     
@@ -1193,7 +1142,7 @@
   <span class="md-ellipsis">
     
   
-    나만의 멜로디 - 학교종 연주하기
+    함수에 값을 주고받기 — 매개변수와 반환값 깊이 이해하기
   
 
     
@@ -1221,7 +1170,7 @@
   <span class="md-ellipsis">
     
   
-    피아노 만들기 - 버튼으로 연주
+    함수로 코드를 리모델링하자 — 업다운 게임 리팩토링
   
 
     
@@ -1250,6 +1199,14 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -1262,17 +1219,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 5 - 세상을 감지하라 - 센서 활용
+    Part 4 - [2권] 게임을 더 풍성하게 — 배열과 실전 도구
   
 
     
@@ -1283,12 +1240,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 5 - 세상을 감지하라 - 센서 활용
+    Part 4 - [2권] 게임을 더 풍성하게 — 배열과 실전 도구
   
 
           </label>
@@ -1308,7 +1265,7 @@
   <span class="md-ellipsis">
     
   
-    밝기 감지 - 조도 센서
+    데이터를 줄 세우기 — 배열 기초
   
 
     
@@ -1336,7 +1293,7 @@
   <span class="md-ellipsis">
     
   
-    자동 조명 만들기
+    여러 선택지 깔끔하게 처리하기 — switch문과 게임 메뉴
   
 
     
@@ -1364,7 +1321,7 @@
   <span class="md-ellipsis">
     
   
-    온도계 만들기 - 온도 센서 활용
+    게임에 우연을 더하자 — 난수와 유용한 함수들
   
 
     
@@ -1393,6 +1350,18 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -1405,17 +1374,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 6 - 나만의 스마트 기기 - 통합 프로젝트
+    Part 5 - [2권] 최종 프로젝트 — 내 손으로 게임 완성하기
   
 
     
@@ -1426,12 +1395,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 6 - 나만의 스마트 기기 - 통합 프로젝트
+    Part 5 - [2권] 최종 프로젝트 — 내 손으로 게임 완성하기
   
 
           </label>
@@ -1451,7 +1420,7 @@
   <span class="md-ellipsis">
     
   
-    프로젝트 기획 - 아이디어 구체화
+    게임을 설계하자 — 기획부터 함수 구조 짜기
   
 
     
@@ -1479,7 +1448,7 @@
   <span class="md-ellipsis">
     
   
-    만들기 - 회로 구성과 코딩
+    직접 만드는 가위바위보 게임 — 코딩 실전
   
 
     
@@ -1507,7 +1476,63 @@
   <span class="md-ellipsis">
     
   
-    발표와 공유 - 프로젝트 시연
+    보너스 도전! OX 퀴즈 게임 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    내 코드 다듬기 — 자주 틀리는 오류 모음과 디버깅 팁
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    축하해, 게임 개발자! — 다음 단계로 나아가기
   
 
     
@@ -1555,10 +1580,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 이 장에서 배우는 것
+        🎯 이 장의 학습 목표
       
     </span>
   </a>
@@ -1566,7 +1591,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 미리 알아야 할 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         💡 왜 이걸 배우나요?
@@ -1577,7 +1613,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         📚 핵심 개념
@@ -1592,7 +1628,7 @@
   <a href="#1-ide" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 1: IDE (통합 개발 환경)
+        개념 1: IDE (통합 개발 환경) 🏠
       
     </span>
   </a>
@@ -1600,171 +1636,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-firmware" class="md-nav__link">
+  <a href="#2-compiler" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 2: 펌웨어 (Firmware)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔨 따라하기
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🔨 따라하기">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-thonny" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: Thonny 다운로드 및 설치
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-bootsel" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2: 피코를 BOOTSEL 모드로 연결하기
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-thonny-micropython" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: Thonny에서 MicroPython 펌웨어 설치하기
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📝 연결 확인 테스트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⚠️ 자주 하는 실수
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="⚠️ 자주 하는 실수">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-bootsel" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 1: BOOTSEL 버튼 타이밍 실수
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-thonny" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 2: Thonny에서 피코가 인식 안 됨
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-target-volume" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 3: 펌웨어 설치 중 Target volume 선택 불가
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ✅ 스스로 점검하기
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🚀 더 해보기
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🚀 더 해보기">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-shell" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 1: Shell에서 계산기처럼 사용하기 ⭐
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 2: 피코 정보 확인하기 ⭐⭐
+        개념 2: 컴파일러 (Compiler) 🔄
       
     </span>
   </a>
@@ -1775,7 +1650,18 @@
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        도전 3: 도움말 살펴보기 ⭐⭐⭐
+        개념 3: 소스 코드와 실행 파일 📄➡️⚙️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 터미널 (Terminal) ⌨️
       
     </span>
   </a>
@@ -1788,13 +1674,102 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 다음 장으로
+        🔨 따라하기: 개발 환경 설치
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기: 개발 환경 설치">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: VS Code 설치하기 🛠️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-gcc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: GCC 컴파일러 설치하기 🔧
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: GCC 컴파일러 설치하기 🔧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows 사용자
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mac 사용자
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 환경 변수 설정하기 (Windows만 해당) ⚙️
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-vs-code-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: VS Code에 C언어 확장 설치하기 🧩
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-hello-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Hello, World! 코드 작성 및 실행하기 🌍
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1815,287 +1790,274 @@
 
 
 
-<h1 id="chapter-02-thonny">📘 Chapter 02: 개발 환경 설정 - Thonny 설치하기<a class="headerlink" href="#chapter-02-thonny" title="Permanent link">&para;</a></h1>
+<h1 id="_1">내 컴퓨터에 작업실 꾸미기 — 개발 환경 설치<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="_2">🎯 이 장의 학습 목표<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>이 장을 마치면 다음을 할 수 있습니다:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> C언어 개발에 필요한 IDE(Visual Studio Code)를 설치할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 컴파일러가 무엇인지 이해하고, 정상 설치 여부를 확인할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 간단한 테스트 코드를 입력하고 실행하여 결과를 확인할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 설치 과정에서 자주 발생하는 오류를 스스로 해결할 수 있다</li>
+</ul>
+<p><strong>예상 학습 시간</strong>: 약 1시간 30분</p>
+<hr />
+<h2 id="_3">📚 미리 알아야 할 것<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>1장에서 우리는 프로그래밍이 "컴퓨터에게 일을 시키는 명령서를 작성하는 것"이라고 배웠어요. C언어라는 프로그래밍 언어를 선택한 이유도 함께 알아봤죠.</p>
+<p>이번 장에서는 드디어 <strong>실제로 코드를 작성하고 실행할 수 있는 환경</strong>을 만들어 볼 거예요. 컴퓨터에 아무것도 설치하지 않은 상태에서 시작하니, 걱정하지 마세요! 😊</p>
+<hr />
+<h2 id="_4">💡 왜 이걸 배우나요?<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>요리를 배우고 싶다고 상상해 보세요. 아무리 훌륭한 레시피를 알고 있어도, <strong>주방이 없으면</strong> 요리를 시작할 수 없겠죠? 도마, 칼, 냄비, 가스레인지... 이런 도구들이 갖춰진 주방이 있어야 비로소 레시피를 따라 요리를 만들 수 있어요.</p>
+<p>프로그래밍도 마찬가지예요. 우리가 C언어로 코드를 작성하려면:</p>
+<ul>
+<li><strong>코드를 편하게 적을 수 있는 편집기</strong> (도마와 칼 같은 것)</li>
+<li><strong>코드를 컴퓨터가 이해하는 언어로 번역해 주는 컴파일러</strong> (가스레인지 같은 것)</li>
+</ul>
+<p>이 두 가지가 반드시 필요합니다. 이번 장에서 이 "프로그래밍 주방"을 여러분의 컴퓨터에 차려볼 거예요!</p>
 <blockquote>
-<p><strong>Part 1</strong>: 피코와 첫 만남 | ⏱️ 약 30분</p>
+<p>🎉 <strong>좋은 소식!</strong> 이 모든 도구는 <strong>무료</strong>입니다. 돈 한 푼 들이지 않고 전문 개발자와 같은 환경을 갖출 수 있어요!</p>
 </blockquote>
 <hr />
-<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="_5">📚 핵심 개념<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>이번 장에서 꼭 알아야 할 개념은 딱 <strong>4가지</strong>예요. 하나씩 차근차근 알아볼게요.</p>
+<hr />
+<h3 id="1-ide">개념 1: IDE (통합 개발 환경) 🏠<a class="headerlink" href="#1-ide" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작해요</strong></p>
+<p>여러분이 글을 쓴다고 상상해 보세요. 메모장에도 글을 쓸 수 있지만, 한글(HWP)이나 워드(Word)를 쓰면 훨씬 편하죠? 맞춤법 검사도 해주고, 글꼴도 바꿔주고, 페이지 설정도 알아서 해주니까요.</p>
+<p>프로그래밍에서 IDE는 바로 이 <strong>"한글이나 워드 같은 존재"</strong>입니다. 메모장으로도 코드를 쓸 수는 있지만, IDE를 쓰면 백만 배 편해져요!</p>
+<p><strong>정확한 정의</strong></p>
+<p>IDE는 <strong>Integrated Development Environment</strong>의 약자로, 한국어로는 <strong>"통합 개발 환경"</strong>이라고 해요. 코드를 작성하고, 오류를 찾아주고, 실행까지 한 곳에서 할 수 있는 프로그램이에요.</p>
+<p><strong>예시로 확인</strong></p>
+<p>IDE가 제공하는 편리한 기능들을 살펴볼게요:</p>
 <ul>
-<li>[ ] Thonny IDE를 다운로드하고 설치할 수 있다</li>
-<li>[ ] 피코를 컴퓨터에 연결하고 Thonny에서 인식시킬 수 있다</li>
-<li>[ ] MicroPython 펌웨어를 피코에 설치할 수 있다</li>
+<li><strong>코드 색상 표시</strong>: 키워드는 파란색, 문자열은 빨간색 등으로 자동으로 색칠해 줘서 코드를 읽기 쉬워져요</li>
+<li><strong>자동 완성</strong>: 몇 글자만 입력하면 나머지를 제안해 줘요 (스마트폰 자동완성처럼!)</li>
+<li><strong>오류 밑줄</strong>: 틀린 부분에 빨간 밑줄을 그어줘요 (워드의 맞춤법 검사처럼!)</li>
+<li><strong>원클릭 실행</strong>: 버튼 하나로 코드를 실행할 수 있어요</li>
 </ul>
+<p>우리가 사용할 IDE는 <strong>Visual Studio Code(줄여서 VS Code)</strong>예요. 전 세계 개발자들이 가장 많이 사용하는 무료 IDE입니다.</p>
 <hr />
-<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>코드를 작성하려면 <strong>편집기</strong>가 필요해요. 메모장으로도 코드를 쓸 수 있지만, 그건 마치 맨손으로 못을 박는 것과 같아요. 🔨</p>
-<p><strong>Thonny</strong>는 파이썬 초보자를 위해 만들어진 편집기예요. 특히 피코와 찰떡궁합인데, 이유가 있어요:</p>
-<ul>
-<li>🔌 <strong>바로 연결</strong>: USB만 꽂으면 피코를 자동 인식</li>
-<li>▶️ <strong>즉시 실행</strong>: 버튼 하나로 코드를 피코에 전송하고 실행</li>
-<li>🐛 <strong>친절한 오류</strong>: 뭐가 잘못됐는지 쉽게 알려줌</li>
-</ul>
-<p>그리고 피코는 처음 상태에서는 MicroPython을 이해하지 못해요. 마치 새 스마트폰에 운영체제를 설치하는 것처럼, 피코에도 <strong>MicroPython 펌웨어</strong>를 설치해야 우리가 작성한 코드를 이해할 수 있어요.</p>
-<hr />
-<h2 id="_3">📚 핵심 개념<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<h3 id="1-ide">개념 1: IDE (통합 개발 환경)<a class="headerlink" href="#1-ide" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p><strong>비유로 시작</strong>: IDE는 마치 <strong>요리사의 주방</strong>과 같아요. 칼, 도마, 가스레인지가 한 곳에 모여 있으면 요리하기 편하죠? IDE도 코드 작성, 실행, 디버깅을 한 곳에서 할 수 있게 해줘요.</p>
-</li>
-<li>
-<p><strong>정확한 정의</strong>: IDE(Integrated Development Environment)는 코드 편집기, 실행 환경, 오류 검사 도구가 통합된 프로그램이에요.</p>
-</li>
-<li>
-<p><strong>예시로 확인</strong>: Thonny에서 코드를 작성하고 → 실행 버튼을 누르면 → 결과가 바로 아래에 표시돼요.</p>
-</li>
-</ol>
-<p><strong>쉽게 말하면</strong>: 코딩에 필요한 모든 도구가 담긴 올인원 프로그램! 🧰</p>
-<hr />
-<h3 id="2-firmware">개념 2: 펌웨어 (Firmware)<a class="headerlink" href="#2-firmware" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p><strong>비유로 시작</strong>: 펌웨어는 마치 <strong>사람의 본능</strong>과 같아요. 심장이 뛰고 숨을 쉬는 건 배우지 않아도 하잖아요? 펌웨어는 하드웨어가 "기본적으로 할 줄 아는 것"을 담당해요.</p>
-</li>
-<li>
-<p><strong>정확한 정의</strong>: 펌웨어는 하드웨어에 내장되어 기본 동작을 제어하는 소프트웨어예요. 피코의 MicroPython 펌웨어는 "파이썬 코드를 이해하는 능력"을 심어줘요.</p>
-</li>
-<li>
-<p><strong>예시로 확인</strong>: 펌웨어 설치 전에는 피코가 <code>print("안녕")</code>를 몰라요. 설치 후에는 이해하고 실행해요!</p>
-</li>
-</ol>
-<p><strong>쉽게 말하면</strong>: 피코에게 "파이썬 말하는 법"을 가르치는 거예요! 🗣️</p>
-<hr />
-<h2 id="_4">🔨 따라하기<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<h3 id="step-1-thonny">Step 1: Thonny 다운로드 및 설치<a class="headerlink" href="#step-1-thonny" title="Permanent link">&para;</a></h3>
-<p><strong>목표</strong>: 컴퓨터에 Thonny를 설치해요.</p>
-<p><strong>1️⃣ 다운로드 사이트 접속</strong></p>
-<p>웹 브라우저에서 <strong>thonny.org</strong>에 접속해요.</p>
+<h3 id="2-compiler">개념 2: 컴파일러 (Compiler) 🔄<a class="headerlink" href="#2-compiler" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작해요</strong></p>
+<p>여러분이 한국어로 편지를 썼는데, 이 편지를 받을 친구는 영어만 이해한다고 해볼게요. 이 경우 <strong>번역가</strong>가 필요하겠죠?</p>
+<p>컴파일러는 바로 이 <strong>"번역가"</strong>예요. 우리가 C언어(사람의 언어에 가까운 것)로 작성한 코드를 컴퓨터가 이해할 수 있는 <strong>기계어(0과 1로 이루어진 것)</strong>로 번역해 주는 프로그램이에요.</p>
+<p><strong>정확한 정의</strong></p>
+<p>컴파일러(Compiler)란, <strong>프로그래밍 언어로 작성한 소스 코드를 기계어로 변환하는 프로그램</strong>이에요. C언어 코드를 컴퓨터가 실행할 수 있는 파일(.exe)로 바꿔주는 역할을 합니다.</p>
+<p><strong>예시로 확인</strong></p>
 <div class="mermaid">flowchart LR
-    A[🌐 브라우저 열기] --&gt; B[📍 thonny.org 접속] --&gt; C[💾 다운로드]
-    style A fill:#e3f2fd,stroke:#1976d2
-    style B fill:#fff3e0,stroke:#f57c00
-    style C fill:#e8f5e9,stroke:#388e3c</div>
-<p><strong>2️⃣ 운영체제에 맞는 버전 다운로드</strong></p>
-<table>
-<thead>
-<tr>
-<th>운영체제</th>
-<th>클릭할 버튼</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Windows</td>
-<td>오른쪽 상단 <strong>Windows</strong></td>
-</tr>
-<tr>
-<td>Mac</td>
-<td>오른쪽 상단 <strong>Mac</strong></td>
-</tr>
-</tbody>
-</table>
-<p><strong>3️⃣ 설치 진행</strong></p>
+    A["📝 우리가 작성한 코드\n(C언어 - 사람이 읽을 수 있음)"] 
+    B["🔄 컴파일러\n(번역기)"]
+    C["💻 실행 파일\n(기계어 - 컴퓨터가 이해함)"]
+    A --&gt; B --&gt; C</div>
+<p>우리가 <code>printf("Hello!");</code>라고 쓰면, 컴파일러가 이것을 <code>01001010 11010010...</code> 같은 0과 1의 조합으로 번역해요. 컴퓨터는 이 0과 1을 읽고 "아, 화면에 Hello!를 출력하라는 뜻이구나!" 하고 실행하는 거예요.</p>
+<p>우리가 사용할 컴파일러는 <strong>GCC(GNU Compiler Collection)</strong>라는 것으로, 세계에서 가장 널리 쓰이는 무료 C언어 컴파일러입니다.</p>
+<blockquote>
+<p>💡 <strong>잠깐!</strong> "IDE와 컴파일러가 뭐가 다른 거지?" 라고 헷갈리시나요?
+간단해요! <strong>IDE는 코드를 작성하는 편집기</strong>(글을 쓰는 워드), <strong>컴파일러는 코드를 번역하는 번역기</strong>(번역가)예요. 둘 다 있어야 코딩을 할 수 있어요!</p>
+</blockquote>
+<hr />
+<h3 id="3">개념 3: 소스 코드와 실행 파일 📄➡️⚙️<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작해요</strong></p>
+<p>악보와 음악의 관계를 생각해 보세요. 악보는 종이에 적힌 음표일 뿐이고, 이것을 피아니스트가 연주해야 비로소 "음악"이 됩니다.</p>
 <ul>
-<li>다운로드된 파일 실행</li>
-<li><strong>Next</strong> → <strong>Next</strong> → <strong>Install</strong> → <strong>Finish</strong></li>
-<li>기본 설정 그대로 진행하면 OK!</li>
+<li><strong>악보</strong> = 소스 코드 (우리가 작성한 텍스트 파일)</li>
+<li><strong>피아니스트</strong> = 컴파일러 (번역하고 변환하는 역할)</li>
+<li><strong>음악</strong> = 실행 파일 (컴퓨터가 실제로 실행하는 프로그램)</li>
 </ul>
-<p><strong>여기서 잠깐! 🤔</strong></p>
+<p><strong>정확한 정의</strong></p>
+<ul>
+<li><strong>소스 코드(Source Code)</strong>: 프로그래머가 프로그래밍 언어로 작성한 텍스트 파일. C언어의 경우 <code>.c</code> 확장자를 사용해요 (예: <code>hello.c</code>)</li>
+<li><strong>실행 파일(Executable)</strong>: 컴파일러가 소스 코드를 번역해서 만들어낸 파일. Windows에서는 <code>.exe</code> 확장자를 사용해요 (예: <code>hello.exe</code>)</li>
+</ul>
+<p><strong>예시로 확인</strong></p>
+<div class="mermaid">flowchart LR
+    A["hello.c\n(소스 코드)"] --&gt;|"컴파일"| B["hello.exe\n(실행 파일)"]
+    B --&gt;|"실행"| C["화면에 결과 출력!"]</div>
+<p>우리가 이번 장에서 할 일을 정리하면: <code>hello.c</code> 파일을 만들고 → 컴파일러로 번역하고 → <code>hello.exe</code>를 실행해서 → 화면에 결과를 확인하는 거예요!</p>
+<hr />
+<h3 id="4-terminal">개념 4: 터미널 (Terminal) ⌨️<a class="headerlink" href="#4-terminal" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작해요</strong></p>
+<p>음성 비서 시리(Siri)나 빅스비를 아시나요? "내일 날씨 알려줘"라고 <strong>말로 명령</strong>하면 결과를 알려주죠.</p>
+<p>터미널은 이것과 비슷해요. 다만, 말 대신 <strong>글자를 타이핑</strong>해서 컴퓨터에게 명령을 내리는 창이에요.</p>
+<p><strong>정확한 정의</strong></p>
+<p>터미널(Terminal)은 <strong>텍스트 명령어를 입력하여 컴퓨터를 조작하는 도구</strong>예요. "명령 프롬프트"나 "PowerShell"이라고도 불러요.</p>
+<p><strong>예시로 확인</strong></p>
+<p>터미널에서 이런 명령을 입력하면:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>gcc --version
+</span></code></pre></div>
+<p>컴파일러가 제대로 설치되었다면 이런 결과가 나와요:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>gcc (Rev6, Built by MSYS2 project) 13.2.0
+</span></code></pre></div>
+<p>이것은 "내 컴퓨터에 GCC 컴파일러 13.2.0 버전이 설치되어 있어요"라는 뜻이에요.</p>
 <blockquote>
-<p>설치 중 "이 앱이 디바이스를 변경할 수 있도록 허용하시겠습니까?" 라고 물으면 <strong>예</strong>를 클릭하세요. 정상적인 과정이에요!</p>
+<p>💡 <strong>잠깐!</strong> 여기까지 이해가 잘 되셨나요?
+IDE, 컴파일러, 소스 코드, 터미널... 새로운 용어가 많이 나왔죠? 완벽하게 외울 필요는 없어요. 직접 설치하고 사용하다 보면 자연스럽게 익숙해질 거예요! 이제 진짜로 설치를 시작해 볼까요? 🚀</p>
 </blockquote>
 <hr />
-<h3 id="step-2-bootsel">Step 2: 피코를 BOOTSEL 모드로 연결하기<a class="headerlink" href="#step-2-bootsel" title="Permanent link">&para;</a></h3>
-<p><strong>목표</strong>: 피코를 펌웨어 설치 모드로 컴퓨터에 연결해요.</p>
-<p><strong>1️⃣ BOOTSEL 버튼 찾기</strong></p>
-<p>피코 보드에서 <strong>BOOTSEL</strong>이라고 적힌 작은 버튼을 찾아요. 보드 중앙 근처에 있어요.</p>
-<div class="mermaid">flowchart TB
-    subgraph 피코보드[📟 피코 보드]
-        direction TB
-        USB[🔌 USB 포트]
-        BTN[⚪ BOOTSEL 버튼]
-        LED[💡 LED]
-    end
-    style 피코보드 fill:#f5f5f5,stroke:#424242
-    style USB fill:#e3f2fd,stroke:#1976d2
-    style BTN fill:#ffeb3b,stroke:#f57f17
-    style LED fill:#c8e6c9,stroke:#388e3c</div>
-<p><strong>2️⃣ 버튼 누른 채로 USB 연결</strong></p>
-<p>이 순서가 중요해요!</p>
-<ol>
-<li>BOOTSEL 버튼을 <strong>꾹 누른 상태</strong>로</li>
-<li>USB 케이블을 컴퓨터에 연결</li>
-<li>2초 정도 기다린 후 버튼에서 손 떼기</li>
-</ol>
-<p><strong>3️⃣ 확인하기</strong></p>
-<p>성공하면 컴퓨터에 <strong>RPI-RP2</strong>라는 USB 드라이브가 나타나요!</p>
-<table>
-<thead>
-<tr>
-<th>상태</th>
-<th>의미</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>✅ RPI-RP2 드라이브 보임</td>
-<td>성공! 다음 단계로</td>
-</tr>
-<tr>
-<td>❌ 드라이브 안 보임</td>
-<td>USB 뽑고 다시 시도</td>
-</tr>
-</tbody>
-</table>
-<p><strong>여기서 잠깐! 🤔</strong></p>
-<blockquote>
-<p>BOOTSEL 모드는 "나 지금 새 운영체제 받을 준비됐어!"라고 피코가 말하는 거예요. 일반 연결과 다른 특별한 모드랍니다.</p>
-</blockquote>
-<hr />
-<h3 id="step-3-thonny-micropython">Step 3: Thonny에서 MicroPython 펌웨어 설치하기<a class="headerlink" href="#step-3-thonny-micropython" title="Permanent link">&para;</a></h3>
-<p><strong>목표</strong>: Thonny를 사용해 피코에 MicroPython을 설치해요.</p>
-<p><strong>1️⃣ Thonny 실행</strong></p>
-<p>설치한 Thonny를 실행해요. 처음 실행하면 언어 선택 화면이 나와요.
-- <strong>Language</strong>: 한국어 선택해도 좋아요!</p>
-<p><strong>2️⃣ 인터프리터 설정 열기</strong></p>
-<p>메뉴에서: <strong>도구(Tools)</strong> → <strong>옵션(Options)</strong> → <strong>인터프리터(Interpreter)</strong> 탭</p>
-<p><strong>3️⃣ MicroPython (Raspberry Pi Pico) 선택</strong></p>
+<h2 id="_6">🔨 따라하기: 개발 환경 설치<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>자, 이제 실제로 여러분의 컴퓨터에 개발 환경을 설치해 볼게요!</p>
+<p>전체 과정은 아래와 같아요:</p>
 <div class="mermaid">flowchart TD
-    A[🔧 도구 메뉴] --&gt; B[⚙️ 옵션]
-    B --&gt; C[🐍 인터프리터 탭]
-    C --&gt; D[📋 드롭다운에서 선택]
-    D --&gt; E["MicroPython (RP2040)"]
-    style A fill:#e3f2fd,stroke:#1976d2
-    style B fill:#fff3e0,stroke:#f57c00
-    style C fill:#e8f5e9,stroke:#388e3c
-    style D fill:#fce4ec,stroke:#c2185b
-    style E fill:#f3e5f5,stroke:#7b1fa2</div>
-<ul>
-<li>드롭다운에서 <strong>MicroPython (Raspberry Pi Pico)</strong> 또는 <strong>MicroPython (RP2040)</strong> 선택</li>
-</ul>
-<p><strong>4️⃣ 펌웨어 설치</strong></p>
-<ul>
-<li>오른쪽 아래 <strong>"Install or update MicroPython"</strong> 링크 클릭</li>
-<li><strong>Target volume</strong>: RPI-RP2 선택</li>
-<li><strong>MicroPython variant</strong>: Raspberry Pi Pico 2 W (WiFi 버전이면) 선택</li>
-<li><strong>Install</strong> 클릭!</li>
-</ul>
-<p><strong>5️⃣ 설치 완료 확인</strong></p>
-<p>설치가 끝나면:
-- RPI-RP2 드라이브가 사라짐 (정상!)
-- Thonny 하단 Shell에 <code>&gt;&gt;&gt;</code> 표시가 나타남</p>
-<p><strong>실행 결과</strong>:
-<div class="highlight"><pre><span></span><code>MicroPython v1.22.0 on 2024-01-01; Raspberry Pi Pico 2 W
-Type &quot;help()&quot; for more information.
-&gt;&gt;&gt; 
-</code></pre></div></p>
-<p><strong>여기서 잠깐! 🤔</strong></p>
+    S1["Step 1\nVS Code 설치"] 
+    S2["Step 2\nMSYS2로 GCC 컴파일러 설치"]
+    S3["Step 3\n환경 변수 설정"]
+    S4["Step 4\nVS Code에 C언어 확장 설치"]
+    S5["Step 5\nHello World 코드 작성 및 실행"]
+    S6["Step 6\n설치 확인 &amp; 축하!"]
+    S1 --&gt; S2 --&gt; S3 --&gt; S4 --&gt; S5 --&gt; S6</div>
 <blockquote>
-<p><code>&gt;&gt;&gt;</code> 이 기호는 "나 준비됐어, 명령 줘!"라는 뜻이에요. 이게 보이면 피코와 대화할 준비 완료! 🎉</p>
+<p>⏱️ <strong>시간 안내</strong>: Step 1~4는 설치 과정(약 40분), Step 5~6은 실습과 확인(약 20분)이에요. 다운로드 속도에 따라 시간이 다를 수 있으니 여유롭게 진행하세요!</p>
+<p>📌 <strong>참고</strong>: 이 가이드는 <strong>Windows</strong> 기준으로 작성되어 있어요. Mac 사용자는 Step 2에서 다른 방법을 안내해 드릴게요.</p>
 </blockquote>
 <hr />
-<h2 id="_5">📝 연결 확인 테스트<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>펌웨어가 잘 설치됐는지 간단히 테스트해볼까요?</p>
-<p>Thonny 하단의 <strong>Shell</strong> 창에서 <code>&gt;&gt;&gt;</code> 옆에 직접 타이핑해보세요:</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;안녕, 피코!&quot;</span><span class="p">)</span>
-</code></pre></div>
-<p><strong>실행 결과</strong>:
-<div class="highlight"><pre><span></span><code>안녕, 피코!
-&gt;&gt;&gt; 
-</code></pre></div></p>
-<p>축하해요! 🎊 피코가 여러분의 말을 이해했어요!</p>
-<hr />
-<h2 id="_6">⚠️ 자주 하는 실수<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<h3 id="1-bootsel">실수 1: BOOTSEL 버튼 타이밍 실수<a class="headerlink" href="#1-bootsel" title="Permanent link">&para;</a></h3>
-<p><strong>증상</strong>: RPI-RP2 드라이브가 안 나타남</p>
-<p><strong>원인</strong>: 버튼을 누르기 전에 USB를 먼저 연결했거나, 버튼을 너무 빨리 놓음</p>
-<p><strong>해결</strong>:
-<div class="highlight"><pre><span></span><code>❌ 잘못된 순서
-1. USB 연결 → 2. BOOTSEL 누름
-
-✅ 올바른 순서  
-1. BOOTSEL 꾹 누름 → 2. USB 연결 → 3. 2초 후 버튼 놓음
-</code></pre></div></p>
-<hr />
-<h3 id="2-thonny">실수 2: Thonny에서 피코가 인식 안 됨<a class="headerlink" href="#2-thonny" title="Permanent link">&para;</a></h3>
-<p><strong>증상</strong>: Shell에 <code>&gt;&gt;&gt;</code> 대신 에러 메시지</p>
-<p><strong>원인</strong>: 인터프리터 설정이 안 됐거나, 포트 선택이 잘못됨</p>
-<p><strong>해결</strong>:
-1. <strong>도구</strong> → <strong>옵션</strong> → <strong>인터프리터</strong>
-2. <strong>MicroPython (Raspberry Pi Pico)</strong> 선택 확인
-3. 포트가 <strong>&lt; Try to detect port automatically &gt;</strong> 인지 확인
-4. USB 케이블을 뽑았다가 다시 연결</p>
-<hr />
-<h3 id="3-target-volume">실수 3: 펌웨어 설치 중 Target volume 선택 불가<a class="headerlink" href="#3-target-volume" title="Permanent link">&para;</a></h3>
-<p><strong>증상</strong>: Target volume 드롭다운이 비어있음</p>
-<p><strong>원인</strong>: BOOTSEL 모드로 연결되지 않음</p>
-<p><strong>해결</strong>:
-1. Thonny 닫기
-2. USB 케이블 분리
-3. Step 2 다시 진행 (BOOTSEL 누른 채 연결)
-4. Thonny 다시 열기</p>
-<hr />
-<h2 id="_7">✅ 스스로 점검하기<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p><strong>Thonny</strong>는 어떤 프로그램인가요?</p>
-</li>
-<li>
-<p>피코에 <strong>펌웨어</strong>를 설치하는 이유는 무엇인가요?</p>
-</li>
-<li>
-<p><strong>BOOTSEL 모드</strong>로 연결하려면 어떤 순서로 해야 하나요?</p>
-</li>
-</ol>
-<details>
-<summary>정답 확인</summary>
-
-1. 파이썬 코드를 작성하고 실행할 수 있는 통합 개발 환경(IDE)이에요. 특히 피코와 바로 연결해서 사용할 수 있어 편리해요.
-
-2. 피코가 MicroPython 코드를 이해하고 실행할 수 있게 하려면 MicroPython 펌웨어가 필요해요. 마치 스마트폰에 운영체제를 설치하는 것과 같아요.
-
-3. BOOTSEL 버튼을 꾹 누른 상태에서 → USB 연결 → 2초 후 버튼 놓기
-
-</details>
-
-<hr />
-<h2 id="_8">🚀 더 해보기<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<h3 id="1-shell">도전 1: Shell에서 계산기처럼 사용하기 ⭐<a class="headerlink" href="#1-shell" title="Permanent link">&para;</a></h3>
-<p>Thonny Shell에서 이것들을 입력해보세요:
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">5</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;파이썬&quot;</span> <span class="o">*</span> <span class="mi">3</span>
-</code></pre></div>
-결과가 어떻게 나오나요?</p>
-<h3 id="2">도전 2: 피코 정보 확인하기 ⭐⭐<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
-<p>Shell에 이걸 입력해보세요:
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">implementation</span>
-</code></pre></div>
-여러분의 피코 정보가 나와요!</p>
-<h3 id="3">도전 3: 도움말 살펴보기 ⭐⭐⭐<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">help</span><span class="p">()</span>
-</code></pre></div>
-MicroPython이 제공하는 도움말을 탐험해보세요!</p>
-<hr />
-<h2 id="_9">🔗 다음 장으로<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<p><strong>축하해요!</strong> 🎉 이번 장에서 우리는:
-- ✅ Thonny IDE를 설치했고
-- ✅ 피코를 컴퓨터에 연결했고<br />
-- ✅ MicroPython 펌웨어를 설치했어요</p>
-<p>이제 피코가 파이썬을 이해할 수 있게 됐어요!</p>
-<p><strong>다음 장</strong>에서는 드디어 첫 번째 프로그램을 작성해볼 거예요. 피코에게 <code>"Hello, World!"</code>를 말하게 해봅시다! 🚀</p>
-<hr />
+<h3 id="step-1-vs-code">Step 1: VS Code 설치하기 🛠️<a class="headerlink" href="#step-1-vs-code" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 코드를 편하게 작성할 수 있는 편집기(IDE)를 설치해요.</p>
+<p><strong>따라하기</strong>:</p>
+<p><strong>1-1.</strong> 웹 브라우저를 열고 주소창에 다음을 입력하세요:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>https://code.visualstudio.com
+</span></code></pre></div>
+<p><strong>1-2.</strong> 홈페이지가 열리면 화면 중앙의 큰 파란색 버튼 <strong>"Download for Windows"</strong>를 클릭하세요.</p>
 <blockquote>
-<p>📌 <strong>환경 설정 완료 체크리스트</strong></p>
-<ul>
-<li>[ ] Thonny 설치됨</li>
-<li>[ ] 피코 연결됨 (Shell에 <code>&gt;&gt;&gt;</code> 보임)</li>
-<li>[ ] <code>print("테스트")</code> 실행 성공</li>
-</ul>
-<p>모두 체크했다면 다음 장으로 GO! 🏃‍♂️</p>
+<p>📌 Mac 사용자는 "Download for Mac" 버튼이 보여요. 그걸 클릭하면 됩니다!</p>
 </blockquote>
+<p><strong>1-3.</strong> 다운로드가 완료되면 받은 파일(<code>VSCodeUserSetup-x64-*.exe</code>)을 <strong>더블클릭</strong>해서 실행하세요.</p>
+<p><strong>1-4.</strong> 설치 마법사가 나타나면 다음 순서대로 진행하세요:</p>
+<ul>
+<li>"동의합니다"에 체크 → <strong>다음</strong> 클릭</li>
+<li>설치 경로는 기본값 그대로 → <strong>다음</strong> 클릭</li>
+<li><strong>⭐ 중요!</strong> "추가 작업 선택" 화면에서 다음 항목들에 <strong>모두 체크</strong>하세요:</li>
+<li>✅ "PATH에 추가(다시 시작한 후 사용 가능)" — 이것은 반드시!</li>
+<li>✅ "Code(으)로 열기" 작업을 추가 (파일/폴더 모두)</li>
+<li><strong>설치</strong> 클릭 → 설치 완료 → <strong>마침</strong> 클릭</li>
+</ul>
+<p><strong>1-5.</strong> VS Code가 자동으로 실행되면 성공이에요! 🎉</p>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: VS Code가 열리면서 "Welcome" 탭이 보여야 해요. 어두운 배경에 영어로 된 환영 화면이 나타나면 정상이에요!</p>
+</blockquote>
+<hr />
+<h3 id="step-2-gcc">Step 2: GCC 컴파일러 설치하기 🔧<a class="headerlink" href="#step-2-gcc" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: C언어 코드를 번역해 줄 컴파일러를 설치해요.</p>
+<p>이 단계가 가장 중요하면서도 초보자가 어려워하는 부분이에요. 차근차근 따라오세요!</p>
+<h4 id="windows">Windows 사용자<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h4>
+<p>우리는 <strong>MSYS2</strong>라는 도구를 사용해서 GCC를 설치할 거예요.</p>
+<p><strong>2-1.</strong> 웹 브라우저에서 다음 주소로 이동하세요:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>https://www.msys2.org
+</span></code></pre></div>
+<p><strong>2-2.</strong> 페이지 상단의 <strong>"Installation"</strong> 섹션에서 설치 파일 링크(예: <code>msys2-x86_64-*.exe</code>)를 클릭하여 다운로드하세요.</p>
+<p><strong>2-3.</strong> 다운로드된 파일을 <strong>더블클릭</strong>하여 실행하세요.</p>
+<p><strong>2-4.</strong> 설치 마법사가 나타나면:</p>
+<ul>
+<li>설치 경로는 기본값 <code>C:\msys64</code> 그대로 두세요 → <strong>다음</strong> 클릭</li>
+<li>나머지도 기본값 그대로 → <strong>다음</strong> → <strong>설치</strong> 클릭</li>
+<li>설치 완료 후 "MSYS2를 지금 실행" 체크 → <strong>마침</strong> 클릭</li>
+</ul>
+<p><strong>2-5.</strong> MSYS2 터미널 창(검은 배경)이 열리면, 다음 명령어를 <strong>정확히</strong> 입력하고 Enter를 누르세요:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pacman<span class="w"> </span>-S<span class="w"> </span>mingw-w64-ucrt-x86_64-gcc
+</span></code></pre></div>
+<p><strong>2-6.</strong> <code>설치를 진행하시겠습니까? [Y/n]</code> 라는 질문이 나오면 <strong>Y</strong>를 입력하고 Enter를 누르세요.</p>
+<p><strong>2-7.</strong> 설치가 완료되면 잠시 기다렸다가 MSYS2 창을 닫아도 됩니다.</p>
+<blockquote>
+<p>💡 <strong>TIP</strong>: 명령어를 직접 타이핑하기 어려우면, 이 교재에서 명령어를 복사(Ctrl+C)한 뒤 MSYS2 창에서 마우스 <strong>오른쪽 클릭</strong>하면 붙여넣기가 됩니다!</p>
+</blockquote>
+<h4 id="mac">Mac 사용자<a class="headerlink" href="#mac" title="Permanent link">&para;</a></h4>
+<p>Mac에서는 훨씬 간단해요!</p>
+<p><strong>2-1.</strong> Spotlight(⌘ + Space)를 눌러 "Terminal"을 검색하고 실행하세요.</p>
+<p><strong>2-2.</strong> 터미널에 다음 명령어를 입력하고 Enter:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>xcode-select<span class="w"> </span>--install
+</span></code></pre></div>
+<p><strong>2-3.</strong> 팝업 창이 뜨면 "설치"를 클릭하세요. (몇 분 소요)</p>
+<p>이것으로 Mac에서는 C 컴파일러 설치가 완료됩니다! 👏</p>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: 이 단계에서 설치가 정상적으로 끝나면, 터미널에 아무런 에러 메시지 없이 깔끔하게 완료되어야 해요. 빨간색 ERROR 메시지가 보이면 뒤의 "자주 하는 실수" 섹션을 확인해 주세요!</p>
+</blockquote>
+<hr />
+<h3 id="step-3-windows">Step 3: 환경 변수 설정하기 (Windows만 해당) ⚙️<a class="headerlink" href="#step-3-windows" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 어디서든 컴파일러를 사용할 수 있도록 컴퓨터에 "길"을 알려줘요.</p>
+<blockquote>
+<p>📌 Mac 사용자는 이 단계를 건너뛰고 Step 4로 가세요!</p>
+</blockquote>
+<p><strong>환경 변수가 뭔가요?</strong></p>
+<p>비유하면 이래요. 친구에게 "카페 가자"라고 했을 때, 친구가 그 카페의 위치를 알고 있으면 바로 갈 수 있죠? 하지만 위치를 모르면 "어디 있는데?"라고 물어야 해요.</p>
+<p><strong>환경 변수</strong>는 컴퓨터에게 "GCC 컴파일러는 여기에 있어!"라고 <strong>위치를 알려주는 설정</strong>이에요. 이걸 해놓으면 어느 폴더에서든 <code>gcc</code> 명령어를 사용할 수 있어요.</p>
+<p><strong>따라하기</strong>:</p>
+<p><strong>3-1.</strong> 키보드에서 <strong>Windows키 + S</strong>를 눌러 검색창을 열고, <strong>"환경 변수"</strong>라고 입력하세요.</p>
+<p><strong>3-2.</strong> <strong>"시스템 환경 변수 편집"</strong>을 클릭하세요.</p>
+<p><strong>3-3.</strong> 열린 창에서 오른쪽 아래의 <strong>"환경 변수(N)..."</strong> 버튼을 클릭하세요.</p>
+<p><strong>3-4.</strong> 위쪽 "사용자 변수" 목록에서 <strong>Path</strong>를 찾아 클릭한 뒤, <strong>"편집"</strong> 버튼을 클릭하세요.</p>
+<p><strong>3-5.</strong> <strong>"새로 만들기"</strong> 버튼을 클릭하고, 다음 경로를 입력하세요:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>C:\msys64\ucrt64\bin
+</span></code></pre></div>
+<p><strong>3-6.</strong> <strong>확인</strong> → <strong>확인</strong> → <strong>확인</strong>을 눌러 모든 창을 닫으세요.</p>
+<p><strong>3-7.</strong> 설정이 적용되려면 VS Code를 포함한 <strong>열려 있는 프로그램을 모두 닫고 다시 여세요.</strong></p>
+<blockquote>
+<p>⚠️ <strong>주의!</strong> 3-5에서 경로를 입력할 때 오타가 있으면 컴파일러를 찾지 못해요. 특히 <code>ucrt64</code>를 <code>ucrt</code>나 <code>ucrt46</code>으로 잘못 입력하는 경우가 많으니 꼭 확인하세요!</p>
+</blockquote>
+<p><strong>설치 확인하기</strong> 🔍</p>
+<p>환경 변수 설정이 제대로 되었는지 확인해 볼까요?</p>
+<p><strong>3-8.</strong> Windows키 + S를 눌러 <strong>"cmd"</strong>를 검색하고, <strong>"명령 프롬프트"</strong>를 실행하세요.</p>
+<p><strong>3-9.</strong> 다음 명령어를 입력하고 Enter:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>gcc --version
+</span></code></pre></div>
+<p><strong>3-10.</strong> 아래와 비슷한 메시지가 나오면 성공이에요! 🎉</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>gcc.exe (Rev2, Built by MSYS2 project) 14.2.0
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>Copyright (C) 2024 Free Software Foundation, Inc.
+</span></code></pre></div>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: <code>gcc --version</code>을 입력했을 때 버전 정보가 표시되면 성공! 만약 <code>'gcc'은(는) 내부 또는 외부 명령...이 아닙니다</code>라는 메시지가 나오면 환경 변수 설정을 다시 확인해 주세요.</p>
+<p>💡 <strong>잠깐!</strong> 여기까지 잘 따라오셨나요? 환경 변수 설정이 이 과정에서 가장 까다로운 부분이에요. 여기를 통과했다면 나머지는 정말 쉬워요! 거의 다 왔어요! 💪</p>
+</blockquote>
+<hr />
+<h3 id="step-4-vs-code-c">Step 4: VS Code에 C언어 확장 설치하기 🧩<a class="headerlink" href="#step-4-vs-code-c" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: VS Code가 C언어를 잘 이해하도록 "추가 기능"을 설치해요.</p>
+<p>VS Code는 기본적으로 다양한 언어를 지원하지만, <strong>확장(Extension)</strong>을 설치하면 훨씬 더 편리하게 사용할 수 있어요. 스마트폰에 앱을 설치하는 것과 비슷해요!</p>
+<p><strong>따라하기</strong>:</p>
+<p><strong>4-1.</strong> VS Code를 실행하세요.</p>
+<p><strong>4-2.</strong> 왼쪽 사이드바에서 <strong>네모 4개가 합쳐진 아이콘</strong> (Extensions, 확장)을 클릭하세요. 또는 키보드에서 <strong>Ctrl + Shift + X</strong>를 누르세요.</p>
+<p><strong>4-3.</strong> 검색창에 <strong>"C/C++"</strong>를 입력하세요.</p>
+<p><strong>4-4.</strong> 검색 결과에서 <strong>"C/C++"</strong> (제작자: Microsoft)를 찾아 <strong>Install(설치)</strong> 버튼을 클릭하세요.</p>
+<blockquote>
+<p>📌 Microsoft가 만든 것을 설치해야 해요! 비슷한 이름의 다른 확장과 헷갈리지 마세요.</p>
+</blockquote>
+<p><strong>4-5.</strong> 설치가 완료되면 "Install" 버튼이 "Uninstall"로 바뀌어요.</p>
+<p><strong>추가로 설치하면 좋은 확장</strong>:</p>
+<p>검색창에 <strong>"Code Runner"</strong>를 입력하고 (제작자: Jun Han) 설치하세요. 이 확장을 설치하면 코드를 <strong>버튼 하나로 실행</strong>할 수 있어서 매우 편리해요!</p>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: 왼쪽 사이드바의 확장 아이콘에 설치된 확장이 보이고, "C/C++"와 "Code Runner"가 목록에 있으면 성공!</p>
+</blockquote>
+<hr />
+<h3 id="step-5-hello-world">Step 5: Hello, World! 코드 작성 및 실행하기 🌍<a class="headerlink" href="#step-5-hello-world" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 첫 번째 C언어 프로그램을 작성하고 실행해요!</p>
+<p>드디어 가장 기다려왔던 순간이에요! 프로그래밍 역사에서 가장 유명한 프로그램, <strong>"Hello, World!"</strong>를 만들어 볼 거예요.</p>
+<p><strong>따라하기</strong>:</p>
+<p><strong>5-1.</strong> 먼저 코드를 저장할 폴더를 만들어요.</p>
+<ul>
+<li>바탕화면이나 원하는 위치에 <strong>"c_study"</strong>라는 이름의 폴더를 새로 만드세요.</li>
+</ul>
+<p><strong>5-2.</strong> VS Code에서 <strong>파일(File)</strong> → <strong>폴더 열기(Open Folder)</strong>를 클릭하고, 방금 만든 <code>c_study</code> 폴더를 선택하세요.</p>
+<blockquote>
+<p>📌 "이 폴더의 작성자를 신뢰합니까?"라는 팝업이 나오면 <strong>"예, 작성자를 신뢰합니다"</strong>를 클릭하세요.</p>
+</blockquote>
+<p><strong>5-3.</strong> 왼쪽 탐색기 패널에서 <strong>새 파일 아이콘</strong>(종이에 + 표시)을 클릭하고, 파일 이름을 입력하세요:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>hello.c
+</span></code></pre></div>
+<blockquote>
+<p>⚠️ <strong>반드시</strong> <code>.c</code>로 끝나야 해요! <code>hello.c</code>이지 <code>hello.txt</code>가 아니에요. <code>.c</code> 확장자가 "이 파일은 C언어 코드입니다"라고 알려주는 거예요.</p>
+</blockquote>
+<p><strong>5-4.</strong> 오른쪽 편집 영역에 아래 코드를 <strong>정확히</strong> 입력하세요:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello, World!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>5-5.</strong> <strong>Ctrl + S</strong>를 눌러 파일을 저장하세요.</p>
+<p><strong>5-6.</strong> 코드를 실행해요! 두 가지 방법이 있어요:</p>
+<p><strong>방법 A — Code Runner 사용 (가장 쉬움)</strong>:
+- 오른쪽 위의 <strong>▶ (재생) 버튼</strong>을 클릭하세요.
+- 또는 <strong>Ctrl + Alt + N</strong>을 누르세요.</p>
+<p><strong>방법 B — 터미널에서 직접 실행</strong>:
+- VS Code 상단 메뉴에서 <strong>터미널(Terminal)</strong> → **새 터미널</p>
 
 
 
@@ -2151,7 +2113,7 @@ MicroPython이 제공하는 도움말을 탐험해보세요!</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

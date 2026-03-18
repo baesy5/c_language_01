@@ -6,11 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="프로그래밍 경험이 없는 고등학생을 위한 라즈베리파이 피코 입문서로, 6주간 직접 만들고 확인하며 배우는 실습 중심 교육 자료입니다.">
+        <meta name="description" content="컴퓨터를 몰라도 괜찮아, 2주 뒤엔 내 손으로 게임을 만든다! 프로그래밍 경험이 전혀 없는 고등학생도 혼자서 완주할 수 있는 C언어 입문 자기주도 학습서입니다.">
       
       
-        <meta name="author" content="Created with Data-AI-Book Generator">
+        <meta name="author" content="Created with EduFlow">
       
+      
+        <link rel="canonical" href="https://baesy5.github.io/c_language_01/chapter15/">
       
       
         <link rel="prev" href="../chapter14/">
@@ -23,15 +25,18 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
-        <title>온도계 만들기 - 온도 센서 활용 - 고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트</title>
+        <title>게임에 우연을 더하자 — 난수와 유용한 함수들 - 처음 만드는 나의 첫 C언어 게임</title>
       
     
     
       <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -45,8 +50,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"JetBrains Mono"}</style>
       
     
     
@@ -61,7 +66,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -70,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#-" class="md-skip">
+        <a href="#_1" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -84,7 +96,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="상단/헤더">
-    <a href=".." title="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" class="md-header__button md-logo" aria-label="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" data-md-component="logo">
+    <a href=".." title="처음 만드는 나의 첫 C언어 게임" class="md-header__button md-logo" aria-label="처음 만드는 나의 첫 C언어 게임" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -98,18 +110,44 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트
+            처음 만드는 나의 첫 C언어 게임
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              온도계 만들기 - 온도 센서 활용
+              게임에 우연을 더하자 — 난수와 유용한 함수들
             
           </span>
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="다크 모드로 전환"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로 전환" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="라이트 모드로 전환"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로 전환" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -204,7 +242,9 @@
           
   
   
-  Part 1 - 피코와 첫 만남
+    
+  
+  Part 1 - [1권] 프로그래밍 세계에 첫 발 내딛기
 
         </a>
       </li>
@@ -220,11 +260,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../chapter04/" class="md-tabs__link">
+        <a href="../chapter06/" class="md-tabs__link">
           
   
   
-  Part 2 - 빛으로 말하기 - LED 제어
+    
+  
+  Part 2 - [1권] 프로그램에 판단력 불어넣기
 
         </a>
       </li>
@@ -240,31 +282,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../chapter07/" class="md-tabs__link">
+        <a href="../chapter09/" class="md-tabs__link">
           
   
   
-  Part 3 - 입력을 받아라 - 버튼과 상호작용
-
-        </a>
-      </li>
     
   
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../chapter10/" class="md-tabs__link">
-          
-  
-  
-  Part 4 - 소리로 표현하기 - 부저 활용
+  Part 3 - [1권] 코드를 깔끔하게 정리하는 힘 — 함수
 
         </a>
       </li>
@@ -286,7 +310,9 @@
           
   
   
-  Part 5 - 세상을 감지하라 - 센서 활용
+    
+  
+  Part 4 - [2권] 게임을 더 풍성하게 — 배열과 실전 도구
 
         </a>
       </li>
@@ -306,7 +332,9 @@
           
   
   
-  Part 6 - 나만의 스마트 기기 - 통합 프로젝트
+    
+  
+  Part 5 - [2권] 최종 프로젝트 — 내 손으로 게임 완성하기
 
         </a>
       </li>
@@ -336,13 +364,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" class="md-nav__button md-logo" aria-label="고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트" data-md-component="logo">
+    <a href=".." title="처음 만드는 나의 첫 C언어 게임" class="md-nav__button md-logo" aria-label="처음 만드는 나의 첫 C언어 게임" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    고등학생을 위한 피코 첫걸음: 만들면서 배우는 6주 프로젝트
+    처음 만드는 나의 첫 C언어 게임
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -382,6 +410,18 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -404,7 +444,7 @@
   <span class="md-ellipsis">
     
   
-    Part 1 - 피코와 첫 만남
+    Part 1 - [1권] 프로그래밍 세계에 첫 발 내딛기
   
 
     
@@ -420,7 +460,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 1 - 피코와 첫 만남
+    Part 1 - [1권] 프로그래밍 세계에 첫 발 내딛기
   
 
           </label>
@@ -440,7 +480,7 @@
   <span class="md-ellipsis">
     
   
-    피코야, 반가워! - 하드웨어 살펴보기
+    왜 C언어를 배워야 할까? — 이 책의 사용법
   
 
     
@@ -468,7 +508,7 @@
   <span class="md-ellipsis">
     
   
-    개발 환경 설정 - Thonny 설치하기
+    내 컴퓨터에 작업실 꾸미기 — 개발 환경 설치
   
 
     
@@ -496,7 +536,7 @@
   <span class="md-ellipsis">
     
   
-    Hello, Pico! - 첫 번째 프로그램 실행
+    처음 만나는 C언어 — Hello, World!
   
 
     
@@ -509,65 +549,6 @@
   
 
               
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Part 2 - 빛으로 말하기 - LED 제어
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Part 2 - 빛으로 말하기 - LED 제어
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -583,7 +564,7 @@
   <span class="md-ellipsis">
     
   
-    브레드보드와 친해지기 - LED 회로 구성
+    데이터를 담는 상자 — 변수와 자료형
   
 
     
@@ -611,35 +592,7 @@
   <span class="md-ellipsis">
     
   
-    깜빡깜빡 - LED 점멸 프로그램
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../chapter06/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    무지개 신호등 - 다중 LED 패턴
+    컴퓨터에게 계산 시키기 — 연산자 활용
   
 
     
@@ -668,6 +621,14 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -680,17 +641,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 3 - 입력을 받아라 - 버튼과 상호작용
+    Part 2 - [1권] 프로그램에 판단력 불어넣기
   
 
     
@@ -701,16 +662,44 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 3 - 입력을 받아라 - 버튼과 상호작용
+    Part 2 - [1권] 프로그램에 판단력 불어넣기
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    갈림길에서 선택하기 — if 조건문
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -726,7 +715,7 @@
   <span class="md-ellipsis">
     
   
-    버튼 연결하기 - 디지털 입력의 시작
+    같은 일을 반복하기 — for와 while 반복문
   
 
     
@@ -754,35 +743,7 @@
   <span class="md-ellipsis">
     
   
-    누르면 반응해! - 조건문 활용
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../chapter09/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    반응속도 게임 만들기
+    여기까지 잘 왔어! — 중간 점검 미니 게임 만들기
   
 
     
@@ -811,6 +772,16 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -823,17 +794,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 4 - 소리로 표현하기 - 부저 활용
+    Part 3 - [1권] 코드를 깔끔하게 정리하는 힘 — 함수
   
 
     
@@ -844,16 +815,44 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 4 - 소리로 표현하기 - 부저 활용
+    Part 3 - [1권] 코드를 깔끔하게 정리하는 힘 — 함수
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    왜 코드를 나눠야 할까? — 함수가 필요한 이유
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -869,7 +868,7 @@
   <span class="md-ellipsis">
     
   
-    삐- 소리의 원리 - 부저 연결과 PWM
+    나만의 함수 만들기 — 함수 정의와 호출
   
 
     
@@ -897,7 +896,7 @@
   <span class="md-ellipsis">
     
   
-    나만의 멜로디 - 학교종 연주하기
+    함수에 값을 주고받기 — 매개변수와 반환값 깊이 이해하기
   
 
     
@@ -925,7 +924,7 @@
   <span class="md-ellipsis">
     
   
-    피아노 만들기 - 버튼으로 연주
+    함수로 코드를 리모델링하자 — 업다운 게임 리팩토링
   
 
     
@@ -956,6 +955,14 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -971,17 +978,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 5 - 세상을 감지하라 - 센서 활용
+    Part 4 - [2권] 게임을 더 풍성하게 — 배열과 실전 도구
   
 
     
@@ -992,12 +999,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 5 - 세상을 감지하라 - 센서 활용
+    Part 4 - [2권] 게임을 더 풍성하게 — 배열과 실전 도구
   
 
           </label>
@@ -1017,7 +1024,7 @@
   <span class="md-ellipsis">
     
   
-    밝기 감지 - 조도 센서
+    데이터를 줄 세우기 — 배열 기초
   
 
     
@@ -1045,7 +1052,7 @@
   <span class="md-ellipsis">
     
   
-    자동 조명 만들기
+    여러 선택지 깔끔하게 처리하기 — switch문과 게임 메뉴
   
 
     
@@ -1082,7 +1089,7 @@
   <span class="md-ellipsis">
     
   
-    온도계 만들기 - 온도 센서 활용
+    게임에 우연을 더하자 — 난수와 유용한 함수들
   
 
     
@@ -1100,7 +1107,7 @@
   <span class="md-ellipsis">
     
   
-    온도계 만들기 - 온도 센서 활용
+    게임에 우연을 더하자 — 난수와 유용한 함수들
   
 
     
@@ -1126,10 +1133,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 이 장에서 배우는 것
+        🎯 이 장의 학습 목표
       
     </span>
   </a>
@@ -1137,7 +1144,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 미리 알아야 할 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         💡 왜 이걸 배우나요?
@@ -1148,7 +1166,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         📚 핵심 개념
@@ -1160,10 +1178,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#1-random-number" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 1: 피코 내장 온도 센서
+        개념 1: 난수(Random Number)란?
       
     </span>
   </a>
@@ -1171,10 +1189,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-adc" class="md-nav__link">
+  <a href="#2-rand" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 2: ADC 값을 온도로 변환하기
+        개념 2: rand() 함수 — 난수를 만드는 주사위
       
     </span>
   </a>
@@ -1182,10 +1200,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#3-srand-time" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 3: 문자열 포맷팅
+        개념 3: srand()와 time() — 매번 다른 결과 만들기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 원하는 범위의 난수 만들기
       
     </span>
   </a>
@@ -1198,22 +1227,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔨 따라하기
+        🔨 따라하기 — 주사위 굴리기 시뮬레이터
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🔨 따라하기">
+    <nav class="md-nav" aria-label="🔨 따라하기 — 주사위 굴리기 시뮬레이터">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#step-1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: 내장 온도 센서 읽기
+        Step 1: 기본 틀 만들기
       
     </span>
   </a>
@@ -1221,10 +1250,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-adc" class="md-nav__link">
+  <a href="#step-2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: ADC 값을 온도로 변환하기
+        Step 2: 난수 씨앗 설정하기
       
     </span>
   </a>
@@ -1235,7 +1264,7 @@
   <a href="#step-3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: 예쁘게 출력하기
+        Step 3: 주사위 한 번 굴려보기
       
     </span>
   </a>
@@ -1243,49 +1272,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-4" class="md-nav__link">
+  <a href="#step-4-5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4: 온도 경보기 만들기
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📝 전체 코드
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⚠️ 자주 하는 실수
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="⚠️ 자주 하는 실수">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-adc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 1: ADC 값을 바로 온도로 착각
+        Step 4: 반복문으로 5번 굴리기
       
     </span>
   </a>
@@ -1293,21 +1283,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#step-5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        실수 2: 포맷팅 문법 오류
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 3: 실제 방 온도와 다르다고 당황
+        Step 5: 합계와 평균 추가하기
       
     </span>
   </a>
@@ -1323,52 +1302,19 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ 스스로 점검하기
+        📝 전체 코드 — 랜덤 가위바위보 게임
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🚀 더 해보기
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🚀 더 해보기">
+    <nav class="md-nav" aria-label="📝 전체 코드 — 랜덤 가위바위보 게임">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        도전 1: 화씨 온도 추가 (쉬움)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 2: 최고/최저 온도 기록 (중간)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-grove" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 3: Grove 부저로 경고음 추가 ⭐
+        코드 핵심 포인트 해설
       
     </span>
   </a>
@@ -1377,17 +1323,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔗 다음 장으로
-      
-    </span>
-  </a>
   
 </li>
       
@@ -1415,6 +1350,18 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -1427,17 +1374,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Part 6 - 나만의 스마트 기기 - 통합 프로젝트
+    Part 5 - [2권] 최종 프로젝트 — 내 손으로 게임 완성하기
   
 
     
@@ -1448,12 +1395,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Part 6 - 나만의 스마트 기기 - 통합 프로젝트
+    Part 5 - [2권] 최종 프로젝트 — 내 손으로 게임 완성하기
   
 
           </label>
@@ -1473,7 +1420,7 @@
   <span class="md-ellipsis">
     
   
-    프로젝트 기획 - 아이디어 구체화
+    게임을 설계하자 — 기획부터 함수 구조 짜기
   
 
     
@@ -1501,7 +1448,7 @@
   <span class="md-ellipsis">
     
   
-    만들기 - 회로 구성과 코딩
+    직접 만드는 가위바위보 게임 — 코딩 실전
   
 
     
@@ -1529,7 +1476,63 @@
   <span class="md-ellipsis">
     
   
-    발표와 공유 - 프로젝트 시연
+    보너스 도전! OX 퀴즈 게임 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    내 코드 다듬기 — 자주 틀리는 오류 모음과 디버깅 팁
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    축하해, 게임 개발자! — 다음 단계로 나아가기
   
 
     
@@ -1577,10 +1580,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 이 장에서 배우는 것
+        🎯 이 장의 학습 목표
       
     </span>
   </a>
@@ -1588,7 +1591,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 미리 알아야 할 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         💡 왜 이걸 배우나요?
@@ -1599,7 +1613,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         📚 핵심 개념
@@ -1611,10 +1625,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#1-random-number" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 1: 피코 내장 온도 센서
+        개념 1: 난수(Random Number)란?
       
     </span>
   </a>
@@ -1622,10 +1636,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-adc" class="md-nav__link">
+  <a href="#2-rand" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 2: ADC 값을 온도로 변환하기
+        개념 2: rand() 함수 — 난수를 만드는 주사위
       
     </span>
   </a>
@@ -1633,10 +1647,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#3-srand-time" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개념 3: 문자열 포맷팅
+        개념 3: srand()와 time() — 매번 다른 결과 만들기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 원하는 범위의 난수 만들기
       
     </span>
   </a>
@@ -1649,22 +1674,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔨 따라하기
+        🔨 따라하기 — 주사위 굴리기 시뮬레이터
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🔨 따라하기">
+    <nav class="md-nav" aria-label="🔨 따라하기 — 주사위 굴리기 시뮬레이터">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#step-1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: 내장 온도 센서 읽기
+        Step 1: 기본 틀 만들기
       
     </span>
   </a>
@@ -1672,10 +1697,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-adc" class="md-nav__link">
+  <a href="#step-2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: ADC 값을 온도로 변환하기
+        Step 2: 난수 씨앗 설정하기
       
     </span>
   </a>
@@ -1686,7 +1711,7 @@
   <a href="#step-3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: 예쁘게 출력하기
+        Step 3: 주사위 한 번 굴려보기
       
     </span>
   </a>
@@ -1694,49 +1719,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-4" class="md-nav__link">
+  <a href="#step-4-5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4: 온도 경보기 만들기
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📝 전체 코드
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⚠️ 자주 하는 실수
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="⚠️ 자주 하는 실수">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-adc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 1: ADC 값을 바로 온도로 착각
+        Step 4: 반복문으로 5번 굴리기
       
     </span>
   </a>
@@ -1744,21 +1730,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#step-5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        실수 2: 포맷팅 문법 오류
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실수 3: 실제 방 온도와 다르다고 당황
+        Step 5: 합계와 평균 추가하기
       
     </span>
   </a>
@@ -1774,52 +1749,19 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ 스스로 점검하기
+        📝 전체 코드 — 랜덤 가위바위보 게임
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🚀 더 해보기
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🚀 더 해보기">
+    <nav class="md-nav" aria-label="📝 전체 코드 — 랜덤 가위바위보 게임">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        도전 1: 화씨 온도 추가 (쉬움)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 2: 최고/최저 온도 기록 (중간)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-grove" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        도전 3: Grove 부저로 경고음 추가 ⭐
+        코드 핵심 포인트 해설
       
     </span>
   </a>
@@ -1828,17 +1770,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔗 다음 장으로
-      
-    </span>
-  </a>
   
 </li>
       
@@ -1859,439 +1790,430 @@
 
 
 
-<h1 id="-">온도계 만들기 - 온도 센서 활용<a class="headerlink" href="#-" title="Permanent link">&para;</a></h1>
-<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h1 id="_1">게임에 우연을 더하자 — 난수와 유용한 함수들<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p><strong>Part 4: [2권] 게임을 더 풍성하게 — 배열과 실전 도구</strong></p>
+<hr />
+<h2 id="_2">🎯 이 장의 학습 목표<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>이 장을 마치면 다음을 할 수 있습니다:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>rand()</code> 함수를 사용하여 랜덤 숫자를 생성할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>srand(time(NULL))</code>로 매번 다른 난수를 만드는 원리를 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 원하는 범위(예: 1~6)의 난수를 만드는 공식을 활용할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 난수를 활용한 간단한 게임(주사위, 가위바위보)을 만들 수 있다</li>
+</ul>
+<p>⏱️ <strong>예상 학습 시간: 약 1시간 30분</strong></p>
+<hr />
+<h2 id="_3">📚 미리 알아야 할 것<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>이 장을 시작하기 전에, 이전 장들에서 배운 다음 내용이 필요합니다:</p>
 <ul>
-<li>[ ] 피코 내장 온도 센서의 동작 원리를 설명할 수 있다</li>
-<li>[ ] ADC 값을 실제 섭씨 온도로 변환하는 공식을 적용할 수 있다</li>
-<li>[ ] 측정한 온도를 포맷팅하여 보기 좋게 출력할 수 있다</li>
-<li>[ ] 온도에 따라 LED나 부저로 경고하는 시스템을 만들 수 있다</li>
+<li><strong>변수와 자료형</strong>: <code>int</code> 변수에 값을 저장하는 방법</li>
+<li><strong>반복문</strong>: <code>for</code> 문으로 코드를 여러 번 실행하는 방법</li>
+<li><strong>조건문</strong>: <code>if</code>, <code>else if</code>, <code>else</code>로 분기 처리하는 방법</li>
+<li><strong>함수 호출</strong>: <code>printf()</code> 같은 함수를 호출하는 기본 방법</li>
+</ul>
+<p>이 개념들이 기억나지 않더라도 걱정 마세요! 코드를 따라 치면서 자연스럽게 복습됩니다. 😊</p>
+<hr />
+<h2 id="_4">💡 왜 이걸 배우나요?<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>여러분이 좋아하는 게임을 떠올려 보세요. 보드게임의 주사위, 카드게임의 카드 섞기, RPG에서 몬스터가 떨어뜨리는 아이템... 이 모든 것의 공통점이 뭘까요?</p>
+<p>바로 <strong>"매번 결과가 달라진다"</strong> 는 것입니다!</p>
+<p>만약 주사위가 항상 3만 나온다면? 카드가 항상 같은 순서로 나온다면? 아무도 그 게임을 하고 싶지 않을 거예요. <strong>"우연"</strong> 이야말로 게임을 재미있게 만드는 핵심 재료입니다.</p>
+<p>C언어에서 이 "우연"을 만들어주는 도구가 바로 <strong>난수(Random Number)</strong> 입니다. 이번 장에서 난수를 다루는 법을 배우면, 여러분의 프로그램이 매번 실행할 때마다 다른 결과를 보여주게 됩니다. 이것만으로도 프로그램이 훨씬 생동감 있어질 거예요! 🎲</p>
+<hr />
+<h2 id="_5">📚 핵심 개념<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="1-random-number">개념 1: 난수(Random Number)란?<a class="headerlink" href="#1-random-number" title="Permanent link">&para;</a></h3>
+<p><strong>🎲 비유로 시작해요</strong></p>
+<p>주사위를 던져 보세요. 어떤 숫자가 나올까요? 1? 4? 6? 아무도 모릅니다. 던지기 전에는 결과를 예측할 수 없죠. 이렇게 <strong>"어떤 값이 나올지 미리 알 수 없는 숫자"</strong> 를 <strong>난수(Random Number)</strong> 라고 합니다.</p>
+<p><strong>📖 정확한 정의</strong></p>
+<blockquote>
+<p>🔑 <strong>난수(난수, Random Number)</strong>: 특정한 규칙 없이 무작위로 생성되는 숫자. 프로그래밍에서는 컴퓨터가 수학적 계산을 통해 만들어내는 "의사 난수(Pseudo-random Number)"를 사용합니다.</p>
+</blockquote>
+<p>사실 컴퓨터는 진짜 "무작위"를 만들지 못합니다. 내부적으로 복잡한 수학 공식을 사용해서 무작위처럼 보이는 숫자를 만들어내는 거예요. 마치 아주 복잡한 규칙으로 주사위를 던지는 로봇 같은 거죠. 결과가 충분히 예측 불가능하기 때문에 우리는 이것을 "랜덤"이라고 부릅니다.</p>
+<p><strong>✏️ 예시로 확인</strong></p>
+<p>게임에서 난수가 쓰이는 곳을 볼까요?</p>
+<ul>
+<li>🎲 <strong>주사위 굴리기</strong>: 1~6 사이의 난수</li>
+<li>🃏 <strong>카드 섞기</strong>: 카드 순서를 무작위로 배치</li>
+<li>⚔️ <strong>전투 데미지</strong>: "10~20 사이의 데미지"처럼 범위 안에서 랜덤</li>
+<li>🎰 <strong>아이템 드롭</strong>: 30% 확률로 희귀 아이템 획득</li>
 </ul>
 <hr />
-<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>온도는 우리 생활에서 가장 많이 측정하는 물리량 중 하나예요. 날씨 앱, 에어컨 리모컨, 냉장고, 심지어 스마트폰까지 온도 센서가 들어있죠.</p>
-<p><strong>재미있는 사실</strong>: 라즈베리파이 피코에는 온도 센서가 <strong>이미 내장</strong>되어 있어요! 추가 부품 없이도 바로 온도를 측정할 수 있답니다.</p>
-<p>이번 장에서는:
-- 센서가 보내는 "날것의 숫자"를 우리가 아는 <strong>섭씨 온도로 변환</strong>하는 방법
-- <code>27.5°C</code> 처럼 <strong>예쁘게 출력</strong>하는 기술
-- 온도가 너무 높으면 <strong>자동으로 경고</strong>하는 시스템</p>
-<p>을 만들어볼 거예요. 이 원리를 알면 나중에 어떤 센서든 "읽고 → 변환하고 → 활용"할 수 있게 됩니다!</p>
+<h3 id="2-rand">개념 2: rand() 함수 — 난수를 만드는 주사위<a class="headerlink" href="#2-rand" title="Permanent link">&para;</a></h3>
+<p><strong>🎲 비유로 시작해요</strong></p>
+<p><code>rand()</code> 함수는 <strong>엄청나게 많은 면을 가진 주사위</strong>라고 생각하면 됩니다. 이 주사위를 던지면 0부터 아주 큰 숫자(최소 32,767) 사이의 숫자가 하나 나옵니다.</p>
+<p><strong>📖 정확한 정의</strong></p>
+<blockquote>
+<p>🔑 <strong>rand()</strong>: <code>&lt;stdlib.h&gt;</code> 헤더에 정의된 함수로, 호출할 때마다 0 이상 <code>RAND_MAX</code> 이하의 정수를 하나 반환합니다. <code>RAND_MAX</code>는 시스템마다 다르지만, 최소 32,767 이상입니다.</p>
+</blockquote>
+<p>사용하려면 프로그램 맨 위에 <code>#include &lt;stdlib.h&gt;</code>를 써줘야 합니다.</p>
+<p><strong>✏️ 예시로 확인</strong></p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;랜덤 숫자 1: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rand</span><span class="p">());</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;랜덤 숫자 2: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rand</span><span class="p">());</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;랜덤 숫자 3: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rand</span><span class="p">());</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>이 프로그램을 실행하면 이런 결과가 나올 수 있어요:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>랜덤 숫자 1: 1804289383
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>랜덤 숫자 2: 846930886
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>랜덤 숫자 3: 1681692777
+</span></code></pre></div>
+<p>잠깐, 뭔가 이상하지 않나요? 프로그램을 <strong>다시 실행해도 같은 숫자</strong>가 나옵니다! 😮 이건 다음 개념에서 해결할 거예요.</p>
+<blockquote>
+<p>💡 <strong>잠깐!</strong> <code>rand()</code>만 쓰면 매번 같은 숫자가 나오는 게 정상이에요. 놀라지 마세요! 바로 다음에 이 문제를 해결하는 방법을 배웁니다.</p>
+</blockquote>
 <hr />
-<h2 id="_3">📚 핵심 개념<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<h3 id="1">개념 1: 피코 내장 온도 센서<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p><strong>비유로 시작</strong>: "피코 내장 온도 센서는 마치 피코의 '체온계'와 같아요. 피코 칩 자체의 온도를 재는 거죠."</p>
-</li>
-<li>
-<p><strong>정확한 정의</strong>: 피코의 RP2040 칩 내부에는 온도에 따라 전압이 변하는 센서가 있어요. 이 센서는 ADC 채널 4번에 연결되어 있습니다.</p>
-</li>
-<li>
-<p><strong>예시로 확인</strong>: 방 온도가 25°C일 때, 피코 칩은 작동하면서 살짝 더 따뜻해져서 약 27~30°C 정도를 측정해요.</p>
-</li>
-</ol>
-<p><strong>쉽게 말하면</strong>: 피코 안에 이미 온도 센서가 들어있어서, 코드만 작성하면 바로 온도를 잴 수 있어요!</p>
-<hr />
-<h3 id="2-adc">개념 2: ADC 값을 온도로 변환하기<a class="headerlink" href="#2-adc" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p><strong>비유로 시작</strong>: "ADC 값을 온도로 바꾸는 건, 외국 돈을 우리나라 돈으로 환전하는 것과 같아요. 환율 공식만 알면 돼요!"</p>
-</li>
-<li>
-<p><strong>정확한 정의</strong>: 피코 온도 센서는 다음 공식을 사용합니다:
-   <div class="highlight"><pre><span></span><code>온도(°C) = 27 - (ADC전압 - 0.706) / 0.001721
-</code></pre></div></p>
-</li>
-<li><code>27</code>: 기준 온도</li>
-<li><code>0.706V</code>: 27°C에서의 기준 전압</li>
-<li>
-<p><code>0.001721</code>: 1°C당 전압 변화량</p>
-</li>
-<li>
-<p><strong>예시로 확인</strong>: ADC에서 읽은 전압이 0.700V라면
-   <div class="highlight"><pre><span></span><code>온도 = 27 - (0.700 - 0.706) / 0.001721 = 27 - (-0.006) / 0.001721 ≈ 30.5°C
-</code></pre></div></p>
-</li>
-</ol>
-<p><strong>쉽게 말하면</strong>: 센서가 주는 숫자에 정해진 공식을 적용하면 섭씨 온도가 나와요!</p>
+<h3 id="3-srand-time">개념 3: srand()와 time() — 매번 다른 결과 만들기<a class="headerlink" href="#3-srand-time" title="Permanent link">&para;</a></h3>
+<p><strong>🌱 비유로 시작해요</strong></p>
+<p><code>rand()</code>가 "주사위를 던지는 기계"라면, <code>srand()</code>는 그 기계에 넣는 <strong>"시작 씨앗(seed)"</strong> 입니다.</p>
+<p>같은 씨앗을 심으면 항상 같은 꽃이 피듯이, 같은 seed를 주면 항상 같은 난수 순서가 나옵니다. 다른 씨앗을 심으면? 다른 꽃이 피죠! 매번 다른 씨앗을 넣으려면 <strong>현재 시간</strong>을 씨앗으로 사용하면 됩니다. 시간은 매 초마다 바뀌니까요! ⏰</p>
+<p><strong>📖 정확한 정의</strong></p>
+<blockquote>
+<p>🔑 <strong>srand(seed)</strong>: 난수 생성기의 시작점(seed)을 설정하는 함수. <code>&lt;stdlib.h&gt;</code>에 정의되어 있습니다.</p>
+<p>🔑 <strong>time(NULL)</strong>: 현재 시간을 초 단위 숫자로 반환하는 함수. <code>&lt;time.h&gt;</code>에 정의되어 있습니다. 매 초마다 값이 바뀌므로 seed로 사용하기에 안성맞춤입니다.</p>
+</blockquote>
+<p>이 둘을 합치면 마법의 한 줄이 탄생합니다:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span>
+</span></code></pre></div>
+<p>이 한 줄이 의미하는 것을 풀어볼게요:</p>
 <div class="mermaid">flowchart LR
-    A["🔢 ADC 값&lt;br/&gt;(0~65535)"] --&gt; B["⚡ 전압 변환&lt;br/&gt;(0~3.3V)"]
-    B --&gt; C["🌡️ 온도 계산&lt;br/&gt;(공식 적용)"]
-    C --&gt; D["📺 출력&lt;br/&gt;(27.5°C)"]
-
-    style A fill:#e3f2fd,stroke:#1976d2
-    style B fill:#fff3e0,stroke:#f57c00
-    style C fill:#fce4ec,stroke:#c2185b
-    style D fill:#e8f5e9,stroke:#388e3c</div>
+    A["time(NULL)&lt;br/&gt;현재 시간을&lt;br/&gt;숫자로 가져옴"] --&gt; B["srand( )&lt;br/&gt;그 숫자를&lt;br/&gt;씨앗으로 설정"]
+    B --&gt; C["rand( )&lt;br/&gt;씨앗 기반으로&lt;br/&gt;난수 생성"]
+    style A fill:#FFE0B2,stroke:#FF9800
+    style B fill:#C8E6C9,stroke:#4CAF50
+    style C fill:#BBDEFB,stroke:#2196F3</div>
+<p><strong>✏️ 예시로 확인</strong></p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span><span class="w">  </span><span class="c1">// 현재 시간으로 씨앗 설정!</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;랜덤 숫자 1: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rand</span><span class="p">());</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;랜덤 숫자 2: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rand</span><span class="p">());</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;랜덤 숫자 3: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rand</span><span class="p">());</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>이제 실행할 때마다 <strong>다른 숫자</strong>가 나옵니다! 🎉</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[첫 번째 실행]
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>랜덤 숫자 1: 974523871
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>랜덤 숫자 2: 181627498
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>랜덤 숫자 3: 603276492
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>[두 번째 실행]
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>랜덤 숫자 1: 2047591203
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>랜덤 숫자 2: 748205163
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>랜덤 숫자 3: 1293847562
+</span></code></pre></div>
+<blockquote>
+<p>⚡ <strong>핵심 규칙</strong>: <code>srand(time(NULL))</code>은 프로그램에서 <strong>딱 한 번만</strong> 호출합니다! 보통 <code>main()</code> 함수의 <strong>맨 처음</strong>에 한 번만 써주세요. 반복문 안에 넣으면 안 됩니다.</p>
+</blockquote>
 <hr />
-<h3 id="3">개념 3: 문자열 포맷팅<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p><strong>비유로 시작</strong>: "포맷팅은 마치 선물 포장과 같아요. 같은 내용물이라도 예쁘게 포장하면 받는 사람이 더 기뻐하죠!"</p>
-</li>
-<li>
-<p><strong>정확한 정의</strong>: 파이썬의 f-string을 사용하면 숫자를 원하는 형태로 출력할 수 있어요.
-   <div class="highlight"><pre><span></span><code><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">온도</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span>  <span class="c1"># 소수점 1자리까지 표시</span>
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>예시로 확인</strong>:
-   <div class="highlight"><pre><span></span><code><span class="n">temp</span> <span class="o">=</span> <span class="mf">27.456</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">temp</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>   <span class="c1"># 출력: 27.5°C</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">temp</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>   <span class="c1"># 출력: 27.46°C</span>
-</code></pre></div></p>
-</li>
-</ol>
-<p><strong>쉽게 말하면</strong>: <code>.1f</code>는 "소수점 아래 1자리만 보여줘"라는 뜻이에요!</p>
+<h3 id="4">개념 4: 원하는 범위의 난수 만들기<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p><strong>🎯 비유로 시작해요</strong></p>
+<p><code>rand()</code>는 0부터 수만 이상의 거대한 숫자를 줍니다. 하지만 주사위 게임을 만들려면 1~6만 필요하고, 동전 던지기는 0~1만 필요하죠. 이때 <strong>나머지 연산자(<code>%</code>)</strong>가 등장합니다!</p>
+<p>큰 수를 6으로 나눈 나머지는 항상 <strong>0~5</strong> 사이입니다. 여기에 1을 더하면 <strong>1~6</strong>이 되죠!</p>
+<p><strong>📖 정확한 정의</strong></p>
+<blockquote>
+<p>🔑 <strong>범위 난수 공식</strong>: <code>rand() % 범위 + 시작값</code>
+- <code>rand() % 6</code>은 0~5를 만듭니다
+- <code>rand() % 6 + 1</code>은 1~6을 만듭니다</p>
+</blockquote>
+<div class="mermaid">flowchart TD
+    A["rand() 호출&lt;br/&gt;예: 1804289383"] --&gt; B["% 6 (나머지 연산)&lt;br/&gt;1804289383 % 6 = 3"]
+    B --&gt; C["+ 1 (시작값 조정)&lt;br/&gt;3 + 1 = 4"]
+    C --&gt; D["결과: 4&lt;br/&gt;(1~6 범위의 난수)"]
+    style A fill:#E1F5FE,stroke:#0288D1
+    style B fill:#FFF3E0,stroke:#FF9800
+    style C fill:#E8F5E9,stroke:#4CAF50
+    style D fill:#F3E5F5,stroke:#9C27B0</div>
+<p><strong>✏️ 다양한 범위 예시</strong></p>
+<p>일상적으로 자주 쓰는 범위들을 정리해 볼게요:</p>
+<ul>
+<li><strong>주사위 (1~6)</strong>: <code>rand() % 6 + 1</code></li>
+<li><strong>동전 던지기 (0 또는 1)</strong>: <code>rand() % 2</code></li>
+<li><strong>1~100 사이</strong>: <code>rand() % 100 + 1</code></li>
+<li><strong>0~9 사이</strong>: <code>rand() % 10</code></li>
+<li><strong>10~50 사이</strong>: <code>rand() % 41 + 10</code></li>
+</ul>
+<p>마지막 예시가 좀 헷갈리죠? 공식을 다시 볼게요:</p>
+<blockquote>
+<p>🔑 <strong>일반 공식</strong>: <code>rand() % (최대값 - 최소값 + 1) + 최소값</code></p>
+<p>10~50이면: <code>rand() % (50 - 10 + 1) + 10</code> → <code>rand() % 41 + 10</code></p>
+<p>💡 <strong>잠깐!</strong> 여기까지 이해가 잘 되셨나요? 핵심은 딱 세 가지예요:
+1. <code>rand()</code>로 큰 숫자를 만들고
+2. <code>%</code>로 범위를 줄이고
+3. <code>+</code>로 시작값을 맞춘다</p>
+<p>어렵게 느껴져도 괜찮아요. 바로 아래에서 직접 코딩하면서 익히면 훨씬 쉬워집니다! 😊</p>
+</blockquote>
 <hr />
-<h2 id="_4">🔨 따라하기<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<h3 id="step-1">Step 1: 내장 온도 센서 읽기<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
-<p><strong>목표</strong>: 피코 내장 온도 센서의 원시 값(raw value)을 읽어봅니다.</p>
-<p><strong>코드</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: 피코 내장 온도 센서 읽기 ===</span>
-<span class="c1"># 피코 칩 내부의 온도 센서에서 ADC 값을 읽어요</span>
-
-<span class="c1"># --- WHY: 왜 필요한지 ---</span>
-<span class="c1"># 모든 센서 활용의 첫 단계는 &quot;값 읽기&quot;예요</span>
-<span class="c1"># 먼저 센서가 어떤 값을 주는지 확인해야 해요</span>
-
-<span class="c1"># HOW: 어떻게 동작하는지</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span>      <span class="c1"># ADC(아날로그-디지털 변환) 라이브러리</span>
-<span class="kn">import</span> <span class="nn">time</span>                  <span class="c1"># 시간 관련 기능</span>
-
-<span class="c1"># 내장 온도 센서는 ADC 채널 4번에 연결되어 있어요</span>
-<span class="n">temp_sensor</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-
-<span class="c1"># 5번 측정해서 값 확인하기</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="n">raw_value</span> <span class="o">=</span> <span class="n">temp_sensor</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>  <span class="c1"># 16비트 값 읽기 (0~65535)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;측정 </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: ADC 값 = </span><span class="si">{</span><span class="n">raw_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 1초 대기</span>
-</code></pre></div></p>
-<p><strong>실행 결과</strong>:
-<div class="highlight"><pre><span></span><code>측정 1: ADC 값 = 39876
-측정 2: ADC 값 = 39912
-측정 3: ADC 값 = 39845
-측정 4: ADC 값 = 39889
-측정 5: ADC 값 = 39901
-</code></pre></div></p>
-<p><strong>여기서 잠깐! 🤔</strong>
-- <code>read_u16()</code>은 0~65535 사이의 숫자를 반환해요
-- 이 숫자 자체는 온도가 아니에요! 변환이 필요합니다
-- 값이 조금씩 다른 건 정상이에요 (센서 노이즈)</p>
+<h2 id="_6">🔨 따라하기 — 주사위 굴리기 시뮬레이터<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>자, 이제 배운 개념들을 실제 코드로 만들어 봅시다! <strong>주사위를 5번 굴리는 시뮬레이터</strong>를 단계별로 만들어 볼 거예요. 🎲</p>
+<h3 id="step-1">Step 1: 기본 틀 만들기<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p>먼저 필요한 헤더 파일을 포함하고 <code>main()</code> 함수의 뼈대를 만듭니다.</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="c1">    // printf, scanf용</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="c1">   // rand, srand용</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span><span class="c1">     // time용</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>세 가지 헤더 파일</strong>을 모두 포함해야 한다는 점을 기억하세요:</p>
+<ul>
+<li><code>stdio.h</code> → 입출력 (<code>printf</code>, <code>scanf</code>)</li>
+<li><code>stdlib.h</code> → 난수 (<code>rand</code>, <code>srand</code>)</li>
+<li><code>time.h</code> → 시간 (<code>time</code>)</li>
+</ul>
+<h3 id="step-2">Step 2: 난수 씨앗 설정하기<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
+<p><code>main()</code> 함수 시작 부분에 <code>srand(time(NULL))</code>을 추가합니다.</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span><span class="w">  </span><span class="c1">// ← 이 줄을 추가!</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>이 한 줄 덕분에 프로그램을 실행할 때마다 다른 결과가 나올 거예요.</p>
+<h3 id="step-3">Step 3: 주사위 한 번 굴려보기<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
+<p><code>rand() % 6 + 1</code>로 1~6 사이의 난수를 만들어 출력합니다.</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">dice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">  </span><span class="c1">// 1~6 난수 생성</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;주사위 결과: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dice</span><span class="p">);</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="p">}</span>
+</span></code></pre></div>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: 실행할 때마다 1~6 사이의 숫자가 나오면 성공! 여러 번 실행해 보세요. 매번 다른 숫자가 나와야 합니다. (가끔 같은 숫자가 나올 수도 있는데, 그건 우연히 같은 거예요!)</p>
+</blockquote>
+<h3 id="step-4-5">Step 4: 반복문으로 5번 굴리기<a class="headerlink" href="#step-4-5" title="Permanent link">&para;</a></h3>
+<p><code>for</code> 문으로 주사위를 5번 굴리겠습니다.</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;=== 주사위 5번 굴리기 ===</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">dice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d번째 굴리기: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">dice</span><span class="p">);</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>실행 결과 예시:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>=== 주사위 5번 굴리기 ===
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>1번째 굴리기: 3
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>2번째 굴리기: 6
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>3번째 굴리기: 1
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>4번째 굴리기: 4
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>5번째 굴리기: 2
+</span></code></pre></div>
+<h3 id="step-5">Step 5: 합계와 평균 추가하기<a class="headerlink" href="#step-5" title="Permanent link">&para;</a></h3>
+<p>주사위 결과의 합계와 평균도 구해봅시다.</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">rolls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;=== 주사위 %d번 굴리기 ===</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rolls</span><span class="p">);</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">rolls</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">dice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d번째 굴리기: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">dice</span><span class="p">);</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">dice</span><span class="p">;</span><span class="w">  </span><span class="c1">// 합계에 더하기</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">합계: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;평균: %.1f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">sum</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">rolls</span><span class="p">);</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>실행 결과 예시:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>=== 주사위 5번 굴리기 ===
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>1번째 굴리기: 4
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>2번째 굴리기: 2
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>3번째 굴리기: 6
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>4번째 굴리기: 1
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>5번째 굴리기: 5
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>합계: 18
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>평균: 3.6
+</span></code></pre></div>
+<blockquote>
+<p>✅ <strong>체크포인트</strong>: 합계와 평균이 정확하게 출력되면 성공! 평균은 소수점 한 자리까지 나와야 해요.</p>
+<p>💡 <strong><code>(double)sum / rolls</code>가 뭔가요?</strong> <code>sum</code>과 <code>rolls</code>가 둘 다 <code>int</code>(정수)이면 나누기 결과도 정수가 됩니다. <code>(double)</code>을 붙여서 실수 나눗셈이 되도록 한 거예요. 예를 들어, <code>18 / 5</code>는 <code>3</code>이지만, <code>(double)18 / 5</code>는 <code>3.6</code>이 됩니다.</p>
+</blockquote>
 <hr />
-<h3 id="step-2-adc">Step 2: ADC 값을 온도로 변환하기<a class="headerlink" href="#step-2-adc" title="Permanent link">&para;</a></h3>
-<p><strong>목표</strong>: 공식을 적용해서 실제 섭씨 온도를 계산합니다.</p>
-<p><strong>코드</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: ADC 값을 섭씨 온도로 변환하기 ===</span>
-<span class="c1"># 센서가 준 숫자를 우리가 아는 온도로 바꿔요</span>
-
-<span class="c1"># --- WHY: 왜 필요한지 ---</span>
-<span class="c1"># 39876 같은 숫자는 의미가 없어요</span>
-<span class="c1"># &quot;27.5°C&quot;처럼 이해할 수 있는 값이 필요해요</span>
-
-<span class="c1"># HOW: 어떻게 동작하는지</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span>
-<span class="kn">import</span> <span class="nn">time</span>
-
-<span class="n">temp_sensor</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">read_temperature</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;내장 온도 센서에서 섭씨 온도를 읽는 함수&quot;&quot;&quot;</span>
-    <span class="c1"># 1단계: ADC 원시 값 읽기</span>
-    <span class="n">raw_value</span> <span class="o">=</span> <span class="n">temp_sensor</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
-
-    <span class="c1"># 2단계: 전압으로 변환 (3.3V 기준)</span>
-    <span class="n">voltage</span> <span class="o">=</span> <span class="n">raw_value</span> <span class="o">*</span> <span class="mf">3.3</span> <span class="o">/</span> <span class="mi">65535</span>
-
-    <span class="c1"># 3단계: 온도로 변환 (피코 공식)</span>
-    <span class="n">temperature</span> <span class="o">=</span> <span class="mi">27</span> <span class="o">-</span> <span class="p">(</span><span class="n">voltage</span> <span class="o">-</span> <span class="mf">0.706</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.001721</span>
-
-    <span class="k">return</span> <span class="n">temperature</span>
-
-<span class="c1"># 5번 측정</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="n">temp</span> <span class="o">=</span> <span class="n">read_temperature</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;측정 </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">temp</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></div></p>
-<p><strong>실행 결과</strong>:
-<div class="highlight"><pre><span></span><code>측정 1: 28.234567890123456°C
-측정 2: 27.987654321098765°C
-측정 3: 28.456789012345678°C
-측정 4: 28.123456789012345°C
-측정 5: 28.345678901234567°C
-</code></pre></div></p>
-<p><strong>여기서 잠깐! 🤔</strong>
-- 소수점이 너무 길어요! 다음 단계에서 깔끔하게 정리할 거예요
-- 피코 칩 온도라서 실제 방 온도보다 2~5°C 정도 높게 나와요</p>
-<hr />
-<h3 id="step-3">Step 3: 예쁘게 출력하기<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
-<p><strong>목표</strong>: f-string 포맷팅으로 깔끔하게 온도를 표시합니다.</p>
-<p><strong>코드</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: 온도를 예쁘게 출력하기 ===</span>
-<span class="c1"># 소수점 1자리로 깔끔하게 표시해요</span>
-
-<span class="c1"># --- WHY: 왜 필요한지 ---</span>
-<span class="c1"># &quot;28.234567890123456°C&quot;보다 &quot;28.2°C&quot;가 훨씬 읽기 좋아요!</span>
-
-<span class="c1"># HOW: 어떻게 동작하는지</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span>
-<span class="kn">import</span> <span class="nn">time</span>
-
-<span class="n">temp_sensor</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">read_temperature</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;섭씨 온도를 반환하는 함수&quot;&quot;&quot;</span>
-    <span class="n">raw_value</span> <span class="o">=</span> <span class="n">temp_sensor</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
-    <span class="n">voltage</span> <span class="o">=</span> <span class="n">raw_value</span> <span class="o">*</span> <span class="mf">3.3</span> <span class="o">/</span> <span class="mi">65535</span>
-    <span class="n">temperature</span> <span class="o">=</span> <span class="mi">27</span> <span class="o">-</span> <span class="p">(</span><span class="n">voltage</span> <span class="o">-</span> <span class="mf">0.706</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.001721</span>
-    <span class="k">return</span> <span class="n">temperature</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🌡️ 온도 모니터링 시작!&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">25</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="n">temp</span> <span class="o">=</span> <span class="n">read_temperature</span><span class="p">()</span>
-
-    <span class="c1"># f-string으로 소수점 1자리까지만 표시</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  현재 온도: </span><span class="si">{</span><span class="n">temp</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">25</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ 측정 완료!&quot;</span><span class="p">)</span>
-</code></pre></div></p>
-<p><strong>실행 결과</strong>:
-<div class="highlight"><pre><span></span><code>🌡️ 온도 모니터링 시작!
--------------------------
-  현재 온도: 28.2°C
-  현재 온도: 28.0°C
-  현재 온도: 28.5°C
-  현재 온도: 28.1°C
-  현재 온도: 28.3°C
--------------------------
-✅ 측정 완료!
-</code></pre></div></p>
-<p><strong>여기서 잠깐! 🤔</strong>
-- <code>:.1f</code> = 소수점 아래 1자리 (float)
-- <code>:.2f</code> = 소수점 아래 2자리
-- <code>:.0f</code> = 정수로 표시 (소수점 없음)</p>
-<hr />
-<h3 id="step-4">Step 4: 온도 경보기 만들기<a class="headerlink" href="#step-4" title="Permanent link">&para;</a></h3>
-<p><strong>목표</strong>: 온도가 일정 기준을 넘으면 경고를 출력합니다.</p>
-<p><strong>코드</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: 온도 경보 시스템 ===</span>
-<span class="c1"># 온도가 너무 높으면 경고해요!</span>
-
-<span class="c1"># --- WHY: 왜 필요한지 ---</span>
-<span class="c1"># 서버실, 온실, 냉장고 등에서 온도 이상을 감지하는 게 중요해요</span>
-
-<span class="c1"># HOW: 어떻게 동작하는지</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">time</span>
-
-<span class="n">temp_sensor</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="s2">&quot;LED&quot;</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>  <span class="c1"># 내장 LED</span>
-
-<span class="c1"># 경고 기준 온도 설정</span>
-<span class="n">WARNING_TEMP</span> <span class="o">=</span> <span class="mf">30.0</span>  <span class="c1"># 30°C 이상이면 경고</span>
-
-<span class="k">def</span> <span class="nf">read_temperature</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;섭씨 온도를 반환&quot;&quot;&quot;</span>
-    <span class="n">raw_value</span> <span class="o">=</span> <span class="n">temp_sensor</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
-    <span class="n">voltage</span> <span class="o">=</span> <span class="n">raw_value</span> <span class="o">*</span> <span class="mf">3.3</span> <span class="o">/</span> <span class="mi">65535</span>
-    <span class="k">return</span> <span class="mi">27</span> <span class="o">-</span> <span class="p">(</span><span class="n">voltage</span> <span class="o">-</span> <span class="mf">0.706</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.001721</span>
-
-<span class="k">def</span> <span class="nf">check_temperature</span><span class="p">(</span><span class="n">temp</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;온도 상태를 확인하고 경고 여부 반환&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">temp</span> <span class="o">&gt;=</span> <span class="n">WARNING_TEMP</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;🔴 경고! 온도 높음!&quot;</span>
-    <span class="k">elif</span> <span class="n">temp</span> <span class="o">&gt;=</span> <span class="n">WARNING_TEMP</span> <span class="o">-</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;🟡 주의: 온도 상승 중&quot;</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;🟢 정상&quot;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   🌡️ 온도 경보 시스템&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   경고 기준: </span><span class="si">{</span><span class="n">WARNING_TEMP</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>
-
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">temp</span> <span class="o">=</span> <span class="n">read_temperature</span><span class="p">()</span>
-    <span class="n">status</span> <span class="o">=</span> <span class="n">check_temperature</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;온도: </span><span class="si">{</span><span class="n">temp</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C  </span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-    <span class="c1"># 경고 상태면 LED 깜빡임</span>
-    <span class="k">if</span> <span class="n">temp</span> <span class="o">&gt;=</span> <span class="n">WARNING_TEMP</span><span class="p">:</span>
-        <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
-        <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></div></p>
-<p><strong>실행 결과</strong>:
-<div class="highlight"><pre><span></span><code>==============================
-   🌡️ 온도 경보 시스템
-   경고 기준: 30.0°C
-==============================
-온도: 28.2°C  🟢 정상
-온도: 28.5°C  🟢 정상
-온도: 29.1°C  🟡 주의: 온도 상승 중
-온도: 30.2°C  🔴 경고! 온도 높음!
-온도: 30.5°C  🔴 경고! 온도 높음!
-</code></pre></div></p>
-<p>💡 <strong>팁</strong>: 손가락으로 피코 칩을 살짝 감싸면 체온으로 온도가 올라가요!</p>
-<hr />
-<h2 id="_5">📝 전체 코드<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># === 온도 경보 시스템 - 완성 코드 ===</span>
-<span class="c1"># 피코 내장 온도 센서로 실시간 모니터링 + LED 경고</span>
-
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">time</span>
-
-<span class="c1"># === 하드웨어 설정 ===</span>
-<span class="n">temp_sensor</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>       <span class="c1"># 내장 온도 센서 (채널 4)</span>
-<span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="s2">&quot;LED&quot;</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>  <span class="c1"># 내장 LED</span>
-
-<span class="c1"># === 설정 값 ===</span>
-<span class="n">WARNING_TEMP</span> <span class="o">=</span> <span class="mf">30.0</span>  <span class="c1"># 경고 온도 (°C)</span>
-<span class="n">INTERVAL</span> <span class="o">=</span> <span class="mi">1</span>         <span class="c1"># 측정 간격 (초)</span>
-
-<span class="c1"># === 함수 정의 ===</span>
-<span class="k">def</span> <span class="nf">read_temperature</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;내장 온도 센서에서 섭씨 온도를 읽어 반환&quot;&quot;&quot;</span>
-    <span class="n">raw</span> <span class="o">=</span> <span class="n">temp_sensor</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>          <span class="c1"># ADC 값 읽기</span>
-    <span class="n">voltage</span> <span class="o">=</span> <span class="n">raw</span> <span class="o">*</span> <span class="mf">3.3</span> <span class="o">/</span> <span class="mi">65535</span>           <span class="c1"># 전압 변환</span>
-    <span class="n">temp</span> <span class="o">=</span> <span class="mi">27</span> <span class="o">-</span> <span class="p">(</span><span class="n">voltage</span> <span class="o">-</span> <span class="mf">0.706</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.001721</span>  <span class="c1"># 온도 변환</span>
-    <span class="k">return</span> <span class="n">temp</span>
-
-<span class="k">def</span> <span class="nf">get_status</span><span class="p">(</span><span class="n">temp</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;온도에 따른 상태 문자열 반환&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">temp</span> <span class="o">&gt;=</span> <span class="n">WARNING_TEMP</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;🔴 경고!&quot;</span>
-    <span class="k">elif</span> <span class="n">temp</span> <span class="o">&gt;=</span> <span class="n">WARNING_TEMP</span> <span class="o">-</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;🟡 주의&quot;</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;🟢 정상&quot;</span>
-
-<span class="c1"># === 메인 프로그램 ===</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🌡️ 온도 모니터링 시작&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;경고 기준: </span><span class="si">{</span><span class="n">WARNING_TEMP</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>
-
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">temp</span> <span class="o">=</span> <span class="n">read_temperature</span><span class="p">()</span>
-    <span class="n">status</span> <span class="o">=</span> <span class="n">get_status</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;현재 온도: </span><span class="si">{</span><span class="n">temp</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C  [</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
-
-    <span class="c1"># 경고 시 LED 깜빡임</span>
-    <span class="k">if</span> <span class="n">temp</span> <span class="o">&gt;=</span> <span class="n">WARNING_TEMP</span><span class="p">:</span>
-        <span class="n">led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">INTERVAL</span><span class="p">)</span>
-</code></pre></div>
-<hr />
-<h2 id="_6">⚠️ 자주 하는 실수<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<h3 id="1-adc">실수 1: ADC 값을 바로 온도로 착각<a class="headerlink" href="#1-adc" title="Permanent link">&para;</a></h3>
-<p><strong>증상</strong>: "온도가 39000도래요?!"</p>
-<p><strong>원인</strong>: ADC 원시 값(0~65535)을 변환 없이 출력</p>
-<p><strong>해결</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># ❌ 잘못된 코드</span>
-<span class="n">temp</span> <span class="o">=</span> <span class="n">temp_sensor</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;온도: </span><span class="si">{</span><span class="n">temp</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>  <span class="c1"># 39876°C?!</span>
-
-<span class="c1"># ✅ 올바른 코드</span>
-<span class="n">raw</span> <span class="o">=</span> <span class="n">temp_sensor</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
-<span class="n">voltage</span> <span class="o">=</span> <span class="n">raw</span> <span class="o">*</span> <span class="mf">3.3</span> <span class="o">/</span> <span class="mi">65535</span>
-<span class="n">temp</span> <span class="o">=</span> <span class="mi">27</span> <span class="o">-</span> <span class="p">(</span><span class="n">voltage</span> <span class="o">-</span> <span class="mf">0.706</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.001721</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;온도: </span><span class="si">{</span><span class="n">temp</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>  <span class="c1"># 28.2°C</span>
-</code></pre></div></p>
-<hr />
-<h3 id="2">실수 2: 포맷팅 문법 오류<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
-<p><strong>증상</strong>: <code>SyntaxError</code> 또는 이상한 출력</p>
-<p><strong>원인</strong>: f-string 문법 실수</p>
-<p><strong>해결</strong>:
-<div class="highlight"><pre><span></span><code><span class="n">temp</span> <span class="o">=</span> <span class="mf">28.5</span>
-
-<span class="c1"># ❌ 잘못된 코드들</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">temp</span><span class="mf">.1</span><span class="n">f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>    <span class="c1"># 점(.) 위치 오류</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">temp</span><span class="si">:</span><span class="s2">1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>    <span class="c1"># 점(.) 누락</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{temp:.1f}</span><span class="s2">°C&quot;</span><span class="p">)</span>    <span class="c1"># f 누락</span>
-
-<span class="c1"># ✅ 올바른 코드</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">temp</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>   <span class="c1"># 콜론(:) 다음에 .1f</span>
-</code></pre></div></p>
-<hr />
-<h3 id="3_1">실수 3: 실제 방 온도와 다르다고 당황<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
-<p><strong>증상</strong>: "실제 온도는 25도인데 30도가 나와요"</p>
-<p><strong>원인</strong>: 피코 <strong>칩 온도</strong>를 측정하는 것이지, 공기 온도가 아님</p>
-<p><strong>해결</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># 💡 이해하기</span>
-<span class="c1"># - 내장 센서 = 피코 칩의 온도 (작동 시 발열)</span>
-<span class="c1"># - 보통 실제 기온보다 3~8°C 높음</span>
-<span class="c1"># - 정확한 실내 온도 측정에는 외부 센서(DHT11) 사용</span>
-
-<span class="c1"># 참고용 보정 (대략적)</span>
-<span class="n">OFFSET</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>  <span class="c1"># 실험으로 결정</span>
-<span class="n">adjusted_temp</span> <span class="o">=</span> <span class="n">read_temperature</span><span class="p">()</span> <span class="o">+</span> <span class="n">OFFSET</span>
-</code></pre></div></p>
-<hr />
-<h2 id="_7">✅ 스스로 점검하기<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p><strong>사실 확인</strong>: 피코 내장 온도 센서는 ADC 몇 번 채널에 연결되어 있나요?</p>
-</li>
-<li>
-<p><strong>적용 질문</strong>: 온도를 소수점 2자리까지 표시하려면 포맷 코드를 어떻게 써야 하나요?</p>
-</li>
-<li>
-<p><strong>이유 질문</strong>: 내장 온도 센서가 측정하는 온도가 실제 방 온도보다 높은 이유는 무엇인가요?</p>
-</li>
-</ol>
-<details>
-<summary>정답 확인</summary>
-
-1. **ADC 채널 4번**에 연결되어 있습니다. `ADC(4)`로 접근해요.
-
-2. `f"{temp:.2f}°C"` - 콜론 뒤에 `.2f`를 쓰면 소수점 아래 2자리까지 표시됩니다.
-
-3. 내장 센서는 **피코 칩 자체의 온도**를 측정하기 때문이에요. 피코가 작동하면서 발열이 생겨서 주변 공기보다 몇 도 더 따뜻해집니다.
-
-</details>
-
-<hr />
-<h2 id="_8">🚀 더 해보기<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<h3 id="1_1">도전 1: 화씨 온도 추가 (쉬움)<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
-<p>섭씨와 화씨를 함께 출력해보세요.
-<div class="highlight"><pre><span></span><code>💡 힌트: 화씨 = 섭씨 × 9/5 + 32
-예: 현재 온도: 28.5°C / 83.3°F
-</code></pre></div></p>
-<h3 id="2_1">도전 2: 최고/최저 온도 기록 (중간)<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
-<p>프로그램 실행 동안 최고 온도와 최저 온도를 기록하고 표시해보세요.
-<div class="highlight"><pre><span></span><code>💡 힌트: max_temp, min_temp 변수를 만들어서 비교
-예: 최고: 32.1°C | 최저: 27.8°C | 현재: 29.5°C
-</code></pre></div></p>
-<h3 id="3-grove">도전 3: Grove 부저로 경고음 추가 ⭐<a class="headerlink" href="#3-grove" title="Permanent link">&para;</a></h3>
-<p>온도가 경고 수준을 넘으면 LED 뿐만 아니라 부저로 "삐삐" 경고음을 내보세요.
-<div class="highlight"><pre><span></span><code>💡 힌트: 
-- Grove 부저를 D20에 연결
-- PWM으로 소리 내기 (13장 참고)
-</code></pre></div></p>
-<hr />
-<h2 id="_9">🔗 다음 장으로<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<p>이번 장에서 배운 것:
-- ✅ 피코 내장 온도 센서 사용법
-- ✅ ADC 값 → 전압 → 온도 변환 공식
-- ✅ f-string으로 예쁘게 출력하기
-- ✅ 조건문으로 온도 경보 시스템 만들기</p>
-<p><strong>다음 장 예고</strong>: 📏 <strong>초음파로 거리 측정하기</strong></p>
-<p>온도 다음은 <strong>거리</strong>예요! 초음파 센서는 박쥐처럼 소리를 쏘고 돌아오는 시간으로 거리를 측정합니다. 자동차 후방 감지 센서, 로봇 청소기가 바로 이 원리를 사용해요. 다음 장에서 만나요! 🦇</p>
+<h2 id="_7">📝 전체 코드 — 랜덤 가위바위보 게임<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>지금까지 배운 내용을 총동원해서, <strong>컴퓨터와 가위바위보를 하는 게임</strong>을 만들어 봅시다! 이것이 이번 장의 종합 실습입니다. 🪨📄✂️</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span><span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">player</span><span class="p">;</span><span class="w">     </span><span class="c1">// 플레이어 선택</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">computer</span><span class="p">;</span><span class="w">   </span><span class="c1">// 컴퓨터 선택</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">wins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">   </span><span class="c1">// 플레이어 승리 횟수</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">losses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// 플레이어 패배 횟수</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">draws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span><span class="c1">// 무승부 횟수</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">rounds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// 총 라운드 수</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;╔════════════════════════════╗</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;║   가위바위보 게임 (3판)    ║</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;╚════════════════════════════╝</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">rounds</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;--- %d 라운드 ---</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;가위(0), 바위(1), 보(2)를 선택하세요: &quot;</span><span class="p">);</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="w">        </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">player</span><span class="p">);</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="w">        </span><span class="c1">// 입력 검증</span>
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">player</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">player</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;잘못된 입력! 0, 1, 2 중에 골라주세요.</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="w">            </span><span class="n">i</span><span class="o">--</span><span class="p">;</span><span class="w">  </span><span class="c1">// 이번 라운드 다시 하기</span>
+</span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a><span class="w">            </span><span class="k">continue</span><span class="p">;</span>
+</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-12-30"><a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a>
+</span><span id="__span-12-31"><a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a><span class="w">        </span><span class="c1">// 컴퓨터의 랜덤 선택</span>
+</span><span id="__span-12-32"><a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a><span class="w">        </span><span class="n">computer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w">  </span><span class="c1">// 0, 1, 2 중 하나</span>
+</span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a>
+</span><span id="__span-12-34"><a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a><span class="w">        </span><span class="c1">// 선택 결과 출력</span>
+</span><span id="__span-12-35"><a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;당신의 선택: &quot;</span><span class="p">);</span>
+</span><span id="__span-12-36"><a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">player</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;가위 ✌️</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-12-37"><a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">player</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;바위 ✊</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-12-38"><a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;보 🖐️</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-12-39"><a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a>
+</span><span id="__span-12-40"><a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;컴퓨터 선택: &quot;</span><span class="p">);</span>
+</span><span id="__span-12-41"><a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">computer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;가위 ✌️</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-12-42"><a id="__codelineno-12-42" name="__codelineno-12-42" href="#__codelineno-12-42"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">computer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;바위 ✊</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-12-43"><a id="__codelineno-12-43" name="__codelineno-12-43" href="#__codelineno-12-43"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;보 🖐️</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-12-44"><a id="__codelineno-12-44" name="__codelineno-12-44" href="#__codelineno-12-44"></a>
+</span><span id="__span-12-45"><a id="__codelineno-12-45" name="__codelineno-12-45" href="#__codelineno-12-45"></a><span class="w">        </span><span class="c1">// 승패 판정</span>
+</span><span id="__span-12-46"><a id="__codelineno-12-46" name="__codelineno-12-46" href="#__codelineno-12-46"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">player</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">computer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-47"><a id="__codelineno-12-47" name="__codelineno-12-47" href="#__codelineno-12-47"></a><span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;결과: 무승부! 😐</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-12-48"><a id="__codelineno-12-48" name="__codelineno-12-48" href="#__codelineno-12-48"></a><span class="w">            </span><span class="n">draws</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-12-49"><a id="__codelineno-12-49" name="__codelineno-12-49" href="#__codelineno-12-49"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">player</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">computer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w">   </span><span class="c1">// 가위 &gt; 보</span>
+</span><span id="__span-12-50"><a id="__codelineno-12-50" name="__codelineno-12-50" href="#__codelineno-12-50"></a><span class="w">                   </span><span class="p">(</span><span class="n">player</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">computer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w">    </span><span class="c1">// 바위 &gt; 가위</span>
+</span><span id="__span-12-51"><a id="__codelineno-12-51" name="__codelineno-12-51" href="#__codelineno-12-51"></a><span class="w">                   </span><span class="p">(</span><span class="n">player</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">computer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">    </span><span class="c1">// 보 &gt; 바위</span>
+</span><span id="__span-12-52"><a id="__codelineno-12-52" name="__codelineno-12-52" href="#__codelineno-12-52"></a><span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;결과: 당신이 이겼습니다! 🎉</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-12-53"><a id="__codelineno-12-53" name="__codelineno-12-53" href="#__codelineno-12-53"></a><span class="w">            </span><span class="n">wins</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-12-54"><a id="__codelineno-12-54" name="__codelineno-12-54" href="#__codelineno-12-54"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-55"><a id="__codelineno-12-55" name="__codelineno-12-55" href="#__codelineno-12-55"></a><span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;결과: 컴퓨터가 이겼습니다! 😢</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-12-56"><a id="__codelineno-12-56" name="__codelineno-12-56" href="#__codelineno-12-56"></a><span class="w">            </span><span class="n">losses</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-12-57"><a id="__codelineno-12-57" name="__codelineno-12-57" href="#__codelineno-12-57"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-12-58"><a id="__codelineno-12-58" name="__codelineno-12-58" href="#__codelineno-12-58"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-12-59"><a id="__codelineno-12-59" name="__codelineno-12-59" href="#__codelineno-12-59"></a>
+</span><span id="__span-12-60"><a id="__codelineno-12-60" name="__codelineno-12-60" href="#__codelineno-12-60"></a><span class="w">    </span><span class="c1">// 최종 결과</span>
+</span><span id="__span-12-61"><a id="__codelineno-12-61" name="__codelineno-12-61" href="#__codelineno-12-61"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;╔════════════════════════════╗</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-12-62"><a id="__codelineno-12-62" name="__codelineno-12-62" href="#__codelineno-12-62"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;║        최종 결과           ║</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-12-63"><a id="__codelineno-12-63" name="__codelineno-12-63" href="#__codelineno-12-63"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;╚════════════════════════════╝</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-12-64"><a id="__codelineno-12-64" name="__codelineno-12-64" href="#__codelineno-12-64"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;  승리: %d회</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">wins</span><span class="p">);</span>
+</span><span id="__span-12-65"><a id="__codelineno-12-65" name="__codelineno-12-65" href="#__codelineno-12-65"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;  패배: %d회</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">losses</span><span class="p">);</span>
+</span><span id="__span-12-66"><a id="__codelineno-12-66" name="__codelineno-12-66" href="#__codelineno-12-66"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;  무승부: %d회</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">draws</span><span class="p">);</span>
+</span><span id="__span-12-67"><a id="__codelineno-12-67" name="__codelineno-12-67" href="#__codelineno-12-67"></a>
+</span><span id="__span-12-68"><a id="__codelineno-12-68" name="__codelineno-12-68" href="#__codelineno-12-68"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">wins</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">losses</span><span class="p">)</span>
+</span><span id="__span-12-69"><a id="__codelineno-12-69" name="__codelineno-12-69" href="#__codelineno-12-69"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">  🏆 축하합니다! 당신의 승리!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-12-70"><a id="__codelineno-12-70" name="__codelineno-12-70" href="#__codelineno-12-70"></a><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">wins</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">losses</span><span class="p">)</span>
+</span><span id="__span-12-71"><a id="__codelineno-12-71" name="__codelineno-12-71" href="#__codelineno-12-71"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">  💻 컴퓨터의 승리! 다음에 다시 도전!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-12-72"><a id="__codelineno-12-72" name="__codelineno-12-72" href="#__codelineno-12-72"></a><span class="w">    </span><span class="k">else</span>
+</span><span id="__span-12-73"><a id="__codelineno-12-73" name="__codelineno-12-73" href="#__codelineno-12-73"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">  🤝 무승부! 실력이 비슷하네요!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-12-74"><a id="__codelineno-12-74" name="__codelineno-12-74" href="#__codelineno-12-74"></a>
+</span><span id="__span-12-75"><a id="__codelineno-12-75" name="__codelineno-12-75" href="#__codelineno-12-75"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-12-76"><a id="__codelineno-12-76" name="__codelineno-12-76" href="#__codelineno-12-76"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>실행 결과 예시:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>╔════════════════════════════╗
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>║   가위바위보 게임 (3판)    ║
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>╚════════════════════════════╝
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>--- 1 라운드 ---
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>가위(0), 바위(1), 보(2)를 선택하세요: 1
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>당신의 선택: 바위 ✊
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>컴퓨터 선택: 가위 ✌️
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>결과: 당신이 이겼습니다! 🎉
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>--- 2 라운드 ---
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>가위(0), 바위(1), 보(2)를 선택하세요: 0
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>당신의 선택: 가위 ✌️
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>컴퓨터 선택: 바위 ✊
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>결과: 컴퓨터가 이겼습니다! 😢
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>--- 3 라운드 ---
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>가위(0), 바위(1), 보(2)를 선택하세요: 2
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>당신의 선택: 보 🖐️
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>컴퓨터 선택: 바위 ✊
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>결과: 당신이 이겼습니다! 🎉
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a>
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>╔════════════════════════════╗
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>║        최종 결과           ║
+</span><span id="__span-13-25"><a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a>╚════════════════════════════╝
+</span><span id="__span-13-26"><a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a>  승리: 2회
+</span><span id="__span-13-27"><a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a>  패배: 1회
+</span><span id="__span-13-28"><a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a>  무승부: 0회
+</span><span id="__span-13-29"><a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a>
+</span><span id="__span-13-30"><a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a>  🏆 축하합니다! 당신의 승리!
+</span></code></pre></div>
+<h3 id="_8">코드 핵심 포인트 해설<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>이 코드에서 난수가 사용되는 <strong>핵심 부분</strong>을 짚어볼게요:</p>
+<p><strong>1. 난수 초기화 (4행)</strong>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span>
+</span></code></pre></div>
+프로그램 시작 시 딱 한 번! 이것이 없으면 컴퓨터가 매번 같은 선택을 합니다.</p>
+<p><strong>2. 컴퓨터의 랜덤 선택 (26행)</strong>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">computer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w">  </span><span class="c1">// 0, 1, 2 중 하나</span>
+</span></code></pre></div>
+<code>% 3</code>으로 나머지를 구하면 0, 1, 2 세 가지 값만 나옵니다. 가위(0), 바위(1), 보(2)에 딱 맞죠!</p>
+<p><strong>3. 승패 판정 로직 (39~47행)</strong></p>
+<p><code>player == computer</code>면 무승부, 그리고 플레이어가 이기는 세 가지 경우를 <code>||</code>(또는)로 연결했습니다. 나머지는 모두 컴퓨터 승리!</p>
+<div class="mermaid">flowchart TD
+    A["플레이어 vs 컴퓨터"] --&gt; B{"같은 선택?"}
+    B -- "예" --&gt; C["무승부 😐"]
+    B -- "아니오" --&gt; D{"플레이어가&lt;br/&gt;이기는 조건?"}
+    D -- "가위&gt;보&lt;br/&gt;바위&gt;가위&lt;br/&gt;보&gt;바위" --&gt; E["플레이어 승리 🎉"]
+    D -- "그 외" --&gt; F["컴퓨터 승리 😢"]
+    style C fill:#FFF9C4,stroke:#FBC02D
+    style E fill:#C8E6C9,stroke:#4CAF50
+    style F fill:#FFCDD2,stroke:#E53935</div>
+<blockquote>
+<p>💡 <strong>잠깐!</strong> 코드가 좀 길게 느껴지더라도 걱정하지 마세요. 하나하나 뜯어보면 이미 배운 것들의 조합이에요:
+- <code>for</code> 문으로 라운드 반복
+- <code>if-else if-else</code>로 조건 판단
+- <code>rand() % 3</code>으로 난수 생성</p>
+<p>새로 배운 건 <code>rand()</code>와 <code>srand(time(NULL))</code> 뿐</p>
+</blockquote>
 
 
 
@@ -2347,7 +2269,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
